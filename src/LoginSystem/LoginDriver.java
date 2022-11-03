@@ -3,10 +3,14 @@ package LoginSystem;
 import javax.swing.*;
 
 public class LoginDriver {
-    public User getUser(JFrame mainFrame) {
+    User loginUser;
+    public LoginDriver(JFrame mainFrame) {
         LoginUI UI = new LoginUI(mainFrame);
         UI.setVisible(true);
-        return UI.getUser();
+        this.loginUser = UI.getUser();
+    }
+    public User getUser() {
+        return loginUser;
     }
 
 //    public static void main(String[] args) {

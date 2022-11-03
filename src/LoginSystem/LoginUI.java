@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 
 public class LoginUI extends JDialog {
-    User loginUser;
+    User loginUser = null;
     public LoginUI(JFrame frame) {
         super(frame, "Login", true);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
