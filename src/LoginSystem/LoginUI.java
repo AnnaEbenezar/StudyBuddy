@@ -1,15 +1,21 @@
 package LoginSystem;
 
+import MainSystem.User;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
 public class LoginUI extends JDialog {
-    User loginUser = null;
-    public LoginUI(JFrame frame) {
-        super(frame, "Login", true);
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+    LoginDriver driver;
+
+    public LoginUI(LoginDriver driver) {
+        super();
+        this.driver = driver;
+        this.setModal(true);
+        this.setModalityType(ModalityType.APPLICATION_MODAL);
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setContentPane(LoginFrame);
         this.setResizable(false);
         this.pack();
@@ -17,7 +23,7 @@ public class LoginUI extends JDialog {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                driver.quit();
             }
         });
 
@@ -28,19 +34,16 @@ public class LoginUI extends JDialog {
                 String password = String.valueOf(passwordField.getPassword());
                 // search username password here and modify further
 
-                loginUser = new User(username, password);
-                dispose();
+                driver.setUser(new User(username, password));
+                driver.finishLogin();
             }
         });
     }
+
     private JPasswordField passwordField;
     private JTextField usernameField;
     private JButton cancelButton;
     private JButton loginButton;
     private JPanel LoginFrame;
     private JLabel errorField;
-
-    public User getUser() {
-        return loginUser;
-    }
 }

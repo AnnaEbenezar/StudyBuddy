@@ -1,16 +1,50 @@
 package LoginSystem;
 
-import javax.swing.*;
+import Utility.CustomException;
+import MainSystem.MainDriver;
+import MainSystem.User;
 
-public class LoginDriver {
-    User loginUser;
-    public LoginDriver(JFrame mainFrame) {
-        LoginUI UI = new LoginUI(mainFrame);
-        UI.setVisible(true);
-        this.loginUser = UI.getUser();
+public class LoginDriver implements Runnable {
+    private User loginUser;
+    private static LoginDriver instance = null;
+    private final MainDriver main;
+    private LoginUI UI;
+
+    private LoginDriver(MainDriver main) {
+        this.main = main;
     }
+
+    public static LoginDriver getInstance(MainDriver main) {
+        if (instance == null) {
+            instance = new LoginDriver(main);
+        }
+        return instance;
+    }
+
+    @Override
+    public void run() {
+        if (UI != null && UI.isDisplayable()) {
+            throw new CustomException.DuplicateUIException();
+        }
+
+        UI = new LoginUI(this);
+        UI.setVisible(true);
+    }
+
+    public void quit() {
+        System.exit(0);
+    }
+
     public User getUser() {
-        return loginUser;
+        return this.loginUser;
+    }
+
+    public void setUser(User u) {
+        this.loginUser = u;
+    }
+
+    public void finishLogin() {
+        UI.dispose();
     }
 
 //    public static void main(String[] args) {

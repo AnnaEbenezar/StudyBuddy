@@ -2,5 +2,5 @@ package ProfileSystem;
 
 import javax.swing.*;
 
-public class ProfileUI extends JDialog {
+public class ProfileUI {
 }
