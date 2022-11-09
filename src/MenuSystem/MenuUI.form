@@ -1,81 +1,137 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="MenuSystem.MenuUI">
-  <grid id="27dc6" binding="MenuPanel" layout-manager="GridBagLayout">
+  <grid id="27dc6" binding="MenuPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="807" height="476"/>
     </constraints>
-    <properties/>
+    <properties>
+      <opaque value="false"/>
+    </properties>
     <border type="none"/>
     <children>
-      <component id="c738b" class="javax.swing.JButton" binding="exitButton" default-binding="true">
-        <constraints>
-          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
+      <grid id="9ff4" layout-manager="GridBagLayout">
+        <constraints border-constraint="North"/>
         <properties>
-          <text value="Exit"/>
+          <opaque value="false"/>
         </properties>
-      </component>
-      <component id="ada7d" class="javax.swing.JButton" binding="logoutButton" default-binding="true">
-        <constraints>
-          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
+        <border type="none"/>
+        <children>
+          <component id="25828" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="15" left="0" bottom="15" right="100" weightx="2.0" weighty="1.0"/>
+            </constraints>
+            <properties>
+              <font name="Consolas" size="72" style="1"/>
+              <foreground color="-1447447"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <text value="Dashboard"/>
+              <verticalTextPosition value="3"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="bcd0b" layout-manager="GridBagLayout">
+        <constraints border-constraint="West"/>
         <properties>
-          <text value="Logout"/>
+          <opaque value="false"/>
         </properties>
-      </component>
-      <component id="f2769" class="javax.swing.JButton" binding="scheduleButton" default-binding="true">
-        <constraints>
-          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
+        <border type="none"/>
+        <children>
+          <component id="d1c0b" class="javax.swing.JButton" binding="profileButton" default-binding="true">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag top="10" left="40" bottom="10" right="40" weightx="1.0" weighty="1.0" ipadx="75" ipady="20"/>
+            </constraints>
+            <properties>
+              <background color="-2829100"/>
+              <focusPainted value="false"/>
+              <font name="Consolas" size="20" style="1"/>
+              <foreground color="-2829100"/>
+              <horizontalTextPosition value="11"/>
+              <opaque value="false"/>
+              <text value="Profile"/>
+            </properties>
+          </component>
+          <component id="f2769" class="javax.swing.JButton" binding="scheduleButton" default-binding="true">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag top="10" left="40" bottom="10" right="40" weightx="1.0" weighty="1.0" ipadx="75" ipady="20"/>
+            </constraints>
+            <properties>
+              <background color="-2829100"/>
+              <focusPainted value="false"/>
+              <font name="Consolas" size="20" style="1"/>
+              <foreground color="-2829100"/>
+              <opaque value="false"/>
+              <text value="Schedule"/>
+            </properties>
+          </component>
+          <component id="5db03" class="javax.swing.JButton" binding="toDoListButton" default-binding="true">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag top="10" left="40" bottom="10" right="40" weightx="1.0" weighty="1.0" ipadx="75" ipady="20"/>
+            </constraints>
+            <properties>
+              <background color="-2829100"/>
+              <focusPainted value="false"/>
+              <focusTraversalPolicyProvider value="false"/>
+              <font name="Consolas" size="20" style="1"/>
+              <foreground color="-2829100"/>
+              <opaque value="false"/>
+              <text value="To-Do List"/>
+            </properties>
+          </component>
+          <component id="ada7d" class="javax.swing.JButton" binding="logoutButton" default-binding="true">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag top="10" left="40" bottom="10" right="40" weightx="1.0" weighty="1.0" ipadx="75" ipady="20"/>
+            </constraints>
+            <properties>
+              <background color="-2829100"/>
+              <focusPainted value="false"/>
+              <font name="Consolas" size="20" style="1"/>
+              <foreground color="-2829100"/>
+              <opaque value="false"/>
+              <text value="Logout"/>
+            </properties>
+          </component>
+          <component id="c738b" class="javax.swing.JButton" binding="exitButton" default-binding="true">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag top="10" left="40" bottom="10" right="40" weightx="1.0" weighty="1.0" ipadx="75" ipady="20"/>
+            </constraints>
+            <properties>
+              <background color="-2829100"/>
+              <focusPainted value="false"/>
+              <font name="Consolas" size="20" style="1"/>
+              <foreground color="-2829100"/>
+              <opaque value="false"/>
+              <text value="Exit"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="dfbe1" layout-manager="GridBagLayout">
+        <constraints border-constraint="East"/>
         <properties>
-          <text value="Schedule"/>
+          <opaque value="false"/>
         </properties>
-      </component>
-      <component id="5db03" class="javax.swing.JButton" binding="toDoListButton" default-binding="true">
-        <constraints>
-          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="To-Do List"/>
-        </properties>
-      </component>
-      <component id="d1c0b" class="javax.swing.JButton" binding="profileButton" default-binding="true">
-        <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="Profile"/>
-        </properties>
-      </component>
-      <vspacer id="7159b">
-        <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-      </vspacer>
-      <hspacer id="6b171">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-      </hspacer>
-      <hspacer id="19108">
-        <constraints>
-          <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-      </hspacer>
-      <vspacer id="36f12">
-        <constraints>
-          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-      </vspacer>
+        <border type="none"/>
+        <children>
+          <component id="57b8a" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <font name="Consolas" size="36" style="1"/>
+              <text value="PLACEHOLDER"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
     </children>
   </grid>
 </form>

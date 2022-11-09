@@ -5,6 +5,7 @@ import LoginSystem.LoginDriver;
 import MenuSystem.MenuDriver;
 import Utility.ModuleDriver;
 
+import javax.swing.*;
 import java.util.Stack;
 
 
@@ -18,17 +19,21 @@ public class MainDriver implements Runnable {
     @Override
     public void run() {
         login();
-        runModule(MenuDriver.getInstance(this));
     }
 
     private void login() {
         LoginDriver login = LoginDriver.getInstance(this);
         login.run();
+    }
 
-        currentUser = login.getUser();
-        if (currentUser == null) {
-            System.exit(0);
-        }  // if failed to get user --> exit
+    public void finishLogin(User loginUser) {
+        if(loginUser == null) {
+            JOptionPane.showMessageDialog(null, "Login Error", "Login Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
+        }
+
+        currentUser = loginUser;
+        this.runModule(MenuDriver.getInstance(this));
     }
 
     public void reLogin() {
