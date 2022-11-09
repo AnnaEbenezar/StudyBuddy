@@ -47,9 +47,4 @@ public class LoginDriver implements Runnable {
         UI.dispose();
         main.finishLogin(this.getUser());
     }
-
-//    public static void main(String[] args) {
-//        LoginUI UI = new LoginUI();
-//        UI.setVisible(true);
-//    }
 }
