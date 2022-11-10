@@ -7,13 +7,12 @@ import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.Locale;
 
 
 public class LoginUI extends JFrame {
-    LoginDriver driver;
+    public final LoginDriver driver;
     CreateAccountUI createUI;
 
     public LoginUI(LoginDriver driver) {
@@ -26,7 +25,7 @@ public class LoginUI extends JFrame {
         this.setContentPane(new ImagePanel("resources/img/8bitbg.jpg"));
 
         this.setLayout(new FlowLayout());
-        this.setSize(new Dimension(1000, 700));
+        this.setSize(new Dimension(1000, 800));
         createLoginUI();
 //        this.setUndecorated(true);
 
@@ -54,6 +53,46 @@ public class LoginUI extends JFrame {
                 createAccountUI();
             }
         });
+
+        cancelButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                cancelButton.setOpaque(true);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseEntered(e);
+                cancelButton.setOpaque(false);
+            }
+        });
+        loginButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                loginButton.setOpaque(true);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                loginButton.setOpaque(false);
+            }
+        });
+        donTHaveAnButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                donTHaveAnButton.setOpaque(true);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                super.mouseExited(e);
+                donTHaveAnButton.setOpaque(false);
+            }
+        });
     }
 
     public void createLoginUI() {
@@ -72,7 +111,7 @@ public class LoginUI extends JFrame {
         this.remove(LoginFrame);
         createUI = new CreateAccountUI(this);
         this.add(createUI);
-        this.setMinimumSize(new Dimension(750, 650));
+        this.setMinimumSize(new Dimension(750, 700));
         this.invalidate();
         this.validate();
         this.repaint();
@@ -178,6 +217,7 @@ public class LoginUI extends JFrame {
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.ipadx = 500;
+        gbc.ipady = 5;
         panel3.add(passwordField, gbc);
         usernameField = new JTextField();
         usernameField.setBackground(new Color(-14737633));
@@ -195,9 +235,10 @@ public class LoginUI extends JFrame {
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.ipadx = 500;
+        gbc.ipady = 5;
         panel3.add(usernameField, gbc);
         final JPanel panel4 = new JPanel();
-        panel4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+        panel4.setLayout(new GridBagLayout());
         panel4.setOpaque(false);
         gbc = new GridBagConstraints();
         gbc.gridx = 1;
@@ -206,36 +247,58 @@ public class LoginUI extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         LoginFrame.add(panel4, gbc);
         cancelButton = new JButton();
-        cancelButton.setBackground(new Color(-2829100));
+        cancelButton.setBackground(new Color(-12171706));
+        cancelButton.setBorderPainted(false);
         cancelButton.setFocusPainted(false);
         Font cancelButtonFont = this.$$$getFont$$$("Consolas", Font.BOLD, 20, cancelButton.getFont());
         if (cancelButtonFont != null) cancelButton.setFont(cancelButtonFont);
         cancelButton.setForeground(new Color(-2829100));
         cancelButton.setOpaque(false);
         cancelButton.setText("Exit");
-        panel4.add(cancelButton);
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.ipadx = 20;
+        gbc.ipady = 10;
+        panel4.add(cancelButton, gbc);
+        final JPanel panel5 = new JPanel();
+        panel5.setLayout(new GridBagLayout());
+        panel5.setOpaque(false);
+        gbc = new GridBagConstraints();
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(0, 20, 0, 20);
+        panel4.add(panel5, gbc);
         loginButton = new JButton();
-        loginButton.setBackground(new Color(-14737633));
+        loginButton.setBackground(new Color(-12171706));
+        loginButton.setBorderPainted(false);
         loginButton.setFocusPainted(false);
         Font loginButtonFont = this.$$$getFont$$$("Consolas", Font.BOLD, 20, loginButton.getFont());
         if (loginButtonFont != null) loginButton.setFont(loginButtonFont);
         loginButton.setForeground(new Color(-2829100));
         loginButton.setOpaque(false);
         loginButton.setText("Login");
-        panel4.add(loginButton);
-        final JPanel panel5 = new JPanel();
-        panel5.setLayout(new GridBagLayout());
-        panel5.setEnabled(true);
-        panel5.setOpaque(false);
+        gbc = new GridBagConstraints();
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        gbc.ipadx = 20;
+        gbc.ipady = 10;
+        panel4.add(loginButton, gbc);
+        final JPanel panel6 = new JPanel();
+        panel6.setLayout(new GridBagLayout());
+        panel6.setEnabled(true);
+        panel6.setOpaque(false);
         gbc = new GridBagConstraints();
         gbc.gridx = 1;
         gbc.gridy = 3;
         gbc.fill = GridBagConstraints.BOTH;
         gbc.ipadx = 50;
         gbc.insets = new Insets(20, 0, 0, 0);
-        LoginFrame.add(panel5, gbc);
+        LoginFrame.add(panel6, gbc);
         donTHaveAnButton = new JButton();
-        donTHaveAnButton.setBackground(new Color(-2829100));
+        donTHaveAnButton.setBackground(new Color(-12171706));
+        donTHaveAnButton.setBorderPainted(false);
+        donTHaveAnButton.setEnabled(true);
         donTHaveAnButton.setFocusPainted(false);
         Font donTHaveAnButtonFont = this.$$$getFont$$$("Consolas", Font.PLAIN, 14, donTHaveAnButton.getFont());
         if (donTHaveAnButtonFont != null) donTHaveAnButton.setFont(donTHaveAnButtonFont);
@@ -247,10 +310,7 @@ public class LoginUI extends JFrame {
         gbc.gridy = 0;
         gbc.ipadx = 50;
         gbc.insets = new Insets(20, 0, 0, 0);
-        panel5.add(donTHaveAnButton, gbc);
-        final JPanel panel6 = new JPanel();
-        panel6.setLayout(new GridBagLayout());
-        panel1.add(panel6, BorderLayout.NORTH);
+        panel6.add(donTHaveAnButton, gbc);
     }
 
     /**

@@ -84,7 +84,7 @@
                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
-                  <gridbag weightx="0.0" weighty="0.0" ipadx="500"/>
+                  <gridbag weightx="0.0" weighty="0.0" ipadx="500" ipady="5"/>
                 </constraints>
                 <properties>
                   <background color="-14737633"/>
@@ -102,7 +102,7 @@
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                     <preferred-size width="150" height="-1"/>
                   </grid>
-                  <gridbag weightx="0.0" weighty="0.0" ipadx="500"/>
+                  <gridbag weightx="0.0" weighty="0.0" ipadx="500" ipady="5"/>
                 </constraints>
                 <properties>
                   <background color="-14737633"/>
@@ -117,7 +117,7 @@
               </component>
             </children>
           </grid>
-          <grid id="c3e6a" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+          <grid id="c3e6a" layout-manager="GridBagLayout">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
@@ -128,9 +128,13 @@
             <border type="none"/>
             <children>
               <component id="42f14" class="javax.swing.JButton" binding="cancelButton">
-                <constraints/>
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0" ipadx="20" ipady="10"/>
+                </constraints>
                 <properties>
-                  <background color="-2829100"/>
+                  <background color="-12171706"/>
+                  <borderPainted value="false"/>
                   <focusPainted value="false"/>
                   <font name="Consolas" size="20" style="1"/>
                   <foreground color="-2829100"/>
@@ -138,10 +142,25 @@
                   <text value="Exit"/>
                 </properties>
               </component>
-              <component id="25a07" class="javax.swing.JButton" binding="loginButton" default-binding="true">
-                <constraints/>
+              <grid id="bd286" layout-manager="GridBagLayout">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag top="0" left="20" bottom="0" right="20" weightx="0.0" weighty="0.0"/>
+                </constraints>
                 <properties>
-                  <background color="-14737633"/>
+                  <opaque value="false"/>
+                </properties>
+                <border type="none"/>
+                <children/>
+              </grid>
+              <component id="25a07" class="javax.swing.JButton" binding="loginButton" default-binding="true">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="0.0" ipadx="20" ipady="10"/>
+                </constraints>
+                <properties>
+                  <background color="-12171706"/>
+                  <borderPainted value="false"/>
                   <focusPainted value="false"/>
                   <font name="Consolas" size="20" style="1"/>
                   <foreground color="-2829100"/>
@@ -168,7 +187,9 @@
                   <gridbag top="20" left="0" bottom="0" right="0" weightx="0.0" weighty="0.0" ipadx="50"/>
                 </constraints>
                 <properties>
-                  <background color="-2829100"/>
+                  <background color="-12171706"/>
+                  <borderPainted value="false"/>
+                  <enabled value="true"/>
                   <focusPainted value="false"/>
                   <font name="Consolas" size="14" style="0"/>
                   <foreground color="-2829100"/>
@@ -179,12 +200,6 @@
             </children>
           </grid>
         </children>
-      </grid>
-      <grid id="22e9b" layout-manager="GridBagLayout">
-        <constraints border-constraint="North"/>
-        <properties/>
-        <border type="none"/>
-        <children/>
       </grid>
     </children>
   </grid>

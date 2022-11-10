@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.FontUIResource;
@@ -21,15 +23,12 @@ public class MenuUI extends JFrame {
     private JButton profileButton;
 
     MenuUI(MenuDriver driver) {
-        super("MainSystem.Main Menu");
+        super("Main Menu");
         this.driver = driver;
         $$$setupUI$$$();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLayout(new BorderLayout());
-        this.setContentPane(new ImagePanel("resources/img/MenuArt.jpg"));
-
-        this.setLayout(new FlowLayout());
-        this.add(MenuPanel);
+        this.setContentPane(MenuPanel);
         this.setSize(new Dimension(1000, 700));
 
         exitButton.addActionListener(new ActionListener() {
@@ -44,7 +43,17 @@ public class MenuUI extends JFrame {
                 }
             }
         });
+        exitButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                exitButton.setBackground(new Color(20, 20, 20));
+            }
 
+            @Override
+            public void mouseExited(MouseEvent e) {
+                exitButton.setBackground(new Color(39, 42, 44));
+            }
+        });
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -57,10 +66,32 @@ public class MenuUI extends JFrame {
                 }
             }
         });
+        logoutButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                logoutButton.setBackground(new Color(20, 20, 20));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                logoutButton.setBackground(new Color(39, 42, 44));
+            }
+        });
         profileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 driver.menuSelection(MenuDriver.MENU_PROFILE);
+            }
+        });
+        profileButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                profileButton.setBackground(new Color(20, 20, 20));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                profileButton.setBackground(new Color(39, 42, 44));
             }
         });
         scheduleButton.addActionListener(new ActionListener() {
@@ -69,10 +100,32 @@ public class MenuUI extends JFrame {
                 driver.menuSelection(MenuDriver.MENU_SCHEDULE);
             }
         });
+        scheduleButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                scheduleButton.setBackground(new Color(20, 20, 20));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                scheduleButton.setBackground(new Color(39, 42, 44));
+            }
+        });
         toDoListButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 driver.menuSelection(MenuDriver.MENU_TODO);
+            }
+        });
+        toDoListButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                toDoListButton.setBackground(new Color(20, 20, 20));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                toDoListButton.setBackground(new Color(39, 42, 44));
             }
         });
     }
@@ -87,10 +140,12 @@ public class MenuUI extends JFrame {
     private void $$$setupUI$$$() {
         MenuPanel = new JPanel();
         MenuPanel.setLayout(new BorderLayout(0, 0));
-        MenuPanel.setOpaque(false);
+        MenuPanel.setBackground(new Color(-12696762));
+        MenuPanel.setOpaque(true);
         final JPanel panel1 = new JPanel();
         panel1.setLayout(new GridBagLayout());
-        panel1.setOpaque(false);
+        panel1.setBackground(new Color(-14210516));
+        panel1.setOpaque(true);
         MenuPanel.add(panel1, BorderLayout.NORTH);
         final JLabel label1 = new JLabel();
         Font label1Font = this.$$$getFont$$$("Consolas", Font.BOLD, 72, label1.getFont());
@@ -98,7 +153,7 @@ public class MenuUI extends JFrame {
         label1.setForeground(new Color(-1447447));
         label1.setHorizontalAlignment(0);
         label1.setHorizontalTextPosition(0);
-        label1.setText("Dashboard");
+        label1.setText("Dashboard.");
         label1.setVerticalTextPosition(3);
         GridBagConstraints gbc;
         gbc = new GridBagConstraints();
@@ -106,108 +161,111 @@ public class MenuUI extends JFrame {
         gbc.gridy = 0;
         gbc.weightx = 2.0;
         gbc.weighty = 1.0;
-        gbc.anchor = GridBagConstraints.SOUTH;
-        gbc.insets = new Insets(15, 0, 15, 100);
+        gbc.anchor = GridBagConstraints.EAST;
+        gbc.fill = GridBagConstraints.VERTICAL;
+        gbc.insets = new Insets(15, 20, 10, 50);
         panel1.add(label1, gbc);
         final JPanel panel2 = new JPanel();
         panel2.setLayout(new GridBagLayout());
-        panel2.setOpaque(false);
+        panel2.setBackground(new Color(-14210516));
+        panel2.setOpaque(true);
         MenuPanel.add(panel2, BorderLayout.WEST);
         profileButton = new JButton();
-        profileButton.setBackground(new Color(-2829100));
+        profileButton.setBackground(new Color(-14210516));
+        profileButton.setBorderPainted(false);
         profileButton.setFocusPainted(false);
-        Font profileButtonFont = this.$$$getFont$$$("Consolas", Font.BOLD, 20, profileButton.getFont());
+        Font profileButtonFont = this.$$$getFont$$$("Consolas", Font.BOLD, 26, profileButton.getFont());
         if (profileButtonFont != null) profileButton.setFont(profileButtonFont);
         profileButton.setForeground(new Color(-2829100));
         profileButton.setHorizontalTextPosition(11);
-        profileButton.setOpaque(false);
+        profileButton.setOpaque(true);
         profileButton.setText("Profile");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.ipadx = 75;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.ipadx = 50;
         gbc.ipady = 20;
-        gbc.insets = new Insets(10, 40, 10, 40);
         panel2.add(profileButton, gbc);
         scheduleButton = new JButton();
-        scheduleButton.setBackground(new Color(-2829100));
+        scheduleButton.setBackground(new Color(-14210516));
+        scheduleButton.setBorderPainted(false);
         scheduleButton.setFocusPainted(false);
-        Font scheduleButtonFont = this.$$$getFont$$$("Consolas", Font.BOLD, 20, scheduleButton.getFont());
+        Font scheduleButtonFont = this.$$$getFont$$$("Consolas", Font.BOLD, 26, scheduleButton.getFont());
         if (scheduleButtonFont != null) scheduleButton.setFont(scheduleButtonFont);
         scheduleButton.setForeground(new Color(-2829100));
-        scheduleButton.setOpaque(false);
+        scheduleButton.setOpaque(true);
         scheduleButton.setText("Schedule");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.ipadx = 75;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.ipadx = 50;
         gbc.ipady = 20;
-        gbc.insets = new Insets(10, 40, 10, 40);
         panel2.add(scheduleButton, gbc);
         toDoListButton = new JButton();
-        toDoListButton.setBackground(new Color(-2829100));
+        toDoListButton.setBackground(new Color(-14210516));
+        toDoListButton.setBorderPainted(false);
         toDoListButton.setFocusPainted(false);
         toDoListButton.setFocusTraversalPolicyProvider(false);
-        Font toDoListButtonFont = this.$$$getFont$$$("Consolas", Font.BOLD, 20, toDoListButton.getFont());
+        Font toDoListButtonFont = this.$$$getFont$$$("Consolas", Font.BOLD, 26, toDoListButton.getFont());
         if (toDoListButtonFont != null) toDoListButton.setFont(toDoListButtonFont);
         toDoListButton.setForeground(new Color(-2829100));
-        toDoListButton.setOpaque(false);
+        toDoListButton.setOpaque(true);
         toDoListButton.setText("To-Do List");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.ipadx = 75;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.ipadx = 50;
         gbc.ipady = 20;
-        gbc.insets = new Insets(10, 40, 10, 40);
         panel2.add(toDoListButton, gbc);
         logoutButton = new JButton();
-        logoutButton.setBackground(new Color(-2829100));
+        logoutButton.setBackground(new Color(-14210516));
+        logoutButton.setBorderPainted(false);
         logoutButton.setFocusPainted(false);
-        Font logoutButtonFont = this.$$$getFont$$$("Consolas", Font.BOLD, 20, logoutButton.getFont());
+        Font logoutButtonFont = this.$$$getFont$$$("Consolas", Font.BOLD, 26, logoutButton.getFont());
         if (logoutButtonFont != null) logoutButton.setFont(logoutButtonFont);
         logoutButton.setForeground(new Color(-2829100));
-        logoutButton.setOpaque(false);
+        logoutButton.setOpaque(true);
         logoutButton.setText("Logout");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.ipadx = 75;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.ipadx = 50;
         gbc.ipady = 20;
-        gbc.insets = new Insets(10, 40, 10, 40);
         panel2.add(logoutButton, gbc);
         exitButton = new JButton();
-        exitButton.setBackground(new Color(-2829100));
+        exitButton.setBackground(new Color(-14210516));
+        exitButton.setBorderPainted(false);
         exitButton.setFocusPainted(false);
-        Font exitButtonFont = this.$$$getFont$$$("Consolas", Font.BOLD, 20, exitButton.getFont());
+        Font exitButtonFont = this.$$$getFont$$$("Consolas", Font.BOLD, 26, exitButton.getFont());
         if (exitButtonFont != null) exitButton.setFont(exitButtonFont);
         exitButton.setForeground(new Color(-2829100));
-        exitButton.setOpaque(false);
+        exitButton.setOpaque(true);
         exitButton.setText("Exit");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 4;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.ipadx = 75;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.ipadx = 50;
         gbc.ipady = 20;
-        gbc.insets = new Insets(10, 40, 10, 40);
         panel2.add(exitButton, gbc);
         final JPanel panel3 = new JPanel();
         panel3.setLayout(new GridBagLayout());
-        panel3.setOpaque(false);
+        panel3.setBackground(new Color(-12696762));
+        panel3.setOpaque(true);
         MenuPanel.add(panel3, BorderLayout.EAST);
         final JLabel label2 = new JLabel();
         Font label2Font = this.$$$getFont$$$("Consolas", Font.BOLD, 36, label2.getFont());
