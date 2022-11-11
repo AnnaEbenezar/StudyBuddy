@@ -19,13 +19,13 @@ public class LoginUI extends JFrame {
         super();
         this.driver = driver;
         $$$setupUI$$$();
-        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setTitle("Login");
         this.setLayout(new BorderLayout());
         this.setContentPane(new ImagePanel("resources/img/8bitbg.jpg"));
 
         this.setLayout(new FlowLayout());
-        this.setSize(new Dimension(1000, 800));
+        this.setSize(new Dimension(1200, 800));
         createLoginUI();
 //        this.setUndecorated(true);
 
@@ -111,7 +111,7 @@ public class LoginUI extends JFrame {
         this.remove(LoginFrame);
         createUI = new CreateAccountUI(this);
         this.add(createUI);
-        this.setMinimumSize(new Dimension(750, 700));
+        this.setMinimumSize(new Dimension(1150, 750));
         this.invalidate();
         this.validate();
         this.repaint();
@@ -163,8 +163,7 @@ public class LoginUI extends JFrame {
         gbc.gridy = 0;
         gbc.weighty = 1.0;
         gbc.anchor = GridBagConstraints.SOUTH;
-        gbc.ipady = 30;
-        gbc.insets = new Insets(30, 0, 0, 0);
+        gbc.insets = new Insets(60, 0, 0, 0);
         panel2.add(label1, gbc);
         final JPanel panel3 = new JPanel();
         panel3.setLayout(new GridBagLayout());
