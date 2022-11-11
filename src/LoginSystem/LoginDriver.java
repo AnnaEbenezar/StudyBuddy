@@ -16,13 +16,6 @@ public class LoginDriver implements Runnable {
         this.main = main;
     }
 
-    public static final int CHECK_VALID = 0;
-    public static final int CHECK_PATTERN_ERROR = 1;
-    public static final int CHECK_DUPLICATE = 2;
-    public static final int CHECK_EMPTY_ERROR = 3;
-    public static final int CHECK_TOO_LONG = 4;
-    public static final int CHECK_TOO_SHORT = 5;
-
     private static final int MINIMUM_USERNAME_LENGTH = 6;
     private static final int MAXIMUM_USERNAME_LENGTH = 20;
     private static final int MINIMUM_PASSWORD_LENGTH = 6;
@@ -63,13 +56,35 @@ public class LoginDriver implements Runnable {
         main.finishLogin(this.getUser());
     }
 
-    public int checkUsername(String username) {
+    public boolean checkUsername(String username) {
         String pattern = "^[a-zA-Z0-9_]*$";
-        if(username.length() < MINIMUM_USERNAME_LENGTH) return CHECK_TOO_SHORT;
-        if(username.length() > MAXIMUM_USERNAME_LENGTH) return CHECK_TOO_LONG;
-        if(!username.matches(pattern)) return CHECK_PATTERN_ERROR;
+        if(username.length() < MINIMUM_USERNAME_LENGTH) {
+            throw new CustomException.LoginTooShortError(
+                    "Username", "Username must be at least " + MINIMUM_USERNAME_LENGTH + " characters.");
+        }
+        if(username.length() > MAXIMUM_USERNAME_LENGTH) {
+            throw new CustomException.LoginTooLongError(
+                    "Username", "Username must be " + MAXIMUM_USERNAME_LENGTH + " characters or fewer.");
+        }
+        if(!username.matches(pattern)) {
+            throw new CustomException.LoginPatternError(
+                    "Username", "Username can only contain a-z, A-Z, 0-9, and _(underscore).");
+        }
         //if duplicate return CHECK_DUPLICATE
         //TODO
-        return CHECK_VALID;
+        return true;
+    }
+
+    public boolean checkPassword(String password) {
+        if(password.length() < MINIMUM_PASSWORD_LENGTH) {
+            throw new CustomException.LoginTooShortError(
+                    "Password", "Password must be at least " + MINIMUM_PASSWORD_LENGTH + " characters.");
+        }
+        if(password.length() > MAXIMUM_PASSWORD_LENGTH) {
+            throw new CustomException.LoginTooLongError(
+                    "Password", "Password must be " + MAXIMUM_PASSWORD_LENGTH + " characters or fewer.");
+        }
+
+        return true;
     }
 }
