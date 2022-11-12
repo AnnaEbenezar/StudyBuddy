@@ -12,7 +12,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowStateListener;
 
 
-public class MenuDriver implements ModuleDriver, WindowStateListener {
+public class MenuDriver implements ModuleDriver{
     public static final int MENU_EXIT = -1;
     public static final int MENU_LOGOUT = -2;
     public static final int MENU_PROFILE = 1;
@@ -36,19 +36,11 @@ public class MenuDriver implements ModuleDriver, WindowStateListener {
     }
 
     @Override
-    public void windowStateChanged(WindowEvent e) {
-        if (e.getNewState() == WindowEvent.WINDOW_CLOSED) {
-            System.out.println("Menu Closed");  // test
-        }
-    }
-
-    @Override
     public void run() {
         if (UI != null && UI.isDisplayable()) {
             throw new CustomException.DuplicateUIException();
         }
         UI = new MenuUI(this);
-        UI.addWindowStateListener(this);
         UI.setVisible(true);
         runningFlag = true;
     }
@@ -61,6 +53,26 @@ public class MenuDriver implements ModuleDriver, WindowStateListener {
 
     public boolean isRunning() {
         return runningFlag;
+    }
+
+    public void exitProcedure() {
+        int confirm = JOptionPane.showConfirmDialog(UI,
+                "Do you want to exit?\n" +
+                        "Any unsaved change will be lost."
+                , "Confirm", JOptionPane.YES_NO_OPTION);
+        if (confirm == 0) {  //yes
+            menuSelection(MenuDriver.MENU_EXIT);
+        }
+    }
+
+    public void logoutProcedure() {
+        int confirm = JOptionPane.showConfirmDialog(UI,
+                "Do you want to logout?\n" +
+                        "Any unsaved change will be lost."
+                , "Confirm", JOptionPane.YES_NO_OPTION);
+        if (confirm == 0) {  //yes
+            menuSelection(MenuDriver.MENU_LOGOUT);
+        }
     }
 
     public void menuSelection(int selection) {

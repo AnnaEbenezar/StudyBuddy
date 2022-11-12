@@ -56,7 +56,7 @@ public class LoginDriver implements Runnable {
         main.finishLogin(this.getUser());
     }
 
-    public boolean checkUsername(String username) {
+    public boolean checkUsername(String username) throws CustomException.LoginError {
         String pattern = "^[a-zA-Z0-9_]*$";
         if(username.length() < MINIMUM_USERNAME_LENGTH) {
             throw new CustomException.LoginTooShortError(
@@ -75,7 +75,7 @@ public class LoginDriver implements Runnable {
         return true;
     }
 
-    public boolean checkPassword(String password) {
+    public boolean checkPassword(String password) throws CustomException.LoginError{
         if(password.length() < MINIMUM_PASSWORD_LENGTH) {
             throw new CustomException.LoginTooShortError(
                     "Password", "Password must be at least " + MINIMUM_PASSWORD_LENGTH + " characters.");
