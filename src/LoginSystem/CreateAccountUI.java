@@ -17,7 +17,7 @@ public class CreateAccountUI extends JPanel {
         try {
             check = mainUI.driver.checkUsername(usernameField.getText());
             usernameError.setText(" ");
-        } catch (CustomException.LoginError e) {
+        } catch (CustomException.CreateAccountError e) {
             usernameError.setText(e.getAdvice());
         }
         return check;
@@ -28,7 +28,7 @@ public class CreateAccountUI extends JPanel {
         try {
             check = mainUI.driver.checkPassword(String.valueOf(passwordField.getPassword()));
             passwordError.setText(" ");
-        } catch (CustomException.LoginError e) {
+        } catch (CustomException.CreateAccountError e) {
             passwordError.setText(e.getAdvice());
         }
         return check;
@@ -131,6 +131,14 @@ public class CreateAccountUI extends JPanel {
             @Override
             public void focusLost(FocusEvent e) {
                 confirmLastName();
+            }
+        });
+        createAccountButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (checkUsername() && checkPassword() && confirmPassword() && confirmName() && confirmLastName()) {
+                    mainUI.driver.createAccount(usernameField.getText(), passwordField.getPassword(), nameField.getText(), lastnameField.getText());
+                }
             }
         });
     }
@@ -433,7 +441,7 @@ public class CreateAccountUI extends JPanel {
         Font createAccountButtonFont = this.$$$getFont$$$("Consolas", Font.BOLD, 20, createAccountButton.getFont());
         if (createAccountButtonFont != null) createAccountButton.setFont(createAccountButtonFont);
         createAccountButton.setForeground(new Color(-2829100));
-        createAccountButton.setMaximumSize(new Dimension(150, 50));
+        createAccountButton.setMaximumSize(new Dimension(200, 50));
         createAccountButton.setMinimumSize(new Dimension(200, 50));
         createAccountButton.setOpaque(false);
         createAccountButton.setPreferredSize(new Dimension(200, 50));

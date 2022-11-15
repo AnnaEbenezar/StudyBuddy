@@ -1,29 +1,42 @@
 package MainSystem;
 
+import java.io.File;
+
 public class User {
-    private final String username;
-    private final String password;
+    //general info
+    public final String username;
+    public final String firstName;
+    public final String lastName;
 
-    public User(String user, String pass) {
+    // directories for data
+    public final File settings;
+    public final File profile;
+    public final File schedule;
+    public final File todo;
+
+
+    public User(String user, String firstName, String lastName, File settingsDir, File profileDir, File scheduleDir, File todoDir) {
         this.username = user;
-        this.password = pass;
+        this.firstName = firstName;
+        this.lastName = lastName;
+
+        this.settings = settingsDir;
+        this.profile = profileDir;
+        this.schedule = scheduleDir;
+        this.todo = todoDir;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
 
     @Override
     public String toString() {
         return "User{" +
                 "username='" + username + '\'' +
-                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", settings='" + settings + '\'' +
+                ", profile='" + profile + '\'' +
+                ", schedule='" + schedule + '\'' +
+                ", todo='" + todo + '\'' +
                 '}';
     }
-
-    //TODO
 }

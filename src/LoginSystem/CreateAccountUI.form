@@ -410,7 +410,7 @@
               <focusPainted value="false"/>
               <font name="Consolas" size="20" style="1"/>
               <foreground color="-2829100"/>
-              <maximumSize width="150" height="50"/>
+              <maximumSize width="200" height="50"/>
               <minimumSize width="200" height="50"/>
               <opaque value="false"/>
               <preferredSize width="200" height="50"/>
