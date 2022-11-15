@@ -4,15 +4,15 @@ import java.io.File;
 
 public class User {
     //general info
-    public final String username;
-    public final String firstName;
-    public final String lastName;
+    private final String username;
+    private final String firstName;
+    private final String lastName;
 
     // directories for data
-    public final File settings;
-    public final File profile;
-    public final File schedule;
-    public final File todo;
+    private final File settings;
+    private final File profile;
+    private final File schedule;
+    private final File todo;
 
 
     public User(String user, String firstName, String lastName, File settingsDir, File profileDir, File scheduleDir, File todoDir) {
@@ -26,6 +26,33 @@ public class User {
         this.todo = todoDir;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public File getSettings() {
+        return settings;
+    }
+
+    public File getProfile() {
+        return profile;
+    }
+
+    public File getSchedule() {
+        return schedule;
+    }
+
+    public File getTodo() {
+        return todo;
+    }
 
     @Override
     public String toString() {
