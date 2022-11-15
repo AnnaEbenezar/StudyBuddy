@@ -47,6 +47,7 @@ public class MenuDriver implements ModuleDriver{
 
     @Override
     public void quitModule() {
+        UI.clock.stop();
         UI.dispose();
         runningFlag = false;
     }

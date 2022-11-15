@@ -126,8 +126,6 @@ public class LoginDriver implements Runnable {
             firstName = name[0];
             lastName = name[1];
         } catch (FileNotFoundException e) {
-            firstName = "";
-            lastName = "";
             throw new CustomException.MissingDirectoryError();
         }
         return new User(username, firstName, lastName, settings, new File(parentDirectory, "profile"),
