@@ -4,17 +4,14 @@ import Utility.ImagePanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
 
 public class MenuUI extends JFrame {
-    private MenuDriver driver;
+    private final MenuDriver driver;
     private JPanel MenuPanel;
     private JButton exitButton;
     private JButton logoutButton;
@@ -31,18 +28,19 @@ public class MenuUI extends JFrame {
         this.setContentPane(MenuPanel);
         this.setSize(new Dimension(1000, 700));
 
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                driver.exitProcedure();
+            }
+        });
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int confirm = JOptionPane.showConfirmDialog(MenuPanel,
-                        "Do you want to exit?\n" +
-                                "Any unsaved change will be lost."
-                        , "Confirm", JOptionPane.YES_NO_OPTION);
-                if (confirm == 0) {  //yes
-                    driver.menuSelection(MenuDriver.MENU_EXIT);
-                }
+                driver.exitProcedure();
             }
         });
+
         exitButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -57,13 +55,7 @@ public class MenuUI extends JFrame {
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int confirm = JOptionPane.showConfirmDialog(MenuPanel,
-                        "Do you want to logout?\n" +
-                                "Any unsaved change will be lost."
-                        , "Confirm", JOptionPane.YES_NO_OPTION);
-                if (confirm == 0) {  //yes
-                    driver.menuSelection(MenuDriver.MENU_LOGOUT);
-                }
+                driver.logoutProcedure();
             }
         });
         logoutButton.addMouseListener(new MouseAdapter() {

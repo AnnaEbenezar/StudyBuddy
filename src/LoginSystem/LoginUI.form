@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="LoginSystem.LoginUI">
   <grid id="2bd96" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="167" y="85" width="1040" height="792"/>
+      <xy x="167" y="85" width="2015" height="792"/>
     </constraints>
     <properties>
       <opaque value="false"/>
@@ -18,9 +18,9 @@
         </properties>
         <border type="none"/>
         <children>
-          <grid id="7ef85" layout-manager="GridBagLayout">
+          <grid id="189dc" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
@@ -28,175 +28,232 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="c06e4" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
-                  <gridbag top="60" left="0" bottom="0" right="0" weightx="0.0" weighty="1.0"/>
-                </constraints>
-                <properties>
-                  <font name="Consolas" size="72" style="1"/>
-                  <foreground color="-1447447"/>
-                  <horizontalAlignment value="0"/>
-                  <horizontalTextPosition value="0"/>
-                  <text value="Welcome."/>
-                  <verticalTextPosition value="3"/>
-                </properties>
-              </component>
-            </children>
-          </grid>
-          <grid id="b025" layout-manager="GridBagLayout">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="0.0" ipadx="30" ipady="50"/>
-            </constraints>
-            <properties>
-              <opaque value="false"/>
-            </properties>
-            <border type="none"/>
-            <children>
-              <component id="9d8af" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0"/>
-                </constraints>
-                <properties>
-                  <background color="-2829100"/>
-                  <font name="Monospaced" size="18" style="1"/>
-                  <foreground color="-1447447"/>
-                  <text value="Username: "/>
-                </properties>
-              </component>
-              <component id="d182f" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0" ipady="20"/>
-                </constraints>
-                <properties>
-                  <background color="-2829100"/>
-                  <font name="Monospaced" size="18" style="1"/>
-                  <foreground color="-1447447"/>
-                  <text value="Password: "/>
-                  <verticalAlignment value="3"/>
-                </properties>
-              </component>
-              <component id="ffb67" class="javax.swing.JPasswordField" binding="passwordField">
-                <constraints>
-                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                  <gridbag weightx="0.0" weighty="0.0" ipadx="500" ipady="5"/>
-                </constraints>
-                <properties>
-                  <background color="-14737633"/>
-                  <caretColor color="-2829100"/>
-                  <font name="DialogInput" size="16" style="1"/>
-                  <foreground color="-1447447"/>
-                  <opaque value="false"/>
-                  <selectedTextColor color="-14737633"/>
-                  <selectionColor color="-5811170"/>
-                  <text value=""/>
-                </properties>
-              </component>
-              <component id="78785" class="javax.swing.JTextField" binding="usernameField">
-                <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                    <preferred-size width="150" height="-1"/>
-                  </grid>
-                  <gridbag weightx="0.0" weighty="0.0" ipadx="500" ipady="5"/>
-                </constraints>
-                <properties>
-                  <background color="-14737633"/>
-                  <caretColor color="-2829100"/>
-                  <font name="DialogInput" size="16" style="1"/>
-                  <foreground color="-1447447"/>
-                  <opaque value="false"/>
-                  <selectedTextColor color="-14737633"/>
-                  <selectionColor color="-5811170"/>
-                  <text value=""/>
-                </properties>
-              </component>
-            </children>
-          </grid>
-          <grid id="c3e6a" layout-manager="GridBagLayout">
-            <constraints>
-              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="0.0"/>
-            </constraints>
-            <properties>
-              <opaque value="false"/>
-            </properties>
-            <border type="none"/>
-            <children>
-              <component id="42f14" class="javax.swing.JButton" binding="cancelButton">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0" ipadx="20" ipady="10"/>
-                </constraints>
-                <properties>
-                  <background color="-12171706"/>
-                  <borderPainted value="false"/>
-                  <focusPainted value="false"/>
-                  <font name="Consolas" size="20" style="1"/>
-                  <foreground color="-2829100"/>
-                  <opaque value="false"/>
-                  <text value="Exit"/>
-                </properties>
-              </component>
-              <grid id="bd286" layout-manager="GridBagLayout">
-                <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                  <gridbag top="0" left="20" bottom="0" right="20" weightx="0.0" weighty="0.0"/>
-                </constraints>
+              <grid id="7ef85" layout-manager="GridBagLayout">
+                <constraints border-constraint="North"/>
                 <properties>
                   <opaque value="false"/>
                 </properties>
                 <border type="none"/>
-                <children/>
+                <children>
+                  <component id="c06e4" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag top="60" left="0" bottom="0" right="0" weightx="0.0" weighty="1.0"/>
+                    </constraints>
+                    <properties>
+                      <font name="Consolas" size="72" style="1"/>
+                      <foreground color="-1447447"/>
+                      <horizontalAlignment value="0"/>
+                      <horizontalTextPosition value="0"/>
+                      <text value="Welcome."/>
+                      <verticalTextPosition value="3"/>
+                    </properties>
+                  </component>
+                </children>
               </grid>
-              <component id="25a07" class="javax.swing.JButton" binding="loginButton" default-binding="true">
-                <constraints>
-                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                  <gridbag weightx="0.0" weighty="0.0" ipadx="20" ipady="10"/>
-                </constraints>
+              <grid id="c3e6a" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="South"/>
                 <properties>
-                  <background color="-12171706"/>
-                  <borderPainted value="false"/>
-                  <focusPainted value="false"/>
-                  <font name="Consolas" size="20" style="1"/>
-                  <foreground color="-2829100"/>
                   <opaque value="false"/>
-                  <text value="Login"/>
                 </properties>
-              </component>
-            </children>
-          </grid>
-          <grid id="8f650" layout-manager="GridBagLayout">
-            <constraints>
-              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-              <gridbag top="20" left="0" bottom="0" right="0" weightx="0.0" weighty="0.0" ipadx="50"/>
-            </constraints>
-            <properties>
-              <enabled value="true"/>
-              <opaque value="false"/>
-            </properties>
-            <border type="none"/>
-            <children>
-              <component id="274e2" class="javax.swing.JButton" binding="donTHaveAnButton" default-binding="true">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                  <gridbag top="20" left="0" bottom="0" right="0" weightx="0.0" weighty="0.0" ipadx="50"/>
-                </constraints>
+                <border type="none"/>
+                <children>
+                  <grid id="99a7f" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <opaque value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <grid id="b2cd8" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints border-constraint="Center"/>
+                        <properties>
+                          <alignmentX value="1.0"/>
+                          <alignmentY value="1.0"/>
+                          <minimumSize width="500" height="23"/>
+                          <opaque value="false"/>
+                          <preferredSize width="0" height="23"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="bb4e8" class="javax.swing.JLabel" binding="loginErrorMessage">
+                            <constraints border-constraint="West"/>
+                            <properties>
+                              <foreground color="-3504317"/>
+                              <horizontalAlignment value="0"/>
+                              <horizontalTextPosition value="0"/>
+                              <maximumSize width="500" height="23"/>
+                              <minimumSize width="500" height="23"/>
+                              <preferredSize width="500" height="23"/>
+                              <text value=" "/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="1491" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                        <constraints border-constraint="North"/>
+                        <properties>
+                          <opaque value="false"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="25a07" class="javax.swing.JButton" binding="loginButton" default-binding="true">
+                            <constraints/>
+                            <properties>
+                              <background color="-12171706"/>
+                              <borderPainted value="false"/>
+                              <focusPainted value="false"/>
+                              <font name="Consolas" size="20" style="1"/>
+                              <foreground color="-2829100"/>
+                              <maximumSize width="150" height="50"/>
+                              <minimumSize width="150" height="50"/>
+                              <opaque value="false"/>
+                              <preferredSize width="150" height="50"/>
+                              <text value="Login"/>
+                            </properties>
+                          </component>
+                          <grid id="e3987" layout-manager="BorderLayout" hgap="0" vgap="0">
+                            <constraints/>
+                            <properties>
+                              <minimumSize width="50" height="50"/>
+                              <opaque value="false"/>
+                              <preferredSize width="50" height="50"/>
+                            </properties>
+                            <border type="none"/>
+                            <children/>
+                          </grid>
+                          <component id="42f14" class="javax.swing.JButton" binding="cancelButton">
+                            <constraints/>
+                            <properties>
+                              <background color="-12171706"/>
+                              <borderPainted value="false"/>
+                              <focusPainted value="false"/>
+                              <font name="Consolas" size="20" style="1"/>
+                              <foreground color="-2829100"/>
+                              <maximumSize width="150" height="50"/>
+                              <minimumSize width="150" height="50"/>
+                              <opaque value="false"/>
+                              <preferredSize width="150" height="50"/>
+                              <text value="Exit"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="8f650" layout-manager="GridBagLayout">
+                        <constraints border-constraint="South"/>
+                        <properties>
+                          <enabled value="true"/>
+                          <opaque value="false"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="274e2" class="javax.swing.JButton" binding="donTHaveAnButton" default-binding="true">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                              <gridbag top="20" left="0" bottom="0" right="0" weightx="0.0" weighty="0.0" ipadx="50"/>
+                            </constraints>
+                            <properties>
+                              <background color="-12171706"/>
+                              <borderPainted value="false"/>
+                              <enabled value="true"/>
+                              <focusPainted value="false"/>
+                              <font name="Consolas" size="14" style="0"/>
+                              <foreground color="-2829100"/>
+                              <opaque value="false"/>
+                              <text value="Don't have an account yet?"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+              <grid id="b025" layout-manager="GridBagLayout">
+                <constraints border-constraint="Center"/>
                 <properties>
-                  <background color="-12171706"/>
-                  <borderPainted value="false"/>
-                  <enabled value="true"/>
-                  <focusPainted value="false"/>
-                  <font name="Consolas" size="14" style="0"/>
-                  <foreground color="-2829100"/>
                   <opaque value="false"/>
-                  <text value="Don't have an account yet?"/>
                 </properties>
-              </component>
+                <border type="none"/>
+                <children>
+                  <component id="9d8af" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <background color="-2829100"/>
+                      <font name="Monospaced" size="18" style="1"/>
+                      <foreground color="-1447447"/>
+                      <text value="Username: "/>
+                    </properties>
+                  </component>
+                  <component id="d182f" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0" ipady="20"/>
+                    </constraints>
+                    <properties>
+                      <background color="-2829100"/>
+                      <font name="Monospaced" size="18" style="1"/>
+                      <foreground color="-1447447"/>
+                      <text value="Password: "/>
+                      <verticalAlignment value="3"/>
+                    </properties>
+                  </component>
+                  <component id="ffb67" class="javax.swing.JPasswordField" binding="passwordField">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14737633"/>
+                      <caretColor color="-2829100"/>
+                      <font name="DialogInput" size="16" style="1"/>
+                      <foreground color="-1447447"/>
+                      <opaque value="false"/>
+                      <preferredSize width="500" height="30"/>
+                      <selectedTextColor color="-14737633"/>
+                      <selectionColor color="-5811170"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <component id="78785" class="javax.swing.JTextField" binding="usernameField">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <background color="-14737633"/>
+                      <caretColor color="-2829100"/>
+                      <font name="DialogInput" size="16" style="1"/>
+                      <foreground color="-1447447"/>
+                      <opaque value="false"/>
+                      <preferredSize width="500" height="30"/>
+                      <selectedTextColor color="-14737633"/>
+                      <selectionColor color="-5811170"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                  <grid id="60ed" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="0.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <minimumSize width="50" height="50"/>
+                      <opaque value="false"/>
+                      <preferredSize width="50" height="50"/>
+                    </properties>
+                    <border type="none"/>
+                    <children/>
+                  </grid>
+                </children>
+              </grid>
             </children>
           </grid>
         </children>
