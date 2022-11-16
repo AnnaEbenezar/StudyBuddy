@@ -20,7 +20,7 @@ public final class PasswordManager {
         return salt;
     }
 
-    public static String hashPassword(char[] originalPassword){
+    public static String hashPassword(char[] originalPassword) {
         return hashPassword(originalPassword, DEFAULT_COST);
     }
 
@@ -63,24 +63,20 @@ public final class PasswordManager {
         byte[] inputHash = pbkdf2(inputPassword, salt, iterations);
 
         int difference = hash.length ^ inputHash.length;
-        for(int i = 0; i < hash.length && i < inputHash.length; i++)
-        {
+        for (int i = 0; i < hash.length && i < inputHash.length; i++) {
             difference |= hash[i] ^ inputHash[i];
         }
         return difference == 0;
     }
 
-    private static byte[] pbkdf2(char[] password, byte[] salt, int iteration)
-    {
+    private static byte[] pbkdf2(char[] password, byte[] salt, int iteration) {
         PBEKeySpec spec = new PBEKeySpec(password, salt, iteration, KEY_LENGTH);
         try {
             SecretKeyFactory f = SecretKeyFactory.getInstance(ALGORITHM);
             return f.generateSecret(spec).getEncoded();
-        }
-        catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException e) {
             throw new IllegalStateException("Missing algorithm: " + ALGORITHM, e);
-        }
-        catch (InvalidKeySpecException e) {
+        } catch (InvalidKeySpecException e) {
             throw new IllegalStateException("Invalid SecretKeyFactory", e);
         }
     }
@@ -91,19 +87,17 @@ public final class PasswordManager {
         String hex = bi.toString(16);
 
         int paddingLength = (array.length * 2) - hex.length();
-        if(paddingLength > 0)
-        {
+        if (paddingLength > 0) {
             return String.format("%0" + paddingLength + "d", 0) + hex;
-        }else{
+        } else {
             return hex;
         }
     }
 
     private static byte[] fromHex(String hex) {
         byte[] bytes = new byte[hex.length() / 2];
-        for(int i = 0; i < bytes.length ;i++)
-        {
-            bytes[i] = (byte)Integer.parseInt(hex.substring(2 * i, 2 * i + 2), 16);
+        for (int i = 0; i < bytes.length; i++) {
+            bytes[i] = (byte) Integer.parseInt(hex.substring(2 * i, 2 * i + 2), 16);
         }
         return bytes;
     }

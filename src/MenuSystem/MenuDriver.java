@@ -12,7 +12,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowStateListener;
 
 
-public class MenuDriver implements ModuleDriver{
+public class MenuDriver implements ModuleDriver {
     public static final int MENU_EXIT = -1;
     public static final int MENU_LOGOUT = -2;
     public static final int MENU_PROFILE = 1;

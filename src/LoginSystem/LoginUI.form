@@ -2,7 +2,7 @@
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="LoginSystem.LoginUI">
   <grid id="2bd96" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
-      <xy x="167" y="85" width="2015" height="792"/>
+      <xy x="167" y="85" width="863" height="596"/>
     </constraints>
     <properties>
       <opaque value="false"/>
