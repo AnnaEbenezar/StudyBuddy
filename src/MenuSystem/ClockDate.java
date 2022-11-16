@@ -7,7 +7,7 @@ import java.util.Timer;
 
 public class ClockDate {
     private int currentSecond;
-    public final SimpleDateFormat sdf  = new SimpleDateFormat("hh:mm");
+    public final SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
     public final SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
     private Calendar calendar;
     private final JLabel clockLabel;
@@ -21,24 +21,24 @@ public class ClockDate {
         this.start();
     }
 
-    private void reset(){
+    private void reset() {
         calendar = Calendar.getInstance();
         currentSecond = calendar.get(Calendar.SECOND);
     }
 
-    public void start(){
+    public void start() {
         reset();
         timer = new Timer();
-        timer.scheduleAtFixedRate( new TimerTask(){
-            public void run(){
-                if( currentSecond == 60 ) {
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                if (currentSecond == 60) {
                     reset();
                 }
-                clockLabel.setText(String.format("%s:%02d", sdf.format(calendar.getTime()), currentSecond ));
+                clockLabel.setText(String.format("%s:%02d", sdf.format(calendar.getTime()), currentSecond));
                 dateLabel.setText(dateFormat.format(calendar.getTime()));
                 currentSecond++;
             }
-        }, 0, 1000 );
+        }, 0, 1000);
     }
 
     public void stop() {

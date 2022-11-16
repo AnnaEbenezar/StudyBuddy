@@ -25,36 +25,24 @@ public interface CustomException {
         int errorCode;
         String advice;
 
-        public LoginError() {super("");}
-        public LoginError(String s) {super(s);}
-        public int getErrorCode() {return errorCode;}
-        public void setAdvice(String s) {advice = s;}
-        public String getAdvice() {return advice;}
-    }
+        public LoginError() {
+            super("");
+        }
 
-    class NoUsernameError extends LoginError {
-        public NoUsernameError() {
-            super("Username is not found in database.");
-            errorCode = USERNAME_DOES_NOT_EXIST;
-            advice = "This username does not exist. Would you like to create account instead?";
+        public LoginError(String s) {
+            super(s);
         }
-        public NoUsernameError(String adv) {
-            super("Username is not found in database.");
-            errorCode = USERNAME_DOES_NOT_EXIST;
-            advice = adv;
-        }
-    }
 
-    class PasswordError extends LoginError {
-        public PasswordError() {
-            super("Password does not match.");
-            errorCode = USERNAME_DOES_NOT_EXIST;
-            advice = "Wrong password. Try entering again.";
+        public int getErrorCode() {
+            return errorCode;
         }
-        public PasswordError(String adv) {
-            super("Password does not match.");
-            errorCode = USERNAME_DOES_NOT_EXIST;
-            advice = adv;
+
+        public void setAdvice(String s) {
+            advice = s;
+        }
+
+        public String getAdvice() {
+            return advice;
         }
     }
 
@@ -71,6 +59,7 @@ public interface CustomException {
             advice = adv;
         }
     }
+
     abstract class CreateAccountError extends RuntimeException {
 
         public static final int PATTERN_ERROR = 1;
@@ -86,6 +75,7 @@ public interface CustomException {
         public CreateAccountError() {
             super("");
         }
+
         public CreateAccountError(String s) {
             super(s);
         }
@@ -94,75 +84,29 @@ public interface CustomException {
             String message = this.getMessage() + "\n" + getField() + "\nerror: " + errorCode;
             JOptionPane.showMessageDialog(window, message, "Error", JOptionPane.ERROR_MESSAGE);
         }
-        public void showErrorMessage() {showErrorMessage(null);}
-        public int getErrorCode() {return errorCode;}
-        public void setField(String s) {field = s;}
-        public String getField() {return field;}
-        public void setAdvice(String s) {advice = s;}
-        public String getAdvice() {return advice;}
-    }
 
-    class CreateAccountPatternError extends CreateAccountError {
-        public CreateAccountPatternError(String s) {
-            super("Pattern does not match.");
-            errorCode = PATTERN_ERROR;
-            setField(s);
-            advice = "Field contains an illegal character(s)";
+        public void showErrorMessage() {
+            showErrorMessage(null);
         }
 
-        public CreateAccountPatternError(String s, String adv) {
-            super("Pattern does not match.");
-            errorCode = PATTERN_ERROR;
-            setField(s);
-            advice = adv;
-        }
-    }
-
-    class CreateAccountDuplicateError extends CreateAccountError {
-        public CreateAccountDuplicateError(String s) {
-            super("Duplicate found in database");
-            errorCode = DUPLICATE;
-            setField(s);
-            advice = "This has already been taken. Try another.";
+        public int getErrorCode() {
+            return errorCode;
         }
 
-        public CreateAccountDuplicateError(String s, String adv) {
-            super("Duplicate found in database");
-            errorCode = DUPLICATE;
-            setField(s);
-            advice = adv;
-        }
-    }
-
-    class CreateAccountTooLongError extends CreateAccountError {
-        public CreateAccountTooLongError(String s) {
-            super("Field exceeds maximum length");
-            errorCode = TOO_LONG;
-            setField(s);
-            advice = "This is too long.";
+        public void setField(String s) {
+            field = s;
         }
 
-        public CreateAccountTooLongError(String s, String adv) {
-            super("Field exceeds maximum length");
-            errorCode = TOO_LONG;
-            setField(s);
-            advice = adv;
-        }
-    }
-
-    class CreateAccountTooShortError extends CreateAccountError {
-        public CreateAccountTooShortError(String s) {
-            super("Field does not reach minimum length");
-            errorCode = TOO_SHORT;
-            setField(s);
-            advice = "This is too long.";
+        public String getField() {
+            return field;
         }
 
-        public CreateAccountTooShortError(String s, String adv) {
-            super("Field does not reach minimum length");
-            errorCode = TOO_SHORT;
-            setField(s);
-            advice = adv;
+        public void setAdvice(String s) {
+            advice = s;
+        }
+
+        public String getAdvice() {
+            return advice;
         }
     }
 

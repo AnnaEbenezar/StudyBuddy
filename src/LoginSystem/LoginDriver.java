@@ -15,6 +15,7 @@ public class LoginDriver implements Runnable {
     private static LoginDriver instance = null;
     private final MainDriver main;
     private LoginUI UI;
+    public final CreateAccountDriver createDriver = new CreateAccountDriver();
     private HashMap<String, String> userPasswordMap;
 
     private LoginDriver(MainDriver main) {
@@ -58,13 +59,18 @@ public class LoginDriver implements Runnable {
         this.loginUser = u;
     }
 
-    public void login(String username, char[] password) {
-        if(!userPasswordMap.containsKey(username)) {
-            throw new CustomException.NoUsernameError();
+    public void login() {
+        String username = UI.getUsername();
+        char[] password = UI.getPassword();
+        if (!userPasswordMap.containsKey(username)) {
+            UI.setLoginErrorMessage("This username does not exist. Would you like to create account instead?");
+            return;
         }
+
         String storedPassword = userPasswordMap.get(username);
-        if(!PasswordManager.verifyPassword(password, storedPassword)) {
-            throw new CustomException.PasswordError();
+        if (!PasswordManager.verifyPassword(password, storedPassword)) {
+            UI.setLoginErrorMessage("Wrong password. Try entering again.");
+            return;
         }
         // return user
         setUser(initialiseUser(username));
@@ -72,49 +78,6 @@ public class LoginDriver implements Runnable {
         main.finishLogin(this.getUser());
     }
 
-
-    public boolean checkUsername(String username) throws CustomException.CreateAccountError {
-        String pattern = "^[a-zA-Z0-9_]*$";
-        if(username.length() < MINIMUM_USERNAME_LENGTH) {
-            throw new CustomException.CreateAccountTooShortError(
-                    "Username", "Username must be at least " + MINIMUM_USERNAME_LENGTH + " characters.");
-        }
-        if(username.length() > MAXIMUM_USERNAME_LENGTH) {
-            throw new CustomException.CreateAccountTooLongError(
-                    "Username", "Username must be " + MAXIMUM_USERNAME_LENGTH + " characters or fewer.");
-        }
-        if(!username.matches(pattern)) {
-            throw new CustomException.CreateAccountPatternError(
-                    "Username", "Username can only contain a-z, A-Z, 0-9, and _(underscore).");
-        }
-        //if duplicate return CHECK_DUPLICATE
-        if(userPasswordMap.containsKey(username.toLowerCase())) {
-            throw new CustomException.CreateAccountDuplicateError(
-                    "Username", "This username already exist. Use another username.");
-        }
-
-        return true;
-    }
-
-    public boolean checkPassword(String password) throws CustomException.CreateAccountError {
-        if(password.length() < MINIMUM_PASSWORD_LENGTH) {
-            throw new CustomException.CreateAccountTooShortError(
-                    "Password", "Password must be at least " + MINIMUM_PASSWORD_LENGTH + " characters.");
-        }
-        if(password.length() > MAXIMUM_PASSWORD_LENGTH) {
-            throw new CustomException.CreateAccountTooLongError(
-                    "Password", "Password must be " + MAXIMUM_PASSWORD_LENGTH + " characters or fewer.");
-        }
-
-        return true;
-    }
-
-    public void createAccount(String username, char[] password, String firstName, String lastName) {
-        LoginFileHandler.addUser(username, PasswordManager.hashPassword(password), userPasswordMap, firstName, lastName);
-        setUser(initialiseUser(username));
-        UI.dispose();
-        main.finishLogin(this.getUser());
-    }
 
     public User initialiseUser(String username) throws CustomException.MissingDirectoryError {
         File parentDirectory = new File("resources/users/" + username);
@@ -133,6 +96,91 @@ public class LoginDriver implements Runnable {
 
     }
 
+    class CreateAccountDriver {
+        boolean checkUsername() {
+            String username = UI.createUI.getUsername();
+            String pattern = "^[a-zA-Z0-9_]*$";
+            if (username.length() < MINIMUM_USERNAME_LENGTH) {
+                UI.createUI.setUsernameError("Username must be at least " + MINIMUM_USERNAME_LENGTH + " characters.");
+                return false;
+            }
+            if (username.length() > MAXIMUM_USERNAME_LENGTH) {
+                UI.createUI.setUsernameError("Username must be " + MAXIMUM_USERNAME_LENGTH + " characters or fewer.");
+                return false;
+            }
+            if (!username.matches(pattern)) {
+                UI.createUI.setUsernameError("Username can only contain a-z, A-Z, 0-9, and _(underscore).");
+                return false;
+            }
+            if (userPasswordMap.containsKey(username.toLowerCase())) {
+                UI.createUI.setUsernameError("This username already exist. Use another username.");
+            }
+
+            UI.createUI.setUsernameError(" ");
+            return true;
+        }
+
+        boolean checkPassword() {
+            String password = String.valueOf(UI.createUI.getPassword());
+            if (password.length() < MINIMUM_PASSWORD_LENGTH) {
+                UI.createUI.setPasswordError("Password must be at least " + MINIMUM_PASSWORD_LENGTH + " characters.");
+                return false;
+            }
+            if (password.length() > MAXIMUM_PASSWORD_LENGTH) {
+                UI.createUI.setPasswordError("Password must be " + MAXIMUM_PASSWORD_LENGTH + " characters or fewer.");
+                return false;
+            }
+
+            UI.createUI.setPasswordError(" ");
+            return true;
+        }
+
+        boolean confirmPassword() {
+            if (String.valueOf(UI.createUI.getConfirmPassword()).equals(String.valueOf(UI.createUI.getPassword()))) {
+                UI.createUI.setConfirmPasswordError(" ");
+                return true;
+            }
+
+            UI.createUI.setConfirmPasswordError("This does not match with your password.");
+            return false;
+        }
+
+        boolean confirmName() {
+            if (UI.createUI.getFirstName().isBlank()) {
+                UI.createUI.setNameError("Firstname cannot be empty.");
+                return false;
+            } else {
+                UI.createUI.setNameError(" ");
+                return true;
+            }
+        }
+
+        boolean confirmLastName() {
+            if (UI.createUI.getLastName().isBlank()) {
+                UI.createUI.setLastNameError("Lastname cannot be empty.");
+                return false;
+            } else {
+                UI.createUI.setLastNameError(" ");
+                return true;
+            }
+        }
+
+        void createAccount() {
+            String username = UI.createUI.getUsername();
+            char[] password = UI.createUI.getPassword();
+            String firstName = UI.createUI.getFirstName();
+            String lastName = UI.createUI.getLastName();
+
+            if (checkUsername() && checkPassword() && confirmPassword() && confirmName() && confirmLastName()) {
+                LoginFileHandler.addUser(username, PasswordManager.hashPassword(password), userPasswordMap, firstName, lastName);
+                setUser(initialiseUser(username));
+                UI.dispose();
+                main.finishLogin(getUser());
+            }
+        }
+    }
+
+
     private static class LoginFileHandler {
         public static HashMap<String, String> getUserPasswordMap() {
             File userPassCSV = new File("resources/logindata/login.csv");
@@ -140,13 +188,13 @@ public class LoginDriver implements Runnable {
                 Scanner reader = new Scanner(userPassCSV);
 
                 //  check if it is a username password csv file
-                if(!reader.nextLine().equals("username,password")) {
+                if (!reader.nextLine().equals("username,password")) {
                     throw new FileNotFoundException();
                 }
 
                 HashMap<String, String> userPasswordMap = new HashMap<>();
 
-                while(reader.hasNextLine()) {
+                while (reader.hasNextLine()) {
                     String[] parts = reader.nextLine().split(",");
                     String username = parts[0];
                     String password = parts[1];
@@ -187,24 +235,23 @@ public class LoginDriver implements Runnable {
                 bufferedWriter.close();
 
                 File dir = new File("resources/users/" + username);
-                boolean success;
-                success = dir.mkdir();
-                File settings = new File(dir, "settings");
-                success = success && settings.createNewFile();
-                File profile = new File(dir, "profile");
-                success = success && profile.createNewFile();
-                File schedule = new File(dir, "schedule");
-                success = success && schedule.createNewFile();
-                File todo = new File(dir, "todo");
-                success = success && todo.createNewFile();
+                if (!dir.mkdir()) {
+                    throw new CustomException.CreateAccountFileError();
+                }
 
-                if(!success) {
+                File settings = new File(dir, "settings");
+                File profile = new File(dir, "profile");
+                File schedule = new File(dir, "schedule");
+                File todo = new File(dir, "todo");
+
+                if (!(settings.createNewFile() && profile.createNewFile() && schedule.createNewFile() && todo.createNewFile())) {
                     settings.delete();
                     profile.delete();
                     schedule.delete();
                     todo.delete();
                     dir.delete();
-                    throw new CustomException.CreateAccountFileError();}
+                    throw new CustomException.CreateAccountFileError();
+                }
 
                 FileWriter settingsWriter = new FileWriter(settings);
                 settingsWriter.write(name + "," + lastName);

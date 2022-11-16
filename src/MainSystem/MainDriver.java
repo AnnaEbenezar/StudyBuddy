@@ -27,7 +27,7 @@ public class MainDriver implements Runnable {
     }
 
     public void finishLogin(User loginUser) {
-        if(loginUser == null) {
+        if (loginUser == null) {
             JOptionPane.showMessageDialog(null, "Login Error", "Login Error", JOptionPane.ERROR_MESSAGE);
             System.exit(1);
         }
