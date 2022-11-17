@@ -8,6 +8,7 @@ public class ToDoDriver implements ModuleDriver {
     private final MainDriver main;
     private static ToDoDriver instance = null;
     private volatile boolean runningFlag = false;
+    private ToDoUI UI;
 
     private ToDoDriver(MainDriver main) {
         this.main = main;
@@ -32,6 +33,7 @@ public class ToDoDriver implements ModuleDriver {
     @Override
     public void run() {
         // starting
+        UI = new ToDoUI(this);
         this.runningFlag = true;
     }
 }
