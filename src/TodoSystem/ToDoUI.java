@@ -54,42 +54,194 @@ public class ToDoUI extends JFrame{
         SchoolWorkPanel = new javax.swing.JPanel();
         SchoolWorkLabel = new javax.swing.JLabel();
         School1 = new javax.swing.JCheckBox();
+        School1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SchoolActionPerformed(evt);
+            }
+        });
+
         School2 = new javax.swing.JCheckBox();
+        School2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SchoolActionPerformed(evt);
+            }
+        });
         School3 = new javax.swing.JCheckBox();
+        School3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SchoolActionPerformed(evt);
+            }
+        });
         School4 = new javax.swing.JCheckBox();
+        School4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SchoolActionPerformed(evt);
+            }
+        });
         School5 = new javax.swing.JCheckBox();
+        School5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SchoolActionPerformed(evt);
+            }
+        });
         School6 = new javax.swing.JCheckBox();
+        School6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SchoolActionPerformed(evt);
+            }
+        });
         School7 = new javax.swing.JCheckBox();
+        School7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SchoolActionPerformed(evt);
+            }
+        });
         School8 = new javax.swing.JCheckBox();
+        School8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SchoolActionPerformed(evt);
+            }
+        });
         School9 = new javax.swing.JCheckBox();
+        School9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SchoolActionPerformed(evt);
+            }
+        });
         School10 = new javax.swing.JCheckBox();
-        SchoolProgressBar = new javax.swing.JProgressBar();
+        School10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SchoolActionPerformed(evt);
+            }
+        });
+        SchoolProgressBar = new javax.swing.JProgressBar(0, 100);
         HealthPanel = new javax.swing.JPanel();
         HealthLabel = new javax.swing.JLabel();
         H1 = new javax.swing.JCheckBox();
+        H1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HealthActionPerformed(evt);
+            }
+        });
         H2 = new javax.swing.JCheckBox();
+        H2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HealthActionPerformed(evt);
+            }
+        });
         H3 = new javax.swing.JCheckBox();
+        H3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HealthActionPerformed(evt);
+            }
+        });
         H4 = new javax.swing.JCheckBox();
+        H4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HealthActionPerformed(evt);
+            }
+        });
         H5 = new javax.swing.JCheckBox();
+        H5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HealthActionPerformed(evt);
+            }
+        });
         H6 = new javax.swing.JCheckBox();
+        H6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HealthActionPerformed(evt);
+            }
+        });
         H7 = new javax.swing.JCheckBox();
+        H7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HealthActionPerformed(evt);
+            }
+        });
+
         H8 = new javax.swing.JCheckBox();
+        H8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HealthActionPerformed(evt);
+            }
+        });
         H9 = new javax.swing.JCheckBox();
+        H9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HealthActionPerformed(evt);
+            }
+        });
         H10 = new javax.swing.JCheckBox();
-        HealthProgressBar = new javax.swing.JProgressBar();
+        H10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HealthActionPerformed(evt);
+            }
+        });
+        HealthProgressBar = new javax.swing.JProgressBar(0, 100);
         OthersPanel = new javax.swing.JPanel();
         othersLabel = new javax.swing.JLabel();
         O1 = new javax.swing.JCheckBox();
+        O1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OthersActionPerformed(evt);
+            }
+        });
         O2 = new javax.swing.JCheckBox();
+        O2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OthersActionPerformed(evt);
+            }
+        });
         O3 = new javax.swing.JCheckBox();
+        O3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OthersActionPerformed(evt);
+            }
+        });
         O4 = new javax.swing.JCheckBox();
+        O4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OthersActionPerformed(evt);
+            }
+        });
         O5 = new javax.swing.JCheckBox();
+        O5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OthersActionPerformed(evt);
+            }
+        });
         O6 = new javax.swing.JCheckBox();
+        O6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OthersActionPerformed(evt);
+            }
+        });
         O7 = new javax.swing.JCheckBox();
+        O7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OthersActionPerformed(evt);
+            }
+        });
         O8 = new javax.swing.JCheckBox();
+        O8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OthersActionPerformed(evt);
+            }
+        });
         O9 = new javax.swing.JCheckBox();
+        O9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OthersActionPerformed(evt);
+            }
+        });
         O10 = new javax.swing.JCheckBox();
-        OthersProgressBar = new javax.swing.JProgressBar();
+        O10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OthersActionPerformed(evt);
+            }
+        });
+        OthersProgressBar = new javax.swing.JProgressBar(0, 100);
 
         SchoolCheckBoxList.add(School1);
         SchoolCheckBoxList.add(School2);
@@ -124,12 +276,7 @@ public class ToDoUI extends JFrame{
         OthersCheckBoxList.add(O9);
         OthersCheckBoxList.add(O10);
 
-        //default setting of bool arraylist
-        for(int a = 0; a < 10; a++) {
-            SchoolBool.add(false);
-            HealthBool.add(false);
-            OthersBool.add(false);
-        }
+        
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -412,7 +559,9 @@ public class ToDoUI extends JFrame{
         boolean found = false;
         JCheckBox tmp;
         String strtmp;
+        Boolean booltmp;
         if(evt.getSource() == DeleteButton) {
+            System.out.println("Delete match");
             int i = 0;
             int i2 = 0;
             int i3 = 0;
@@ -421,126 +570,216 @@ public class ToDoUI extends JFrame{
             CategoryAns = (String)CategoryComboBox.getSelectedItem();
             if(CategoryAns == "School Work") {
                for(i = 0; i < SchoolSize; i++) {
-                    if(textAns.equals(SchoolStringList.get(i))){
-                        tmp = SchoolCheckBoxList.get(i);
-                        tmp.setText("");
+                System.out.println(textAns);
+                System.out.println(SchoolCheckBoxList.get(i).getText());
+                    if(textAns.equals(SchoolCheckBoxList.get(i).getText())){
+                        System.out.println("found match");
+                        SchoolCheckBoxList.get(i).setText("");
+                        
                         found = true;
+                        SchoolSize--;
                         
                         break;
                     }
                }
                if(found){
                 if(i < SchoolSize) {
-                    //string tmp = get text from the last item
-                    tmp = SchoolCheckBoxList.get(SchoolSize-1);
-                    strtmp = tmp.getText();
+                    System.out.println("swap");
 
-                    tmp.setText(""); 
+                    //get text for last item
+                    strtmp = SchoolCheckBoxList.get(SchoolSize).getText();
 
-                    tmp = SchoolCheckBoxList.get(i);
-                    tmp.setText(strtmp);
+                    //set the delete item text a text from last item
+                    SchoolCheckBoxList.get(i).setText(strtmp); 
 
-                    SchoolSize--;
-                    SchoolStringList.remove(SchoolSize);
-                    SchoolStringList.set(i, strtmp);
-                    System.out.println(SchoolStringList.get(i-1));
-                    System.out.println(SchoolStringList.get(i));
-                    System.out.println(SchoolStringList.get(i+1));
+                    //delete text of last item
+                    SchoolCheckBoxList.get(SchoolSize).setText("");
+                    
+                    
                 }
+ 
+
            }
                
 
             }
             else if(CategoryAns == "Health") {
-                System.out.println(HealthSize);
                 for(i2 = 0; i2 < HealthSize; i2++) {
-                    if(textAns.equals((String)HealthStringList.get(i2))){
-                        tmp = HealthCheckBoxList.get(i2);
-                        tmp.setText("");
-                        found = true;
-                        
-                        break;
-                    }
-               }
-               if(found){
+                    System.out.println(textAns);
+                    System.out.println(HealthCheckBoxList.get(i2).getText());
+                        if(textAns.equals(HealthCheckBoxList.get(i2).getText())){
+                            System.out.println("found match");
+                            HealthCheckBoxList.get(i2).setText("");
+                            
+                            found = true;
+                            HealthSize--;
+                            
+                            break;
+                        }
+                   }
+                   if(found){
                     if(i2 < HealthSize) {
-                        tmp = HealthCheckBoxList.get(HealthSize-1);
-                        strtmp = tmp.getText();
-
-                        tmp.setText("");
-
-                        tmp = HealthCheckBoxList.get(i2);
-                        tmp.setText(strtmp);
-
-                        HealthSize--;
-                        HealthStringList.remove(HealthSize);
-                        HealthStringList.set(i2, strtmp);
-               }
+                        System.out.println("swap");
+    
+                        //get text for last item
+                        strtmp = HealthCheckBoxList.get(HealthSize).getText();
+    
+                        //set the delete item text a text from last item
+                        HealthCheckBoxList.get(i2).setText(strtmp);
+                         
+    
+                        //delete text of last item
+                        HealthCheckBoxList.get(HealthSize).setText("");
+                        
+                        
+                    }
+ 
             }
                
             }
             else if (CategoryAns == "Others"){
                 for(i3 = 0; i3 < OthersSize; i3++) {
-                    if(textAns.equals(OthersStringList.get(i3))){
-                        tmp = OthersCheckBoxList.get(i3);
-                        tmp.setText("");
-                        found = true;
+                    System.out.println(textAns);
+                    System.out.println(OthersCheckBoxList.get(i3).getText());
+                        if(textAns.equals(OthersCheckBoxList.get(i3).getText())){
+                            System.out.println("found match");
+                            OthersCheckBoxList.get(i).setText("");
+                            
+                            found = true;
+                            OthersSize--;
+                            
+                            break;
+                        }
+                   }
+                   if(found){
+                    if(i3 < OthersSize) {
+                        System.out.println("swap");
+    
+                        //get text for last item
+                        strtmp = OthersCheckBoxList.get(OthersSize).getText();
+    
+                        //set the delete item text a text from last item
+                        OthersCheckBoxList.get(i3).setText(strtmp); 
+    
+                        //delete text of last item
+                        OthersCheckBoxList.get(OthersSize).setText("");
                         
-                        break;
+                        
                     }
-               }
-               if(found){
-                if(i3 < OthersSize) {
-                    tmp = OthersCheckBoxList.get(OthersSize-1);
-                    strtmp = tmp.getText();
-
-                    tmp.setText("");
-
-                    tmp = OthersCheckBoxList.get(i3);
-                    tmp.setText(strtmp);
-
-                    OthersSize--;
-                    OthersStringList.remove(OthersSize);
-                    OthersStringList.set(i, strtmp);
-           }
 
                 
 
             }
 
 
-            }
         }
-        }
+    }
+        
+}
         
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {
         if(evt.getSource() == AddButton) {
             textAns = TaskNameTextField.getText();
             CategoryAns = (String)CategoryComboBox.getSelectedItem();
 
-
-
-            if(CategoryAns == "School Work") {
-                SchoolStringList.add(textAns);
+            if(CategoryAns == "School Work" && SchoolSize < 10) {
                 SchoolSize++;
                 System.out.println(SchoolSize);
 
                 SchoolCheckBoxList.get(SchoolSize-1).setText(textAns);
+
+
             }
-            else if(CategoryAns == "Health") {
-                HealthStringList.add(textAns);
+            else if(CategoryAns == "Health" && HealthSize < 10) {
+
                 HealthSize++;
 
                 HealthCheckBoxList.get(HealthSize-1).setText(textAns);
+
             }
-            else{
-                OthersStringList.add(textAns);
+            else if(CategoryAns == "Others" && OthersSize < 10){
+
                 OthersSize++;
 
                 OthersCheckBoxList.get(OthersSize-1).setText(textAns);
 
+
+
             }
         }
+    }
+
+    private void SchoolActionPerformed(java.awt.event.ActionEvent evt) {
+        System.out.println("click");
+        SchoolCheck = 0;
+
+        for(int count = 0; count < SchoolSize; count++) {
+            if(SchoolCheckBoxList.get(count).isSelected()) {
+                System.out.println("isselected");
+                System.out.println("cout" + count);
+
+                SchoolCheck++;
+            }
+        }
+        System.out.println("school check" + SchoolCheck);
+        System.out.println("school size:" + SchoolSize);
+
+        double double_SchoolCheck = SchoolCheck;
+        double double_SchoolSize = SchoolSize;
+
+        double proportion = (double_SchoolCheck/double_SchoolSize) * 100;
+
+        int int_proportion = (int)proportion;
+        System.out.println(proportion);
+        SchoolProgressBar.setValue(int_proportion);
+    }
+
+    private void HealthActionPerformed(java.awt.event.ActionEvent evt) {
+        System.out.println("click");
+        HealthCheck = 0;
+
+        for(int count = 0; count < HealthSize; count++) {
+            if(HealthCheckBoxList.get(count).isSelected()) {
+                System.out.println("isselected");
+                System.out.println("cout" + count);
+                HealthCheck++;
+            }
+        }
+        System.out.println("school check" + HealthCheck);
+        System.out.println("school size:" + HealthSize);
+
+        double double_HealthCheck = HealthCheck;
+        double double_HealthSize = HealthSize;
+
+        double proportion = (double_HealthCheck/double_HealthSize) * 100;
+
+        int int_proportion = (int)proportion;
+        System.out.println(proportion);
+        HealthProgressBar.setValue(int_proportion);
+    }
+
+    private void OthersActionPerformed(java.awt.event.ActionEvent evt) {
+        System.out.println("click");
+        OthersCheck = 0;
+
+        for(int count = 0; count < OthersSize; count++) {
+            if(OthersCheckBoxList.get(count).isSelected()) {
+                System.out.println("isselected");
+                System.out.println("cout" + count);
+                OthersCheck++;
+            }
+        }
+        System.out.println("school check" + OthersCheck);
+        System.out.println("school size:" + OthersSize);
+
+        double double_OthersCheck = OthersCheck;
+        double double_OthersSize = OthersSize;
+
+        double proportion = (double_OthersCheck/double_OthersSize) * 100;
+
+        int int_proportion = (int)proportion;
+        System.out.println(proportion);
+        OthersProgressBar.setValue(int_proportion);
     }
 
     private void ReadFileAndAssign() {
@@ -554,6 +793,21 @@ public class ToDoUI extends JFrame{
         //clear file and write the file with string arraylist and boolean arraylist
 
         //go back to menu
+    }
+
+    private void printAll() {
+        for(int i = 0; i < SchoolSize; i++) {
+            System.out.println(SchoolCheckBoxList.get(i).getText());
+            System.out.println(SchoolCheckBoxList.get(i).isSelected());
+        }
+        for(int i = 0; i < HealthSize; i++) {
+            System.out.println(HealthCheckBoxList.get(i).getText());
+            System.out.println(SchoolCheckBoxList.get(i).isSelected());
+        }
+        for(int i = 0; i < OthersSize; i++) {
+            System.out.println(OthersCheckBoxList.get(i).getText());
+            System.out.println(SchoolCheckBoxList.get(i).isSelected());
+        }
     }
 
 
@@ -611,6 +865,3 @@ public class ToDoUI extends JFrame{
     private String textAns;                 
     private String CategoryAns;
 }
-
-
-
