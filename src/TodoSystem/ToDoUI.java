@@ -2,6 +2,8 @@ package TodoSystem;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.io.File;
+import java.util.Scanner;
 
 public class ToDoUI extends JFrame{
     private ToDoDriver driver;
@@ -10,6 +12,11 @@ public class ToDoUI extends JFrame{
     private ArrayList<String> SchoolStringList = new ArrayList<String>();
     private ArrayList<String> HealthStringList = new ArrayList<String>();
     private ArrayList<String> OthersStringList = new ArrayList<String>();
+
+    private ArrayList<Boolean> SchoolBool = new ArrayList<Boolean>();
+    private ArrayList<Boolean> HealthBool = new ArrayList<Boolean>();
+    private ArrayList<Boolean> OthersBool = new ArrayList<Boolean>();
+
 
     private ArrayList<JCheckBox> SchoolCheckBoxList = new ArrayList<JCheckBox>();
     private ArrayList<JCheckBox> HealthCheckBoxList = new ArrayList<JCheckBox>();
@@ -20,6 +27,10 @@ public class ToDoUI extends JFrame{
     private int HealthSize;
     private int OthersSize;
 
+    private int SchoolCheck;
+    private int HealthCheck;
+    private int OthersCheck;
+
 
     ToDoUI(ToDoDriver driver) {
         initComponents();
@@ -28,6 +39,7 @@ public class ToDoUI extends JFrame{
     }
 
     private void initComponents() {
+        ReadFileAndAssign();
         setMaximumSize(new java.awt.Dimension(1600, 800));
         setMinimumSize(new java.awt.Dimension(800, 600));
 
@@ -38,7 +50,7 @@ public class ToDoUI extends JFrame{
         CategoryComboBox = new javax.swing.JComboBox<>();
         DeleteButton = new javax.swing.JButton();
         AddButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        MenuButton = new javax.swing.JButton();
         SchoolWorkPanel = new javax.swing.JPanel();
         SchoolWorkLabel = new javax.swing.JLabel();
         School1 = new javax.swing.JCheckBox();
@@ -112,6 +124,13 @@ public class ToDoUI extends JFrame{
         OthersCheckBoxList.add(O9);
         OthersCheckBoxList.add(O10);
 
+        //default setting of bool arraylist
+        for(int a = 0; a < 10; a++) {
+            SchoolBool.add(false);
+            HealthBool.add(false);
+            OthersBool.add(false);
+        }
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
@@ -141,7 +160,12 @@ public class ToDoUI extends JFrame{
             }
         });
 
-        jButton1.setText("MENU");
+        MenuButton.setText("MENU");
+        MenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -156,7 +180,7 @@ public class ToDoUI extends JFrame{
                         .addComponent(AddButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(jButton1)
+                        .addComponent(MenuButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(EnterTaskLabel)
@@ -174,7 +198,7 @@ public class ToDoUI extends JFrame{
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EnterTaskLabel)
                     .addComponent(TaskNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(MenuButton))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CategoryLabel)
@@ -407,16 +431,21 @@ public class ToDoUI extends JFrame{
                }
                if(found){
                 if(i < SchoolSize) {
+                    //string tmp = get text from the last item
                     tmp = SchoolCheckBoxList.get(SchoolSize-1);
                     strtmp = tmp.getText();
 
-                    tmp.setText("");
+                    tmp.setText(""); 
 
                     tmp = SchoolCheckBoxList.get(i);
                     tmp.setText(strtmp);
 
                     SchoolSize--;
-                    SchoolStringList.remove(i);
+                    SchoolStringList.remove(SchoolSize);
+                    SchoolStringList.set(i, strtmp);
+                    System.out.println(SchoolStringList.get(i-1));
+                    System.out.println(SchoolStringList.get(i));
+                    System.out.println(SchoolStringList.get(i+1));
                 }
            }
                
@@ -444,7 +473,8 @@ public class ToDoUI extends JFrame{
                         tmp.setText(strtmp);
 
                         HealthSize--;
-                        HealthStringList.remove(i2);
+                        HealthStringList.remove(HealthSize);
+                        HealthStringList.set(i2, strtmp);
                }
             }
                
@@ -460,17 +490,18 @@ public class ToDoUI extends JFrame{
                     }
                }
                if(found){
-                if(i2 < OthersSize) {
+                if(i3 < OthersSize) {
                     tmp = OthersCheckBoxList.get(OthersSize-1);
                     strtmp = tmp.getText();
 
                     tmp.setText("");
 
-                    tmp = OthersCheckBoxList.get(i2);
+                    tmp = OthersCheckBoxList.get(i3);
                     tmp.setText(strtmp);
 
                     OthersSize--;
-                    OthersStringList.remove(i2);
+                    OthersStringList.remove(OthersSize);
+                    OthersStringList.set(i, strtmp);
            }
 
                 
@@ -482,10 +513,6 @@ public class ToDoUI extends JFrame{
         }
         }
         
-    
-
-
-
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {
         if(evt.getSource() == AddButton) {
             textAns = TaskNameTextField.getText();
@@ -495,7 +522,6 @@ public class ToDoUI extends JFrame{
 
             if(CategoryAns == "School Work") {
                 SchoolStringList.add(textAns);
-                //add into a file
                 SchoolSize++;
                 System.out.println(SchoolSize);
 
@@ -503,14 +529,12 @@ public class ToDoUI extends JFrame{
             }
             else if(CategoryAns == "Health") {
                 HealthStringList.add(textAns);
-                //add into a file
                 HealthSize++;
 
                 HealthCheckBoxList.get(HealthSize-1).setText(textAns);
             }
             else{
                 OthersStringList.add(textAns);
-                //add into a file
                 OthersSize++;
 
                 OthersCheckBoxList.get(OthersSize-1).setText(textAns);
@@ -518,6 +542,21 @@ public class ToDoUI extends JFrame{
             }
         }
     }
+
+    private void ReadFileAndAssign() {
+        //read file and assign it to arraylist, update each arraylistsize variable, boolean varaible
+
+        //update the todo gui (to do and progress bar)
+
+    }
+
+    private void MenuActionPerformed(java.awt.event.ActionEvent evt) {
+        //clear file and write the file with string arraylist and boolean arraylist
+
+        //go back to menu
+    }
+
+
                  
 
     // Variables declaration - do not modify                     
@@ -565,7 +604,7 @@ public class ToDoUI extends JFrame{
     private javax.swing.JLabel SchoolWorkLabel;
     private javax.swing.JPanel SchoolWorkPanel;
     private javax.swing.JTextField TaskNameTextField;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton MenuButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel othersLabel;
 
