@@ -8,21 +8,20 @@ import java.util.Scanner;
 public class ToDoUI extends JFrame{
     private ToDoDriver driver;
 
-    //read from file and store them
-    private ArrayList<String> SchoolStringList = new ArrayList<String>();
-    private ArrayList<String> HealthStringList = new ArrayList<String>();
-    private ArrayList<String> OthersStringList = new ArrayList<String>();
-
-    private ArrayList<Boolean> SchoolBool = new ArrayList<Boolean>();
-    private ArrayList<Boolean> HealthBool = new ArrayList<Boolean>();
-    private ArrayList<Boolean> OthersBool = new ArrayList<Boolean>();
-
-
     private ArrayList<JCheckBox> SchoolCheckBoxList = new ArrayList<JCheckBox>();
     private ArrayList<JCheckBox> HealthCheckBoxList = new ArrayList<JCheckBox>();
     private ArrayList<JCheckBox> OthersCheckBoxList = new ArrayList<JCheckBox>();
 
-    //start: count from the item of each category from a file
+    /* 
+    checkbox  
+    -> .setSelected(true, false);
+    -> isSelected();
+
+    ->getText();
+    ->setText();
+    */
+
+
     private int SchoolSize;
     private int HealthSize;
     private int OthersSize;
@@ -39,7 +38,6 @@ public class ToDoUI extends JFrame{
     }
 
     private void initComponents() {
-        ReadFileAndAssign();
         setMaximumSize(new java.awt.Dimension(1600, 800));
         setMinimumSize(new java.awt.Dimension(800, 600));
 
@@ -282,6 +280,10 @@ public class ToDoUI extends JFrame{
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setForeground(new java.awt.Color(102, 102, 102));
+
+        /*read file and assign to each jcheckbox in checkbox list then call 
+        School, Health, Others ActionPerformed to activate the progress bar
+        */
 
         EnterTaskLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 14)); // NOI18N
         EnterTaskLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -566,6 +568,8 @@ public class ToDoUI extends JFrame{
             int i2 = 0;
             int i3 = 0;
 
+            boolean last_selected = false;
+
             textAns = TaskNameTextField.getText();
             CategoryAns = (String)CategoryComboBox.getSelectedItem();
             if(CategoryAns == "School Work") {
@@ -575,7 +579,8 @@ public class ToDoUI extends JFrame{
                     if(textAns.equals(SchoolCheckBoxList.get(i).getText())){
                         System.out.println("found match");
                         SchoolCheckBoxList.get(i).setText("");
-                        
+                        SchoolCheckBoxList.get(i).setSelected(false);
+
                         found = true;
                         SchoolSize--;
                         
@@ -588,15 +593,19 @@ public class ToDoUI extends JFrame{
 
                     //get text for last item
                     strtmp = SchoolCheckBoxList.get(SchoolSize).getText();
+                    last_selected = SchoolCheckBoxList.get(SchoolSize).isSelected();
 
                     //set the delete item text a text from last item
                     SchoolCheckBoxList.get(i).setText(strtmp); 
+                    SchoolCheckBoxList.get(i).setSelected(last_selected); 
 
                     //delete text of last item
                     SchoolCheckBoxList.get(SchoolSize).setText("");
+                    SchoolCheckBoxList.get(i).setSelected(false);
                     
                     
                 }
+                SchoolActionPerformed(evt);
  
 
            }
@@ -610,6 +619,7 @@ public class ToDoUI extends JFrame{
                         if(textAns.equals(HealthCheckBoxList.get(i2).getText())){
                             System.out.println("found match");
                             HealthCheckBoxList.get(i2).setText("");
+                            HealthCheckBoxList.get(i).setSelected(false);
                             
                             found = true;
                             HealthSize--;
@@ -623,16 +633,20 @@ public class ToDoUI extends JFrame{
     
                         //get text for last item
                         strtmp = HealthCheckBoxList.get(HealthSize).getText();
+                        last_selected = HealthCheckBoxList.get(HealthSize).isSelected();
     
                         //set the delete item text a text from last item
                         HealthCheckBoxList.get(i2).setText(strtmp);
+                        HealthCheckBoxList.get(i).setSelected(last_selected); 
                          
     
                         //delete text of last item
                         HealthCheckBoxList.get(HealthSize).setText("");
+                        HealthCheckBoxList.get(i).setSelected(false);
                         
                         
                     }
+                    HealthActionPerformed(evt);
  
             }
                
@@ -644,6 +658,7 @@ public class ToDoUI extends JFrame{
                         if(textAns.equals(OthersCheckBoxList.get(i3).getText())){
                             System.out.println("found match");
                             OthersCheckBoxList.get(i).setText("");
+                            OthersCheckBoxList.get(i).setSelected(false);
                             
                             found = true;
                             OthersSize--;
@@ -657,16 +672,19 @@ public class ToDoUI extends JFrame{
     
                         //get text for last item
                         strtmp = OthersCheckBoxList.get(OthersSize).getText();
+                        last_selected = OthersCheckBoxList.get(OthersSize).isSelected();
     
                         //set the delete item text a text from last item
                         OthersCheckBoxList.get(i3).setText(strtmp); 
+                        OthersCheckBoxList.get(i).setSelected(last_selected); 
     
                         //delete text of last item
                         OthersCheckBoxList.get(OthersSize).setText("");
+                        OthersCheckBoxList.get(i).setSelected(false);
                         
                         
                     }
-
+                    OthersActionPerformed(evt);
                 
 
             }
@@ -687,6 +705,7 @@ public class ToDoUI extends JFrame{
                 System.out.println(SchoolSize);
 
                 SchoolCheckBoxList.get(SchoolSize-1).setText(textAns);
+                SchoolActionPerformed(evt);
 
 
             }
@@ -695,6 +714,7 @@ public class ToDoUI extends JFrame{
                 HealthSize++;
 
                 HealthCheckBoxList.get(HealthSize-1).setText(textAns);
+                HealthActionPerformed(evt);
 
             }
             else if(CategoryAns == "Others" && OthersSize < 10){
@@ -702,6 +722,7 @@ public class ToDoUI extends JFrame{
                 OthersSize++;
 
                 OthersCheckBoxList.get(OthersSize-1).setText(textAns);
+                OthersActionPerformed(evt);
 
 
 
@@ -782,15 +803,9 @@ public class ToDoUI extends JFrame{
         OthersProgressBar.setValue(int_proportion);
     }
 
-    private void ReadFileAndAssign() {
-        //read file and assign it to arraylist, update each arraylistsize variable, boolean varaible
-
-        //update the todo gui (to do and progress bar)
-
-    }
 
     private void MenuActionPerformed(java.awt.event.ActionEvent evt) {
-        //clear file and write the file with string arraylist and boolean arraylist
+        //clear file and write a file with checkbox arraylist info
 
         //go back to menu
     }
