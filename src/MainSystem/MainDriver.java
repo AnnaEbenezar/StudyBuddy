@@ -6,6 +6,7 @@ import MenuSystem.MenuDriver;
 import Utility.ModuleDriver;
 
 import javax.swing.*;
+import java.io.File;
 import java.util.Stack;
 
 
@@ -68,6 +69,14 @@ public class MainDriver implements Runnable {
         }
         module.run();
         moduleStack.push(module);
+    }
+
+    public void quit(ModuleDriver module) {
+        if (!module.isRunning()) {
+            throw new CustomException.ModuleIsNotRunningException();
+        }
+        module.quitModule();
+        moduleStack.remove(module);
     }
 
     public void quitAllModules() {
