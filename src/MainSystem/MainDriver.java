@@ -45,6 +45,22 @@ public class MainDriver implements Runnable {
     public User getUser() {
         return currentUser;
     }
+    
+    public File getSettings() {
+        return currentUser.getSettings();
+    }
+    
+    public File getTodo() {
+        return currentUser.getTodo();
+    }
+    
+    public File getProfile() {
+        return currentUser.getProfile();
+    }
+    
+    public File getSchedule() {
+        return currentUser.getSchedule();
+    }
 
     public void runModule(ModuleDriver module) {
         if (module.isRunning()) {
