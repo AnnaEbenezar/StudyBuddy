@@ -5,10 +5,12 @@ import Utility.ModuleDriver;
 
 
 public class ToDoDriver implements ModuleDriver {
-    private final MainDriver main;
+    public final MainDriver main;
     private static ToDoDriver instance = null;
     private volatile boolean runningFlag = false;
-    private ToDoUI UI;
+    private ToDoUI4 UI;
+
+
 
     private ToDoDriver(MainDriver main) {
         this.main = main;
@@ -33,7 +35,7 @@ public class ToDoDriver implements ModuleDriver {
     @Override
     public void run() {
         // starting
-        UI = new ToDoUI(this);
+        UI = new ToDoUI4(this);
         this.runningFlag = true;
     }
 }
