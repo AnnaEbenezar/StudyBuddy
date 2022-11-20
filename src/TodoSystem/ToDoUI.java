@@ -6,6 +6,25 @@ public class ToDoUI extends JFrame{
 
     ToDoDriver driver;
 
+    /*file
+     * SchoolSize
+     * text, bool
+     * ....
+     * HealthSize
+     * text, bool
+     * .....
+     * OthersSize
+     * text, bool
+     * ......
+     * ImportantSize
+     * text
+     * ......
+     */
+
+     /*todo:
+      * read file and assign function
+      * menu close, clear and write a final file
+      */
     private ArrayList<JCheckBox> SchoolCheckBoxList = new ArrayList<JCheckBox>();
     private ArrayList<JCheckBox> HealthCheckBoxList = new ArrayList<JCheckBox>();
     private ArrayList<JCheckBox> OthersCheckBoxList = new ArrayList<JCheckBox>();
@@ -1155,16 +1174,21 @@ public class ToDoUI extends JFrame{
     }
 
     private void Imp2ActionPerformed(java.awt.event.ActionEvent evt, int id) {
-        String imp_tmp = ImportantCheckBoxList.get(ImportantSize-1).getText();
-        boolean imp_bool = ImportantCheckBoxList.get(ImportantSize-1).isSelected();
+        if(ImportantCheckBoxList.get(id).getText().equals("")) {
+            ImportantCheckBoxList.get(id).setSelected(false);
+        }
+        else {
+            String imp_tmp = ImportantCheckBoxList.get(ImportantSize-1).getText();
+            boolean imp_bool = ImportantCheckBoxList.get(ImportantSize-1).isSelected();
 
-        ImportantCheckBoxList.get(id).setText(imp_tmp);
-        ImportantCheckBoxList.get(id).setSelected(imp_bool);
+            ImportantCheckBoxList.get(id).setText(imp_tmp);
+            ImportantCheckBoxList.get(id).setSelected(imp_bool);
 
-        ImportantCheckBoxList.get(ImportantSize-1).setText("");
-        ImportantCheckBoxList.get(ImportantSize-1).setSelected(false);
+            ImportantCheckBoxList.get(ImportantSize-1).setText("");
+            ImportantCheckBoxList.get(ImportantSize-1).setSelected(false);
 
-        ImportantSize--;
+            ImportantSize--;
+        }
     }
     
     // Variables declaration - do not modify                     
