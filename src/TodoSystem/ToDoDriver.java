@@ -38,4 +38,12 @@ public class ToDoDriver implements ModuleDriver {
         UI = new ToDoUI(this);
         this.runningFlag = true;
     }
+
+    class Info{
+        String name;
+        Boolean isSelect;
+        String Category;
+
+        
+    }
 }
