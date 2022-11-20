@@ -1,6 +1,8 @@
 package TodoSystem;
 
 import javax.swing.*;
+
+import java.awt.Color;
 import java.util.*;
 public class ToDoUI extends JFrame{
 
@@ -61,6 +63,7 @@ public class ToDoUI extends JFrame{
         SchoolScrollPane = new javax.swing.JScrollPane();
         SchoolWorkPanel = new javax.swing.JPanel();
         SchoolWorkLabel = new javax.swing.JLabel();
+        SchoolWorkLabel.setForeground(Color.white);
         School21 = new javax.swing.JCheckBox();
         School22 = new javax.swing.JCheckBox();
         School23 = new javax.swing.JCheckBox();
@@ -95,6 +98,7 @@ public class ToDoUI extends JFrame{
         OthersScrollPane = new javax.swing.JScrollPane();
         OthersPanel = new javax.swing.JPanel();
         othersLabel = new javax.swing.JLabel();
+        othersLabel.setForeground(Color.white);
         O11 = new javax.swing.JCheckBox();
         O12 = new javax.swing.JCheckBox();
         O13 = new javax.swing.JCheckBox();
@@ -129,6 +133,7 @@ public class ToDoUI extends JFrame{
         HealthScrollPane = new javax.swing.JScrollPane();
         HealthPanel = new javax.swing.JPanel();
         HealthLabel = new javax.swing.JLabel();
+        HealthLabel.setForeground(Color.white);
         H11 = new javax.swing.JCheckBox();
         H12 = new javax.swing.JCheckBox();
         H13 = new javax.swing.JCheckBox();
@@ -205,6 +210,7 @@ public class ToDoUI extends JFrame{
         int k = 0;
         for(k = 0; k < 30; k++) {
             int tmpK = k;
+            SchoolCheckBoxList.get(k).setForeground(Color.white);
             SchoolCheckBoxList.get(k).addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     if(SchoolCheckBoxList.get(tmpK).getText() == "") {
@@ -250,6 +256,7 @@ public class ToDoUI extends JFrame{
 
         k = 0;
         for(k = 0; k < 30; k++) {
+            HealthCheckBoxList.get(k).setForeground(Color.white);
             int tmpK = k;
             HealthCheckBoxList.get(k).addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -297,6 +304,7 @@ public class ToDoUI extends JFrame{
         k = 0;
         for(k = 0; k < 30; k++) {
             int tmpK = k;
+            OthersCheckBoxList.get(k).setForeground(Color.white);
             OthersCheckBoxList.get(k).addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     if(OthersCheckBoxList.get(tmpK).getText() == "") {
@@ -346,12 +354,17 @@ public class ToDoUI extends JFrame{
 
 
 
+        SchoolProgressBar.setStringPainted(true);
+        HealthProgressBar.setStringPainted(true);
+        OthersProgressBar.setStringPainted(true);
+
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1600, 900));
-        setMinimumSize(new java.awt.Dimension(700, 550));
+        setMinimumSize(new java.awt.Dimension(1000, 550));
         setSize(new java.awt.Dimension(700, 550));
 
-        TopPanel.setBackground(new java.awt.Color(102, 102, 102));
+        TopPanel.setBackground(new java.awt.Color(51, 51, 51));
         TopPanel.setForeground(new java.awt.Color(102, 102, 102));
 
         EnterTaskLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 14)); // NOI18N
@@ -433,7 +446,9 @@ public class ToDoUI extends JFrame{
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        SchoolWorkPanel.setBackground(new java.awt.Color(121, 186, 203));
+        
+        SchoolWorkPanel.setBackground(new java.awt.Color(-14087068));
+
 
         SchoolWorkLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 14)); // NOI18N
         SchoolWorkLabel.setText("School Work");
@@ -552,9 +567,10 @@ public class ToDoUI extends JFrame{
 
         SchoolScrollPane.setViewportView(SchoolWorkPanel);
 
-        OthersPanel.setBackground(new java.awt.Color(221, 236, 244));
+        OthersPanel.setBackground(new java.awt.Color(-14087068));
 
         othersLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 14)); // NOI18N
+        othersLabel.setForeground(Color.white);
         othersLabel.setText("Others");
 
 
@@ -672,7 +688,7 @@ public class ToDoUI extends JFrame{
 
         OthersScrollPane.setViewportView(OthersPanel);
 
-        HealthPanel.setBackground(new java.awt.Color(170, 220, 242));
+        HealthPanel.setBackground(new java.awt.Color(-14087068));
 
         HealthLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 14)); // NOI18N
         HealthLabel.setText("Health");
@@ -836,13 +852,13 @@ public class ToDoUI extends JFrame{
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        BUDDY.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 36)); // NOI18N
-        BUDDY.setText("B U D D Y");
+        BUDDY.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 18)); // NOI18N
+        BUDDY.setText("Plan and track your progress with study buddy");
 
         STUDY.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 36)); // NOI18N
-        STUDY.setText("S T U D Y");
+        STUDY.setText("S T U D Y  B U D D Y");
 
-        PriorityTaskLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 18)); // NOI18N
+        PriorityTaskLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 20)); // NOI18N
         PriorityTaskLabel.setText("Priority Task");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
