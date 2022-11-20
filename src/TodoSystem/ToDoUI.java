@@ -1,249 +1,156 @@
 package TodoSystem;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.io.File;
-import java.util.Scanner;
-import MainSystem.User;
-
+import java.util.*;
 public class ToDoUI extends JFrame{
-    private ToDoDriver driver;
+
+    ToDoDriver driver;
 
     private ArrayList<JCheckBox> SchoolCheckBoxList = new ArrayList<JCheckBox>();
     private ArrayList<JCheckBox> HealthCheckBoxList = new ArrayList<JCheckBox>();
     private ArrayList<JCheckBox> OthersCheckBoxList = new ArrayList<JCheckBox>();
-    /*schoolwork checkbox: string text, boolean isSelected */
-    /*health checkbxox: string text, isSelected */
-    /*Others: string text, isSelected */
-    /* 
-    checkbox  
-    -> .setSelected(true, false);
-    -> isSelected();
+    private ArrayList<JCheckBox> ImportantCheckBoxList = new ArrayList<JCheckBox>();
 
-    ->getText();
-    ->setText();
-    */
     private int SchoolSize;
     private int HealthSize;
     private int OthersSize;
+    private int ImportantSize;
 
     private int SchoolCheck;
     private int HealthCheck;
     private int OthersCheck;
 
+    private String textAns;                 
+    private String CategoryAns;
 
     ToDoUI(ToDoDriver driver) {
-        this.driver = driver;
-        User user = driver.main.getUser();
-        String fileName = "resources/users/" + user.getUsername() + "/todo";
         initComponents();
-
-        this.setVisible(true);
+        setVisible(true);
     }
 
     private void initComponents() {
-        setMaximumSize(new java.awt.Dimension(1600, 800));
-        setMinimumSize(new java.awt.Dimension(800, 600));
 
-        jPanel1 = new javax.swing.JPanel();
+        TopPanel = new javax.swing.JPanel();
         EnterTaskLabel = new javax.swing.JLabel();
         TaskNameTextField = new javax.swing.JTextField();
         CategoryLabel = new javax.swing.JLabel();
         CategoryComboBox = new javax.swing.JComboBox<>();
         DeleteButton = new javax.swing.JButton();
-        AddButton = new javax.swing.JButton();
         MenuButton = new javax.swing.JButton();
+        ImpButton = new javax.swing.JButton();
+        AddButton = new javax.swing.JButton();
+        SchoolScrollPane = new javax.swing.JScrollPane();
         SchoolWorkPanel = new javax.swing.JPanel();
         SchoolWorkLabel = new javax.swing.JLabel();
+        School21 = new javax.swing.JCheckBox();
+        School22 = new javax.swing.JCheckBox();
+        School23 = new javax.swing.JCheckBox();
+        School24 = new javax.swing.JCheckBox();
+        School25 = new javax.swing.JCheckBox();
+        School26 = new javax.swing.JCheckBox();
+        School27 = new javax.swing.JCheckBox();
+        School28 = new javax.swing.JCheckBox();
+        School29 = new javax.swing.JCheckBox();
+        School30 = new javax.swing.JCheckBox();
+        SchoolProgressBar = new javax.swing.JProgressBar();
         School1 = new javax.swing.JCheckBox();
-        School1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SchoolActionPerformed(evt);
-            }
-        });
-
         School2 = new javax.swing.JCheckBox();
-        School2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SchoolActionPerformed(evt);
-            }
-        });
         School3 = new javax.swing.JCheckBox();
-        School3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SchoolActionPerformed(evt);
-            }
-        });
         School4 = new javax.swing.JCheckBox();
-        School4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SchoolActionPerformed(evt);
-            }
-        });
         School5 = new javax.swing.JCheckBox();
-        School5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SchoolActionPerformed(evt);
-            }
-        });
         School6 = new javax.swing.JCheckBox();
-        School6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SchoolActionPerformed(evt);
-            }
-        });
         School7 = new javax.swing.JCheckBox();
-        School7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SchoolActionPerformed(evt);
-            }
-        });
         School8 = new javax.swing.JCheckBox();
-        School8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SchoolActionPerformed(evt);
-            }
-        });
         School9 = new javax.swing.JCheckBox();
-        School9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SchoolActionPerformed(evt);
-            }
-        });
         School10 = new javax.swing.JCheckBox();
-        School10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SchoolActionPerformed(evt);
-            }
-        });
-        SchoolProgressBar = new javax.swing.JProgressBar(0, 100);
-        HealthPanel = new javax.swing.JPanel();
-        HealthLabel = new javax.swing.JLabel();
-        H1 = new javax.swing.JCheckBox();
-        H1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HealthActionPerformed(evt);
-            }
-        });
-        H2 = new javax.swing.JCheckBox();
-        H2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HealthActionPerformed(evt);
-            }
-        });
-        H3 = new javax.swing.JCheckBox();
-        H3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HealthActionPerformed(evt);
-            }
-        });
-        H4 = new javax.swing.JCheckBox();
-        H4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HealthActionPerformed(evt);
-            }
-        });
-        H5 = new javax.swing.JCheckBox();
-        H5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HealthActionPerformed(evt);
-            }
-        });
-        H6 = new javax.swing.JCheckBox();
-        H6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HealthActionPerformed(evt);
-            }
-        });
-        H7 = new javax.swing.JCheckBox();
-        H7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HealthActionPerformed(evt);
-            }
-        });
-
-        H8 = new javax.swing.JCheckBox();
-        H8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HealthActionPerformed(evt);
-            }
-        });
-        H9 = new javax.swing.JCheckBox();
-        H9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HealthActionPerformed(evt);
-            }
-        });
-        H10 = new javax.swing.JCheckBox();
-        H10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HealthActionPerformed(evt);
-            }
-        });
-        HealthProgressBar = new javax.swing.JProgressBar(0, 100);
+        School11 = new javax.swing.JCheckBox();
+        School12 = new javax.swing.JCheckBox();
+        School13 = new javax.swing.JCheckBox();
+        School14 = new javax.swing.JCheckBox();
+        School15 = new javax.swing.JCheckBox();
+        School16 = new javax.swing.JCheckBox();
+        School17 = new javax.swing.JCheckBox();
+        School18 = new javax.swing.JCheckBox();
+        School19 = new javax.swing.JCheckBox();
+        School20 = new javax.swing.JCheckBox();
+        OthersScrollPane = new javax.swing.JScrollPane();
         OthersPanel = new javax.swing.JPanel();
         othersLabel = new javax.swing.JLabel();
+        O11 = new javax.swing.JCheckBox();
+        O12 = new javax.swing.JCheckBox();
+        O13 = new javax.swing.JCheckBox();
+        O14 = new javax.swing.JCheckBox();
+        O15 = new javax.swing.JCheckBox();
+        O16 = new javax.swing.JCheckBox();
+        O17 = new javax.swing.JCheckBox();
+        O18 = new javax.swing.JCheckBox();
+        O19 = new javax.swing.JCheckBox();
+        O20 = new javax.swing.JCheckBox();
+        OthersProgressBar = new javax.swing.JProgressBar();
         O1 = new javax.swing.JCheckBox();
-        O1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OthersActionPerformed(evt);
-            }
-        });
         O2 = new javax.swing.JCheckBox();
-        O2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OthersActionPerformed(evt);
-            }
-        });
         O3 = new javax.swing.JCheckBox();
-        O3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OthersActionPerformed(evt);
-            }
-        });
         O4 = new javax.swing.JCheckBox();
-        O4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OthersActionPerformed(evt);
-            }
-        });
         O5 = new javax.swing.JCheckBox();
-        O5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OthersActionPerformed(evt);
-            }
-        });
         O6 = new javax.swing.JCheckBox();
-        O6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OthersActionPerformed(evt);
-            }
-        });
         O7 = new javax.swing.JCheckBox();
-        O7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OthersActionPerformed(evt);
-            }
-        });
         O8 = new javax.swing.JCheckBox();
-        O8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OthersActionPerformed(evt);
-            }
-        });
         O9 = new javax.swing.JCheckBox();
-        O9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OthersActionPerformed(evt);
-            }
-        });
         O10 = new javax.swing.JCheckBox();
-        O10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OthersActionPerformed(evt);
-            }
-        });
-        OthersProgressBar = new javax.swing.JProgressBar(0, 100);
+        O30 = new javax.swing.JCheckBox();
+        O29 = new javax.swing.JCheckBox();
+        O28 = new javax.swing.JCheckBox();
+        O27 = new javax.swing.JCheckBox();
+        O26 = new javax.swing.JCheckBox();
+        O25 = new javax.swing.JCheckBox();
+        O24 = new javax.swing.JCheckBox();
+        O23 = new javax.swing.JCheckBox();
+        O22 = new javax.swing.JCheckBox();
+        O21 = new javax.swing.JCheckBox();
+        HealthScrollPane = new javax.swing.JScrollPane();
+        HealthPanel = new javax.swing.JPanel();
+        HealthLabel = new javax.swing.JLabel();
+        H11 = new javax.swing.JCheckBox();
+        H12 = new javax.swing.JCheckBox();
+        H13 = new javax.swing.JCheckBox();
+        H14 = new javax.swing.JCheckBox();
+        H15 = new javax.swing.JCheckBox();
+        H16 = new javax.swing.JCheckBox();
+        H17 = new javax.swing.JCheckBox();
+        H18 = new javax.swing.JCheckBox();
+        H19 = new javax.swing.JCheckBox();
+        H20 = new javax.swing.JCheckBox();
+        HealthProgressBar = new javax.swing.JProgressBar();
+        H1 = new javax.swing.JCheckBox();
+        H2 = new javax.swing.JCheckBox();
+        H3 = new javax.swing.JCheckBox();
+        H4 = new javax.swing.JCheckBox();
+        H5 = new javax.swing.JCheckBox();
+        H6 = new javax.swing.JCheckBox();
+        H7 = new javax.swing.JCheckBox();
+        H8 = new javax.swing.JCheckBox();
+        H9 = new javax.swing.JCheckBox();
+        H10 = new javax.swing.JCheckBox();
+        H21 = new javax.swing.JCheckBox();
+        H22 = new javax.swing.JCheckBox();
+        H23 = new javax.swing.JCheckBox();
+        H24 = new javax.swing.JCheckBox();
+        H25 = new javax.swing.JCheckBox();
+        H26 = new javax.swing.JCheckBox();
+        H27 = new javax.swing.JCheckBox();
+        H28 = new javax.swing.JCheckBox();
+        H29 = new javax.swing.JCheckBox();
+        H30 = new javax.swing.JCheckBox();
+        jPanel3 = new javax.swing.JPanel();
+        ImportantWorkPanel = new javax.swing.JPanel();
+        Imp1 = new javax.swing.JCheckBox();
+        Imp3 = new javax.swing.JCheckBox();
+        Imp2 = new javax.swing.JCheckBox();
+        Imp4 = new javax.swing.JCheckBox();
+        Imp5 = new javax.swing.JCheckBox();
+        BUDDY = new javax.swing.JLabel();
+        STUDY = new javax.swing.JLabel();
+        PriorityTaskLabel = new javax.swing.JLabel();
 
         SchoolCheckBoxList.add(School1);
         SchoolCheckBoxList.add(School2);
@@ -255,6 +162,41 @@ public class ToDoUI extends JFrame{
         SchoolCheckBoxList.add(School8);
         SchoolCheckBoxList.add(School9);
         SchoolCheckBoxList.add(School10);
+        SchoolCheckBoxList.add(School11);
+        SchoolCheckBoxList.add(School12);
+        SchoolCheckBoxList.add(School13);
+        SchoolCheckBoxList.add(School14);
+        SchoolCheckBoxList.add(School15);
+        SchoolCheckBoxList.add(School16);
+        SchoolCheckBoxList.add(School17);
+        SchoolCheckBoxList.add(School18);
+        SchoolCheckBoxList.add(School19);
+        SchoolCheckBoxList.add(School20);
+        SchoolCheckBoxList.add(School21);
+        SchoolCheckBoxList.add(School22);
+        SchoolCheckBoxList.add(School23);
+        SchoolCheckBoxList.add(School24);
+        SchoolCheckBoxList.add(School25);
+        SchoolCheckBoxList.add(School26);
+        SchoolCheckBoxList.add(School27);
+        SchoolCheckBoxList.add(School28);
+        SchoolCheckBoxList.add(School29);
+        SchoolCheckBoxList.add(School30);
+
+        int k = 0;
+        for(k = 0; k < 30; k++) {
+            int tmpK = k;
+            SchoolCheckBoxList.get(k).addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    if(SchoolCheckBoxList.get(tmpK).getText() == "") {
+                        SchoolCheckBoxList.get(tmpK).setSelected(false);
+                    }
+                    else{
+                        SchoolActionPerformed(evt, tmpK);
+                    }     
+                }
+            });
+        }
 
         HealthCheckBoxList.add(H1);
         HealthCheckBoxList.add(H2);
@@ -266,6 +208,41 @@ public class ToDoUI extends JFrame{
         HealthCheckBoxList.add(H8);
         HealthCheckBoxList.add(H9);
         HealthCheckBoxList.add(H10);
+        HealthCheckBoxList.add(H11);
+        HealthCheckBoxList.add(H12);
+        HealthCheckBoxList.add(H13);
+        HealthCheckBoxList.add(H14);
+        HealthCheckBoxList.add(H15);
+        HealthCheckBoxList.add(H16);
+        HealthCheckBoxList.add(H17);
+        HealthCheckBoxList.add(H18);
+        HealthCheckBoxList.add(H19);
+        HealthCheckBoxList.add(H20);
+        HealthCheckBoxList.add(H21);
+        HealthCheckBoxList.add(H22);
+        HealthCheckBoxList.add(H23);
+        HealthCheckBoxList.add(H24);
+        HealthCheckBoxList.add(H25);
+        HealthCheckBoxList.add(H26);
+        HealthCheckBoxList.add(H27);
+        HealthCheckBoxList.add(H28);
+        HealthCheckBoxList.add(H29);
+        HealthCheckBoxList.add(H30);
+
+        k = 0;
+        for(k = 0; k < 30; k++) {
+            int tmpK = k;
+            HealthCheckBoxList.get(k).addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    if(HealthCheckBoxList.get(tmpK).getText() == "") {
+                        HealthCheckBoxList.get(tmpK).setSelected(false);
+                    }
+                    else{
+                        HealthActionPerformed(evt, tmpK);
+                    }     
+                }
+            });
+        }
 
         OthersCheckBoxList.add(O1);
         OthersCheckBoxList.add(O2);
@@ -277,31 +254,111 @@ public class ToDoUI extends JFrame{
         OthersCheckBoxList.add(O8);
         OthersCheckBoxList.add(O9);
         OthersCheckBoxList.add(O10);
-               
+        OthersCheckBoxList.add(O11);
+        OthersCheckBoxList.add(O12);
+        OthersCheckBoxList.add(O13);
+        OthersCheckBoxList.add(O14);
+        OthersCheckBoxList.add(O15);
+        OthersCheckBoxList.add(O16);
+        OthersCheckBoxList.add(O17);
+        OthersCheckBoxList.add(O18);
+        OthersCheckBoxList.add(O19);
+        OthersCheckBoxList.add(O20);
+        OthersCheckBoxList.add(O21);
+        OthersCheckBoxList.add(O22);
+        OthersCheckBoxList.add(O23);
+        OthersCheckBoxList.add(O24);
+        OthersCheckBoxList.add(O25);
+        OthersCheckBoxList.add(O26);
+        OthersCheckBoxList.add(O27);
+        OthersCheckBoxList.add(O28);
+        OthersCheckBoxList.add(O29);
+        OthersCheckBoxList.add(O30);
+
+        k = 0;
+        for(k = 0; k < 30; k++) {
+            int tmpK = k;
+            OthersCheckBoxList.get(k).addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    if(OthersCheckBoxList.get(tmpK).getText() == "") {
+                        OthersCheckBoxList.get(tmpK).setSelected(false);
+                    }
+                    else{
+                        OthersActionPerformed(evt, tmpK);
+                    }     
+                }
+            });
+        }
+
+        ImportantCheckBoxList.add(Imp1);
+        Imp1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Imp2ActionPerformed(evt, 0);
+            }
+        });
+
+        ImportantCheckBoxList.add(Imp2);
+        Imp2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Imp2ActionPerformed(evt, 1);
+            }
+        });
+
+        ImportantCheckBoxList.add(Imp3);
+        Imp3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Imp2ActionPerformed(evt, 2);
+            }
+        });
+
+        ImportantCheckBoxList.add(Imp4);
+        Imp4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Imp2ActionPerformed(evt, 3);
+            }
+        });
+
+        ImportantCheckBoxList.add(Imp5);
+        Imp5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Imp2ActionPerformed(evt, 4);
+            }
+        });
+
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1600, 900));
+        setMinimumSize(new java.awt.Dimension(700, 550));
+        setSize(new java.awt.Dimension(700, 550));
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel1.setForeground(new java.awt.Color(102, 102, 102));
+        TopPanel.setBackground(new java.awt.Color(102, 102, 102));
+        TopPanel.setForeground(new java.awt.Color(102, 102, 102));
 
-        /*read file and assign to each jcheckbox in checkbox list then call 
-        School, Health, Others ActionPerformed to activate the progress bar
-        */
-
-        EnterTaskLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 21)); // NOI18N
+        EnterTaskLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 14)); // NOI18N
         EnterTaskLabel.setForeground(new java.awt.Color(255, 255, 255));
         EnterTaskLabel.setText("Enter Task:");
 
-        CategoryLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 21)); // NOI18N
+        CategoryLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 14)); // NOI18N
         CategoryLabel.setForeground(new java.awt.Color(255, 255, 255));
         CategoryLabel.setText("Category:");
 
-        CategoryComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "School Work", "Health", "Others" }));
+        CategoryComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "School Work", "Health", "Others"}));
 
         DeleteButton.setText("Delete");
         DeleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeleteActionPerformed(evt);
+            }
+        });
+
+
+        MenuButton.setText("MENU");
+
+        ImpButton.setText("⭐");
+        ImpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ImpActionPerformed(evt);
             }
         });
 
@@ -312,60 +369,56 @@ public class ToDoUI extends JFrame{
             }
         });
 
-        MenuButton.setText("MENU");
-        MenuButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuActionPerformed(evt);
-            }
-        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(DeleteButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(AddButton))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(MenuButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(EnterTaskLabel)
-                            .addComponent(CategoryLabel))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TaskNameTextField)
-                            .addComponent(CategoryComboBox, 0, 208, Short.MAX_VALUE))))
-                .addGap(35, 35, 35))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EnterTaskLabel)
-                    .addComponent(TaskNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(MenuButton))
+        javax.swing.GroupLayout TopPanelLayout = new javax.swing.GroupLayout(TopPanel);
+        TopPanel.setLayout(TopPanelLayout);
+        TopPanelLayout.setHorizontalGroup(
+            TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TopPanelLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(MenuButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 286, Short.MAX_VALUE)
+                .addComponent(EnterTaskLabel)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CategoryLabel)
-                    .addComponent(CategoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DeleteButton)
-                    .addComponent(AddButton))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addComponent(TaskNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addComponent(CategoryLabel)
+                .addGap(18, 18, 18)
+                .addComponent(CategoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(DeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ImpButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(38, 38, 38))
+        );
+        TopPanelLayout.setVerticalGroup(
+            TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TopPanelLayout.createSequentialGroup()
+                .addGroup(TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TopPanelLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(MenuButton))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TopPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CategoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CategoryLabel)
+                            .addComponent(TaskNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EnterTaskLabel)
+                            .addComponent(AddButton))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(DeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(ImpButton)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         SchoolWorkPanel.setBackground(new java.awt.Color(121, 186, 203));
 
         SchoolWorkLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 14)); // NOI18N
         SchoolWorkLabel.setText("School Work");
+
 
         javax.swing.GroupLayout SchoolWorkPanelLayout = new javax.swing.GroupLayout(SchoolWorkPanel);
         SchoolWorkPanel.setLayout(SchoolWorkPanelLayout);
@@ -374,9 +427,18 @@ public class ToDoUI extends JFrame{
             .addGroup(SchoolWorkPanelLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(SchoolWorkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(School20)
+                    .addComponent(School11)
+                    .addComponent(School12)
+                    .addComponent(School13)
+                    .addComponent(School14)
+                    .addComponent(School15)
+                    .addComponent(School16)
+                    .addComponent(School17)
+                    .addComponent(School18)
+                    .addComponent(School19)
                     .addComponent(School10)
                     .addComponent(School1)
-                    .addComponent(SchoolWorkLabel)
                     .addComponent(School2)
                     .addComponent(School3)
                     .addComponent(School4)
@@ -385,8 +447,19 @@ public class ToDoUI extends JFrame{
                     .addComponent(School7)
                     .addComponent(School8)
                     .addComponent(School9)
-                    .addComponent(SchoolProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                    .addComponent(School30)
+                    .addComponent(School21)
+                    .addComponent(SchoolWorkLabel)
+                    .addComponent(School22)
+                    .addComponent(School23)
+                    .addComponent(School24)
+                    .addComponent(School25)
+                    .addComponent(School26)
+                    .addComponent(School27)
+                    .addComponent(School28)
+                    .addComponent(School29)
+                    .addComponent(SchoolProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(418, Short.MAX_VALUE))
         );
         SchoolWorkPanelLayout.setVerticalGroup(
             SchoolWorkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -394,7 +467,7 @@ public class ToDoUI extends JFrame{
                 .addGap(17, 17, 17)
                 .addComponent(SchoolWorkLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(SchoolProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(SchoolProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(School1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -415,69 +488,57 @@ public class ToDoUI extends JFrame{
                 .addComponent(School9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(School10)
-                .addGap(24, 24, 24))
-        );
-
-        HealthPanel.setBackground(new java.awt.Color(170, 220, 242));
-
-        HealthLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 14)); // NOI18N
-        HealthLabel.setText("Health");
-
-        javax.swing.GroupLayout HealthPanelLayout = new javax.swing.GroupLayout(HealthPanel);
-        HealthPanel.setLayout(HealthPanelLayout);
-        HealthPanelLayout.setHorizontalGroup(
-            HealthPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HealthPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(HealthPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(HealthProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(H10)
-                    .addComponent(H1)
-                    .addComponent(H2)
-                    .addComponent(H3)
-                    .addComponent(H4)
-                    .addComponent(H5)
-                    .addComponent(H6)
-                    .addComponent(H7)
-                    .addComponent(H8)
-                    .addComponent(H9)
-                    .addComponent(HealthLabel))
-                .addContainerGap(35, Short.MAX_VALUE))
-        );
-        HealthPanelLayout.setVerticalGroup(
-            HealthPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HealthPanelLayout.createSequentialGroup()
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(School11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(School12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(School13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(School14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(School15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(School16)
                 .addGap(18, 18, 18)
-                .addComponent(HealthLabel)
+                .addComponent(School17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(HealthProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                .addGap(12, 12, 12)
-                .addComponent(H1)
+                .addComponent(School18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(H2)
+                .addComponent(School19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(H3)
+                .addComponent(School20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(School21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(H4)
+                .addComponent(School22)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(H5)
+                .addComponent(School23)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(H6)
+                .addComponent(School24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(School25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(School26)
                 .addGap(18, 18, 18)
-                .addComponent(H7)
+                .addComponent(School27)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(H8)
+                .addComponent(School28)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(H9)
+                .addComponent(School29)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(H10)
-                .addGap(29, 29, 29))
+                .addComponent(School30)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        SchoolScrollPane.setViewportView(SchoolWorkPanel);
 
         OthersPanel.setBackground(new java.awt.Color(221, 236, 244));
 
         othersLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 14)); // NOI18N
         othersLabel.setText("Others");
+
+
 
         javax.swing.GroupLayout OthersPanelLayout = new javax.swing.GroupLayout(OthersPanel);
         OthersPanel.setLayout(OthersPanelLayout);
@@ -486,7 +547,16 @@ public class ToDoUI extends JFrame{
             .addGroup(OthersPanelLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(OthersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(OthersProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(O30)
+                    .addComponent(O21)
+                    .addComponent(O22)
+                    .addComponent(O23)
+                    .addComponent(O24)
+                    .addComponent(O25)
+                    .addComponent(O26)
+                    .addComponent(O27)
+                    .addComponent(O28)
+                    .addComponent(O29)
                     .addComponent(O10)
                     .addComponent(O1)
                     .addComponent(O2)
@@ -497,8 +567,19 @@ public class ToDoUI extends JFrame{
                     .addComponent(O7)
                     .addComponent(O8)
                     .addComponent(O9)
-                    .addComponent(othersLabel))
-                .addContainerGap(34, Short.MAX_VALUE))
+                    .addComponent(O20)
+                    .addComponent(O11)
+                    .addComponent(O12)
+                    .addComponent(O13)
+                    .addComponent(O14)
+                    .addComponent(O15)
+                    .addComponent(O16)
+                    .addComponent(O17)
+                    .addComponent(O18)
+                    .addComponent(O19)
+                    .addComponent(othersLabel)
+                    .addComponent(OthersProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(409, Short.MAX_VALUE))
         );
         OthersPanelLayout.setVerticalGroup(
             OthersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -506,8 +587,8 @@ public class ToDoUI extends JFrame{
                 .addGap(21, 21, 21)
                 .addComponent(othersLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(OthersProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                .addGap(13, 13, 13)
+                .addComponent(OthersProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(O1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(O2)
@@ -527,37 +608,295 @@ public class ToDoUI extends JFrame{
                 .addComponent(O9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(O10)
-                .addGap(31, 31, 31))
+                .addGap(18, 18, 18)
+                .addComponent(O11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(O12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(O13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(O14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(O15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(O16)
+                .addGap(18, 18, 18)
+                .addComponent(O17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(O18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(O19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(O20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(O21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(O22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(O23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(O24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(O25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(O26)
+                .addGap(18, 18, 18)
+                .addComponent(O27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(O28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(O29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(O30)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
+
+        OthersScrollPane.setViewportView(OthersPanel);
+
+        HealthPanel.setBackground(new java.awt.Color(170, 220, 242));
+
+        HealthLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 14)); // NOI18N
+        HealthLabel.setText("Health");
+
+
+        javax.swing.GroupLayout HealthPanelLayout = new javax.swing.GroupLayout(HealthPanel);
+        HealthPanel.setLayout(HealthPanelLayout);
+        HealthPanelLayout.setHorizontalGroup(
+            HealthPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HealthPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(HealthPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(H30)
+                    .addComponent(H21)
+                    .addComponent(H22)
+                    .addComponent(H23)
+                    .addComponent(H24)
+                    .addComponent(H25)
+                    .addComponent(H26)
+                    .addComponent(H27)
+                    .addComponent(H28)
+                    .addComponent(H29)
+                    .addComponent(H10)
+                    .addComponent(H1)
+                    .addComponent(H2)
+                    .addComponent(H3)
+                    .addComponent(H4)
+                    .addComponent(H5)
+                    .addComponent(H6)
+                    .addComponent(H7)
+                    .addComponent(H8)
+                    .addComponent(H9)
+                    .addComponent(H20)
+                    .addComponent(H11)
+                    .addComponent(H12)
+                    .addComponent(H13)
+                    .addComponent(H14)
+                    .addComponent(H15)
+                    .addComponent(H16)
+                    .addComponent(H17)
+                    .addComponent(H18)
+                    .addComponent(H19)
+                    .addComponent(HealthLabel)
+                    .addComponent(HealthProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(382, Short.MAX_VALUE))
+        );
+        HealthPanelLayout.setVerticalGroup(
+            HealthPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HealthPanelLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(HealthLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(HealthProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(H1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H6)
+                .addGap(18, 18, 18)
+                .addComponent(H7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H10)
+                .addGap(29, 29, 29)
+                .addComponent(H11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H16)
+                .addGap(18, 18, 18)
+                .addComponent(H17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H26)
+                .addGap(18, 18, 18)
+                .addComponent(H27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(H30)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        HealthScrollPane.setViewportView(HealthPanel);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        ImportantWorkPanel.setBackground(new java.awt.Color(204, 204, 204));
+
+
+
+        javax.swing.GroupLayout ImportantWorkPanelLayout = new javax.swing.GroupLayout(ImportantWorkPanel);
+        ImportantWorkPanel.setLayout(ImportantWorkPanelLayout);
+        ImportantWorkPanelLayout.setHorizontalGroup(
+            ImportantWorkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImportantWorkPanelLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(ImportantWorkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Imp5)
+                    .addComponent(Imp4)
+                    .addComponent(Imp2)
+                    .addComponent(Imp3)
+                    .addComponent(Imp1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        ImportantWorkPanelLayout.setVerticalGroup(
+            ImportantWorkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImportantWorkPanelLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(Imp1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Imp2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Imp3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Imp4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Imp5)
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        BUDDY.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 36)); // NOI18N
+        BUDDY.setText("B U D D Y");
+
+        STUDY.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 36)); // NOI18N
+        STUDY.setText("S T U D Y");
+
+        PriorityTaskLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 18)); // NOI18N
+        PriorityTaskLabel.setText("Priority Task");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(TopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(SchoolWorkPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(HealthPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(OthersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(22, 22, 22))
+                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(PriorityTaskLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(486, 486, 486))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(SchoolScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(41, 41, 41)
+                        .addComponent(HealthScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(46, 46, 46)
+                        .addComponent(OthersScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGap(63, 63, 63))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ImportantWorkPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(121, 121, 121)
+                                .addComponent(STUDY)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BUDDY)
+                                .addGap(170, 170, 170))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(HealthScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(SchoolScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                    .addComponent(OthersScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SchoolWorkPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(HealthPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(OthersPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(PriorityTaskLabel)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ImportantWorkPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(STUDY)
+                        .addGap(18, 18, 18)
+                        .addComponent(BUDDY)
+                        .addContainerGap())))
         );
 
         pack();
-    }// </editor-fold>
+    }// </editor-fold>           
+    
+    private void ImpActionPerformed(java.awt.event.ActionEvent evt) {
+        if(evt.getSource() == ImpButton) {
+            textAns = TaskNameTextField.getText();
+
+            ImportantSize++;
+            ImportantCheckBoxList.get(ImportantSize-1).setText(textAns);
+        }
+    }
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {
 
@@ -608,7 +947,7 @@ public class ToDoUI extends JFrame{
                     
                     
                 }
-                SchoolActionPerformed(evt);
+                SchoolActionPerformed(evt, -1);
  
 
            }
@@ -649,7 +988,7 @@ public class ToDoUI extends JFrame{
                         
                         
                     }
-                    HealthActionPerformed(evt);
+                    HealthActionPerformed(evt, -1);
  
             }
                
@@ -687,7 +1026,7 @@ public class ToDoUI extends JFrame{
                         
                         
                     }
-                    OthersActionPerformed(evt);
+                    OthersActionPerformed(evt, -1);
                 
 
             }
@@ -703,29 +1042,29 @@ public class ToDoUI extends JFrame{
             textAns = TaskNameTextField.getText();
             CategoryAns = (String)CategoryComboBox.getSelectedItem();
 
-            if(CategoryAns == "School Work" && SchoolSize < 10) {
+            if(CategoryAns == "School Work" && SchoolSize < 30) {
                 SchoolSize++;
                 System.out.println(SchoolSize);
 
                 SchoolCheckBoxList.get(SchoolSize-1).setText(textAns);
-                SchoolActionPerformed(evt);
+                SchoolActionPerformed(evt, -1);
 
 
             }
-            else if(CategoryAns == "Health" && HealthSize < 10) {
+            else if(CategoryAns == "Health" && HealthSize < 30) {
 
                 HealthSize++;
 
                 HealthCheckBoxList.get(HealthSize-1).setText(textAns);
-                HealthActionPerformed(evt);
+                HealthActionPerformed(evt, -1);
 
             }
-            else if(CategoryAns == "Others" && OthersSize < 10){
+            else if(CategoryAns == "Others" && OthersSize < 30){
 
                 OthersSize++;
 
                 OthersCheckBoxList.get(OthersSize-1).setText(textAns);
-                OthersActionPerformed(evt);
+                OthersActionPerformed(evt, -1);
 
 
 
@@ -733,7 +1072,10 @@ public class ToDoUI extends JFrame{
         }
     }
 
-    private void SchoolActionPerformed(java.awt.event.ActionEvent evt) {
+    private void SchoolActionPerformed(java.awt.event.ActionEvent evt, int id) {
+        if(id != -1){
+            TaskNameTextField.setText(SchoolCheckBoxList.get(id).getText());
+        }
         System.out.println("click");
         SchoolCheck = 0;
 
@@ -758,7 +1100,10 @@ public class ToDoUI extends JFrame{
         SchoolProgressBar.setValue(int_proportion);
     }
 
-    private void HealthActionPerformed(java.awt.event.ActionEvent evt) {
+    private void HealthActionPerformed(java.awt.event.ActionEvent evt, int id) {
+        if(id != -1){
+            TaskNameTextField.setText(HealthCheckBoxList.get(id).getText());
+        }
         System.out.println("click");
         HealthCheck = 0;
 
@@ -782,7 +1127,10 @@ public class ToDoUI extends JFrame{
         HealthProgressBar.setValue(int_proportion);
     }
 
-    private void OthersActionPerformed(java.awt.event.ActionEvent evt) {
+    private void OthersActionPerformed(java.awt.event.ActionEvent evt, int id) {
+        if(id != -1){
+            TaskNameTextField.setText(OthersCheckBoxList.get(id).getText());
+        }
         System.out.println("click");
         OthersCheck = 0;
 
@@ -806,37 +1154,51 @@ public class ToDoUI extends JFrame{
         OthersProgressBar.setValue(int_proportion);
     }
 
-    private void MenuActionPerformed(java.awt.event.ActionEvent evt) {
-        //clear file and write a file with checkbox arraylist info
+    private void Imp2ActionPerformed(java.awt.event.ActionEvent evt, int id) {
+        String imp_tmp = ImportantCheckBoxList.get(ImportantSize-1).getText();
+        boolean imp_bool = ImportantCheckBoxList.get(ImportantSize-1).isSelected();
 
-        //go back to menu
+        ImportantCheckBoxList.get(id).setText(imp_tmp);
+        ImportantCheckBoxList.get(id).setSelected(imp_bool);
+
+        ImportantCheckBoxList.get(ImportantSize-1).setText("");
+        ImportantCheckBoxList.get(ImportantSize-1).setSelected(false);
+
+        ImportantSize--;
     }
-
-    private void printAll() {
-        for(int i = 0; i < SchoolSize; i++) {
-            System.out.println(SchoolCheckBoxList.get(i).getText());
-            System.out.println(SchoolCheckBoxList.get(i).isSelected());
-        }
-        for(int i = 0; i < HealthSize; i++) {
-            System.out.println(HealthCheckBoxList.get(i).getText());
-            System.out.println(SchoolCheckBoxList.get(i).isSelected());
-        }
-        for(int i = 0; i < OthersSize; i++) {
-            System.out.println(OthersCheckBoxList.get(i).getText());
-            System.out.println(SchoolCheckBoxList.get(i).isSelected());
-        }
-    }
-
+    
     // Variables declaration - do not modify                     
     private javax.swing.JButton AddButton;
+    private javax.swing.JLabel BUDDY;
     private javax.swing.JComboBox<String> CategoryComboBox;
     private javax.swing.JLabel CategoryLabel;
     private javax.swing.JButton DeleteButton;
+    private javax.swing.JButton ImpButton;
     private javax.swing.JLabel EnterTaskLabel;
     private javax.swing.JCheckBox H1;
     private javax.swing.JCheckBox H10;
+    private javax.swing.JCheckBox H11;
+    private javax.swing.JCheckBox H12;
+    private javax.swing.JCheckBox H13;
+    private javax.swing.JCheckBox H14;
+    private javax.swing.JCheckBox H15;
+    private javax.swing.JCheckBox H16;
+    private javax.swing.JCheckBox H17;
+    private javax.swing.JCheckBox H18;
+    private javax.swing.JCheckBox H19;
     private javax.swing.JCheckBox H2;
+    private javax.swing.JCheckBox H20;
+    private javax.swing.JCheckBox H21;
+    private javax.swing.JCheckBox H22;
+    private javax.swing.JCheckBox H23;
+    private javax.swing.JCheckBox H24;
+    private javax.swing.JCheckBox H25;
+    private javax.swing.JCheckBox H26;
+    private javax.swing.JCheckBox H27;
+    private javax.swing.JCheckBox H28;
+    private javax.swing.JCheckBox H29;
     private javax.swing.JCheckBox H3;
+    private javax.swing.JCheckBox H30;
     private javax.swing.JCheckBox H4;
     private javax.swing.JCheckBox H5;
     private javax.swing.JCheckBox H6;
@@ -845,11 +1207,38 @@ public class ToDoUI extends JFrame{
     private javax.swing.JCheckBox H9;
     private javax.swing.JLabel HealthLabel;
     private javax.swing.JPanel HealthPanel;
-    private javax.swing.JProgressBar HealthProgressBar;
+    private javax.swing.JScrollPane HealthScrollPane;
+    private javax.swing.JCheckBox Imp1;
+    private javax.swing.JCheckBox Imp2;
+    private javax.swing.JCheckBox Imp3;
+    private javax.swing.JCheckBox Imp4;
+    private javax.swing.JCheckBox Imp5;
+    private javax.swing.JPanel ImportantWorkPanel;
+    private javax.swing.JButton MenuButton;
     private javax.swing.JCheckBox O1;
     private javax.swing.JCheckBox O10;
+    private javax.swing.JCheckBox O11;
+    private javax.swing.JCheckBox O12;
+    private javax.swing.JCheckBox O13;
+    private javax.swing.JCheckBox O14;
+    private javax.swing.JCheckBox O15;
+    private javax.swing.JCheckBox O16;
+    private javax.swing.JCheckBox O17;
+    private javax.swing.JCheckBox O18;
+    private javax.swing.JCheckBox O19;
     private javax.swing.JCheckBox O2;
+    private javax.swing.JCheckBox O20;
+    private javax.swing.JCheckBox O21;
+    private javax.swing.JCheckBox O22;
+    private javax.swing.JCheckBox O23;
+    private javax.swing.JCheckBox O24;
+    private javax.swing.JCheckBox O25;
+    private javax.swing.JCheckBox O26;
+    private javax.swing.JCheckBox O27;
+    private javax.swing.JCheckBox O28;
+    private javax.swing.JCheckBox O29;
     private javax.swing.JCheckBox O3;
+    private javax.swing.JCheckBox O30;
     private javax.swing.JCheckBox O4;
     private javax.swing.JCheckBox O5;
     private javax.swing.JCheckBox O6;
@@ -857,25 +1246,50 @@ public class ToDoUI extends JFrame{
     private javax.swing.JCheckBox O8;
     private javax.swing.JCheckBox O9;
     private javax.swing.JPanel OthersPanel;
-    private javax.swing.JProgressBar OthersProgressBar;
-    private javax.swing.JCheckBox School10;
+    private javax.swing.JScrollPane OthersScrollPane;
+    private javax.swing.JLabel PriorityTaskLabel;
+    private javax.swing.JLabel STUDY;
     private javax.swing.JCheckBox School1;
+    private javax.swing.JCheckBox School10;
+    private javax.swing.JCheckBox School11;
+    private javax.swing.JCheckBox School12;
+    private javax.swing.JCheckBox School13;
+    private javax.swing.JCheckBox School14;
+    private javax.swing.JCheckBox School15;
+    private javax.swing.JCheckBox School16;
+    private javax.swing.JCheckBox School17;
+    private javax.swing.JCheckBox School18;
+    private javax.swing.JCheckBox School19;
     private javax.swing.JCheckBox School2;
+    private javax.swing.JCheckBox School20;
+    private javax.swing.JCheckBox School21;
+    private javax.swing.JCheckBox School22;
+    private javax.swing.JCheckBox School23;
+    private javax.swing.JCheckBox School24;
+    private javax.swing.JCheckBox School25;
+    private javax.swing.JCheckBox School26;
+    private javax.swing.JCheckBox School27;
+    private javax.swing.JCheckBox School28;
+    private javax.swing.JCheckBox School29;
     private javax.swing.JCheckBox School3;
+    private javax.swing.JCheckBox School30;
     private javax.swing.JCheckBox School4;
     private javax.swing.JCheckBox School5;
     private javax.swing.JCheckBox School6;
     private javax.swing.JCheckBox School7;
     private javax.swing.JCheckBox School8;
     private javax.swing.JCheckBox School9;
-    private javax.swing.JProgressBar SchoolProgressBar;
+    private javax.swing.JScrollPane SchoolScrollPane;
     private javax.swing.JLabel SchoolWorkLabel;
     private javax.swing.JPanel SchoolWorkPanel;
     private javax.swing.JTextField TaskNameTextField;
-    private javax.swing.JButton MenuButton;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel TopPanel;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JProgressBar SchoolProgressBar;
+    private javax.swing.JProgressBar HealthProgressBar;
+    private javax.swing.JProgressBar OthersProgressBar;
     private javax.swing.JLabel othersLabel;
+    // End of variables declaration                   
 
-    private String textAns;                 
-    private String CategoryAns;
+    
 }
