@@ -27,15 +27,16 @@ public class ToDoUI extends JFrame{
       * read file and assign function
       * menu close, clear and write a final file
       */
-    private ArrayList<JCheckBox> SchoolCheckBoxList = new ArrayList<JCheckBox>();
-    private ArrayList<JCheckBox> HealthCheckBoxList = new ArrayList<JCheckBox>();
-    private ArrayList<JCheckBox> OthersCheckBoxList = new ArrayList<JCheckBox>();
-    private ArrayList<JCheckBox> ImportantCheckBoxList = new ArrayList<JCheckBox>();
+    public ArrayList<Info> AllCombined;
+    public ArrayList<Info> SchoolCheckBoxList;
+    public ArrayList<Info> HealthCheckBoxList;
+    public ArrayList<Info> OthersCheckBoxList;
+    public ArrayList<Info> ImportantCheckBoxList;
 
-    private int SchoolSize;
-    private int HealthSize;
-    private int OthersSize;
-    private int ImportantSize;
+    public int SchoolSize;
+    public int HealthSize;
+    public int OthersSize;
+    public int ImportantSize;
 
     private int SchoolCheck;
     private int HealthCheck;
@@ -45,12 +46,25 @@ public class ToDoUI extends JFrame{
     private String CategoryAns;
 
     ToDoUI(ToDoDriver driver) {
+        this.driver = driver;
+        AllCombined = new ArrayList<Info>();
+        SchoolCheckBoxList = new ArrayList<Info>();
+        HealthCheckBoxList = new ArrayList<Info>();
+        OthersCheckBoxList = new ArrayList<Info>();
+        ImportantCheckBoxList = new ArrayList<Info>();
         initComponents();
         setVisible(true);
 
     }
 
     private void initComponents() {
+
+        
+
+        System.out.println(AllCombined);
+        System.out.println(SchoolCheckBoxList);
+        System.out.println("hi");
+
 
         TopPanel = new javax.swing.JPanel();
         EnterTaskLabel = new javax.swing.JLabel();
@@ -94,42 +108,50 @@ public class ToDoUI extends JFrame{
         PriorityTaskLabel = new javax.swing.JLabel();
 
 
-        ImportantCheckBoxList.add(Imp1);
+        Info Imp1Info = new Info(Imp1, "Star");
+        ImportantCheckBoxList.add(Imp1Info);
+
         Imp1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Imp2ActionPerformed(evt, 0);
             }
         });
 
-        ImportantCheckBoxList.add(Imp2);
+        Info Imp2Info = new Info(Imp2, "Star");
+        ImportantCheckBoxList.add(Imp2Info);
+
         Imp2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Imp2ActionPerformed(evt, 1);
             }
         });
 
-        ImportantCheckBoxList.add(Imp3);
+        Info Imp3Info = new Info(Imp3, "Star");
+        ImportantCheckBoxList.add(Imp3Info);
+
         Imp3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Imp2ActionPerformed(evt, 2);
             }
         });
 
-        ImportantCheckBoxList.add(Imp4);
+        Info Imp4Info = new Info(Imp4,"Star");
+        ImportantCheckBoxList.add(Imp4Info);
+
         Imp4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Imp2ActionPerformed(evt, 3);
             }
         });
 
-        ImportantCheckBoxList.add(Imp5);
+        Info Imp5Info = new Info(Imp5, "Star");
+        ImportantCheckBoxList.add(Imp5Info);
+
         Imp5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Imp2ActionPerformed(evt, 4);
             }
         });
-
-
 
         SchoolProgressBar.setStringPainted(true);
         HealthProgressBar.setStringPainted(true);
@@ -162,6 +184,11 @@ public class ToDoUI extends JFrame{
 
 
         MenuButton.setText("MENU");
+        MenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuActionPerformed(evt);
+            }
+        });
 
         ImpButton.setText("⭐");
         ImpButton.addActionListener(new java.awt.event.ActionListener() {
@@ -384,14 +411,51 @@ public class ToDoUI extends JFrame{
         
 
         pack();
-    }// </editor-fold>           
+    }// </editor-fold>        
+    
+    private void MenuActionPerformed(java.awt.event.ActionEvent evt) {
+        for(int i = 0; i < SchoolSize; i++) {
+            SchoolCheckBoxList.get(i).loading();
+        }
+        for(int i = 0; i <  HealthSize; i++) {
+            HealthCheckBoxList.get(i).loading();
+        }
+        for(int i = 0; i < OthersSize; i++) {
+            OthersCheckBoxList.get(i).loading();
+        }
+        for(int i = 0; i < ImportantSize; i++) {
+            ImportantCheckBoxList.get(i).loading();
+        }
+
+        System.out.println("hello");
+
+        for(int i = 0; i < SchoolSize; i++) {
+            AllCombined.add(SchoolCheckBoxList.get(i));
+        }
+        for(int i = 0; i < HealthSize; i++) {
+            AllCombined.add(HealthCheckBoxList.get(i));
+        }
+        for(int i = 0; i < OthersSize; i++) {
+            AllCombined.add(OthersCheckBoxList.get(i));
+        }
+        for(int i = 0; i < ImportantSize; i++) {
+            AllCombined.add(ImportantCheckBoxList.get(i));
+        }
+        
+        System.out.println(AllCombined);
+
+        // this.driver.writeJSON();
+
+
+    }
     
     private void ImpActionPerformed(java.awt.event.ActionEvent evt) {
         if(evt.getSource() == ImpButton) {
             textAns = TaskNameTextField.getText();
 
             ImportantSize++;
-            ImportantCheckBoxList.get(ImportantSize-1).setText(textAns);
+            ImportantCheckBoxList.get(ImportantSize-1).getCheckBox().setText(textAns);
+            
         }
     }
 
@@ -411,8 +475,8 @@ public class ToDoUI extends JFrame{
 
                     if(textAns.equals(SchoolCheckBoxList.get(i).getText())){
 
-                        SchoolCheckBoxList.get(i).setText("");
-                        SchoolWorkPanel.remove((JCheckBox)SchoolCheckBoxList.get(i));
+                        SchoolCheckBoxList.get(i).getCheckBox().setText("");
+                        SchoolWorkPanel.remove((JCheckBox)SchoolCheckBoxList.get(i).getCheckBox());
 
                         SchoolCheckBoxList.remove(i);
 
@@ -436,7 +500,8 @@ public class ToDoUI extends JFrame{
                         if(textAns.equals(HealthCheckBoxList.get(i2).getText())){
                             System.out.println("found match");
 
-                            HealthPanel.remove(SchoolCheckBoxList.get(i2));
+                            HealthCheckBoxList.get(i2).getCheckBox().setText("");
+                            HealthPanel.remove((JCheckBox)HealthCheckBoxList.get(i2).getCheckBox());
 
                             HealthCheckBoxList.remove(i2);
                             
@@ -461,7 +526,9 @@ public class ToDoUI extends JFrame{
                         if(textAns.equals(OthersCheckBoxList.get(i3).getText())){
                             System.out.println("found match");
 
-                            OthersPanel.remove(SchoolCheckBoxList.get(i3));
+                            OthersCheckBoxList.get(i3).getCheckBox().setText("");
+                            OthersPanel.remove((JCheckBox)OthersCheckBoxList.get(i3).getCheckBox());
+
                             OthersCheckBoxList.remove(i3);
                             
 
@@ -496,16 +563,14 @@ public class ToDoUI extends JFrame{
                 SchoolSize++;
                 System.out.println(SchoolSize);
 
-                SchoolCheckBoxList.add(new JCheckBox());
-                SchoolCheckBoxList.get(SchoolSize-1).setText(textAns);
+                SchoolCheckBoxList.add(new Info(new JCheckBox(textAns), "School Work"));
 
-                SchoolWorkPanel.add(SchoolCheckBoxList.get(SchoolSize-1));
+                SchoolWorkPanel.add(SchoolCheckBoxList.get(SchoolSize-1).getCheckBox());
                 SchoolActionPerformed(evt);
 
-                SchoolCheckBoxList.get(SchoolSize-1).addActionListener(new java.awt.event.ActionListener() {
+                SchoolCheckBoxList.get(SchoolSize-1).getCheckBox().addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                             System.out.println("Schoolsize" + SchoolSize);
-
                             SchoolActionPerformed(evt);
 
                     }
@@ -518,14 +583,13 @@ public class ToDoUI extends JFrame{
 
                 HealthSize++;
 
-                HealthCheckBoxList.add(new JCheckBox());
-                HealthCheckBoxList.get(HealthSize-1).setText(textAns);
+                HealthCheckBoxList.add(new Info(new JCheckBox(textAns), "Health"));
 
-                HealthPanel.add(HealthCheckBoxList.get(HealthSize-1));
+                HealthPanel.add(HealthCheckBoxList.get(HealthSize-1).getCheckBox());
                
                 HealthActionPerformed(evt);
 
-                HealthCheckBoxList.get(HealthSize-1).addActionListener(new java.awt.event.ActionListener() {
+                HealthCheckBoxList.get(HealthSize-1).getCheckBox().addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                             HealthActionPerformed(evt);
@@ -540,14 +604,13 @@ public class ToDoUI extends JFrame{
 
                 OthersSize++;
 
-                OthersCheckBoxList.add(new JCheckBox());
-                OthersCheckBoxList.get(OthersSize-1).setText(textAns);
+                OthersCheckBoxList.add(new Info(new JCheckBox(textAns), "Others"));
 
-                OthersPanel.add(OthersCheckBoxList.get(OthersSize-1));
+                OthersPanel.add(OthersCheckBoxList.get(OthersSize-1).getCheckBox());
 
                 OthersActionPerformed(evt);
 
-                OthersCheckBoxList.get(OthersSize-1).addActionListener(new java.awt.event.ActionListener() {
+                OthersCheckBoxList.get(OthersSize-1).getCheckBox().addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                             OthersActionPerformed(evt);
@@ -565,10 +628,12 @@ public class ToDoUI extends JFrame{
     private void SchoolActionPerformed(java.awt.event.ActionEvent evt) {
 
         System.out.println("click");
+
+        
         SchoolCheck = 0;
 
         for(int count = 0; count < SchoolSize; count++) {
-            if(SchoolCheckBoxList.get(count).isSelected()) {
+            if(SchoolCheckBoxList.get(count).getCheckBox().isSelected()) {
                 System.out.println("isselected");
                 System.out.println("cout" + count);
 
@@ -594,7 +659,7 @@ public class ToDoUI extends JFrame{
         HealthCheck = 0;
 
         for(int count = 0; count < HealthSize; count++) {
-            if(HealthCheckBoxList.get(count).isSelected()) {
+            if(HealthCheckBoxList.get(count).getCheckBox().isSelected()) {
                 System.out.println("isselected");
                 System.out.println("cout" + count);
                 HealthCheck++;
@@ -618,7 +683,7 @@ public class ToDoUI extends JFrame{
         OthersCheck = 0;
 
         for(int count = 0; count < OthersSize; count++) {
-            if(OthersCheckBoxList.get(count).isSelected()) {
+            if(OthersCheckBoxList.get(count).getCheckBox().isSelected()) {
                 System.out.println("isselected");
                 System.out.println("cout" + count);
                 OthersCheck++;
@@ -638,18 +703,24 @@ public class ToDoUI extends JFrame{
     }
 
     private void Imp2ActionPerformed(java.awt.event.ActionEvent evt, int id) {
-        if(ImportantCheckBoxList.get(id).getText().equals("")) {
-            ImportantCheckBoxList.get(id).setSelected(false);
+        if(ImportantCheckBoxList.get(id).getCheckBox().getText().equals("")) {
+            ImportantCheckBoxList.get(id).getCheckBox().setSelected(false);
+
+            for(int i = 0; i < ImportantSize; i++) {
+                ImportantCheckBoxList.get(i).getCheckBox().setSelected(false);
+            }
         }
         else {
-            String imp_tmp = ImportantCheckBoxList.get(ImportantSize-1).getText();
-            boolean imp_bool = ImportantCheckBoxList.get(ImportantSize-1).isSelected();
+            String imp_tmp = ImportantCheckBoxList.get(ImportantSize-1).getCheckBox().getText();
 
-            ImportantCheckBoxList.get(id).setText(imp_tmp);
-            ImportantCheckBoxList.get(id).setSelected(imp_bool);
+            ImportantCheckBoxList.get(id).getCheckBox().setText(imp_tmp);
 
-            ImportantCheckBoxList.get(ImportantSize-1).setText("");
-            ImportantCheckBoxList.get(ImportantSize-1).setSelected(false);
+            ImportantCheckBoxList.get(ImportantSize-1).getCheckBox().setText("");
+            ImportantCheckBoxList.get(ImportantSize-1).getCheckBox().setSelected(false);
+
+            for(int i = 0; i < ImportantSize; i++) {
+                ImportantCheckBoxList.get(i).getCheckBox().setSelected(false);
+            }
 
             ImportantSize--;
         }
