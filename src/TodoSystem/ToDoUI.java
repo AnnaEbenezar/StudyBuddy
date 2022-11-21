@@ -414,6 +414,8 @@ public class ToDoUI extends JFrame{
     }// </editor-fold>        
     
     private void MenuActionPerformed(java.awt.event.ActionEvent evt) {
+        AllCombined.removeAll(AllCombined);
+
         for(int i = 0; i < SchoolSize; i++) {
             SchoolCheckBoxList.get(i).loading();
         }
@@ -444,7 +446,7 @@ public class ToDoUI extends JFrame{
         
         System.out.println(AllCombined);
 
-        // this.driver.writeJSON();
+        this.driver.writeJSON();
 
 
     }
@@ -736,7 +738,7 @@ public class ToDoUI extends JFrame{
     private javax.swing.JLabel EnterTaskLabel;
 
     private javax.swing.JLabel HealthLabel;
-    private javax.swing.JPanel HealthPanel;
+    public javax.swing.JPanel HealthPanel;
     private javax.swing.JScrollPane HealthScrollPane;
     private javax.swing.JCheckBox Imp1;
     private javax.swing.JCheckBox Imp2;
@@ -746,14 +748,14 @@ public class ToDoUI extends JFrame{
     private javax.swing.JPanel ImportantWorkPanel;
     private javax.swing.JButton MenuButton;
 
-    private javax.swing.JPanel OthersPanel;
+    public javax.swing.JPanel OthersPanel;
     private javax.swing.JScrollPane OthersScrollPane;
     private javax.swing.JLabel PriorityTaskLabel;
     private javax.swing.JLabel STUDY;
    
     private javax.swing.JScrollPane SchoolScrollPane;
     private javax.swing.JLabel SchoolWorkLabel;
-    private javax.swing.JPanel SchoolWorkPanel;
+    public javax.swing.JPanel SchoolWorkPanel;
     private javax.swing.JTextField TaskNameTextField;
     private javax.swing.JPanel TopPanel;
     private javax.swing.JPanel jPanel3;

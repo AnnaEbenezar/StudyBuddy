@@ -10,6 +10,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.AllPermission;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.JCheckBox;
 
@@ -67,6 +69,7 @@ public class ToDoDriver implements ModuleDriver {
         int impcount = 0;
         
         readJSON();
+        System.out.println(UI.AllCombined.size());
 
         for(int i = 0; i < UI.AllCombined.size(); i++) {
             if(UI.AllCombined.get(i).getCategory().equals("School Work")) {
@@ -90,6 +93,16 @@ public class ToDoDriver implements ModuleDriver {
                 UI.ImportantSize++;
             }
         }
+
+        for(int i = 0; i < UI.SchoolCheckBoxList.size();i++) {
+            UI.SchoolWorkPanel.add(UI.SchoolCheckBoxList.get(i).getCheckBox());
+        }
+        for(int i = 0; i < UI.HealthCheckBoxList.size(); i++) {
+            UI.HealthPanel.add(UI.HealthCheckBoxList.get(i).getCheckBox());
+        }
+        for(int i = 0; i < UI.OthersCheckBoxList.size(); i++) {
+            UI.OthersPanel.add(UI.OthersCheckBoxList.get(i).getCheckBox());
+        }
         this.runningFlag = true;
     }
 
@@ -98,7 +111,7 @@ public class ToDoDriver implements ModuleDriver {
 
         try (Writer writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
 
-            var gson = new GsonBuilder().setPrettyPrinting().create();
+            Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
             gson.toJson(UI.AllCombined, writer);
             writer.close();
         } catch (IOException e) {
@@ -109,7 +122,7 @@ public class ToDoDriver implements ModuleDriver {
     }
 
     public void readJSON() {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         
 
         try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
@@ -119,6 +132,12 @@ public class ToDoDriver implements ModuleDriver {
             UI.AllCombined.removeAll(UI.AllCombined);
 
             UI.AllCombined = gson.fromJson(reader, courseList);
+            // List<Info> infos = Arrays.asList(gson.fromJson(reader, Info[].class));
+            // UI.AllCombined.addAll(infos);
+            
+            if (UI.AllCombined == null) {
+                UI.AllCombined = new ArrayList<Info>();
+            }
 
         } catch (IOException e) {
             e.getMessage();
