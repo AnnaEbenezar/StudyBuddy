@@ -31,8 +31,11 @@ public class ToDoDriver implements ModuleDriver {
 
     public Path path;
     private User user;
-    
 
+    public ArrayList<Task> Imp = new ArrayList<>();
+    public ArrayList<Task> SchoolWork = new ArrayList<>();
+    public ArrayList<Task> Health = new ArrayList<>();
+    public ArrayList<Task> Others = new ArrayList<>();
 
 
     private ToDoDriver(MainDriver main) {
@@ -73,21 +76,29 @@ public class ToDoDriver implements ModuleDriver {
                 UI.SchoolCheckBoxList.add(new Info(new JCheckBox(UI.AllCombined.get(i).getText()), "School Work"));
                 UI.SchoolCheckBoxList.get(UI.SchoolSize).getCheckBox().setSelected(UI.AllCombined.get(i).getSelected());
                 UI.SchoolSize++;
+
+                SchoolWork.add(new Task(UI.AllCombined.get(i).getText(), UI.AllCombined.get(i).getSelected()));
             }
             else if (UI.AllCombined.get(i).getCategory().equals("Health")) {
                 UI.HealthCheckBoxList.add(new Info(new JCheckBox(UI.AllCombined.get(i).getText()), "Health"));
                 UI.HealthCheckBoxList.get(UI.HealthSize).getCheckBox().setSelected(UI.AllCombined.get(i).getSelected());
                 UI.HealthSize++;
+
+                Health.add(new Task(UI.AllCombined.get(i).getText(), UI.AllCombined.get(i).getSelected()));
             }
             else if (UI.AllCombined.get(i).getCategory().equals("Others")) {
                 UI.OthersCheckBoxList.add(new Info(new JCheckBox(UI.AllCombined.get(i).getText()), "Others"));
                 UI.OthersCheckBoxList.get(UI.OthersSize).getCheckBox().setSelected(UI.AllCombined.get(i).getSelected());
                 UI.OthersSize++;
+
+                Others.add(new Task(UI.AllCombined.get(i).getText(), UI.AllCombined.get(i).getSelected()));
             }
             else if(UI.AllCombined.get(i).getCategory().equals("Star")) {
                 UI.ImportantCheckBoxList.get(impcount).setText(UI.AllCombined.get(i).getText());
                 impcount++;
                 UI.ImportantSize++;
+
+                Imp.add(new Task(UI.AllCombined.get(i).getText(), false));
             }
         }
         this.runningFlag = true;
@@ -109,7 +120,7 @@ public class ToDoDriver implements ModuleDriver {
     }
 
     public void readJSON() {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         
 
         try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
@@ -125,5 +136,6 @@ public class ToDoDriver implements ModuleDriver {
         }
     }
 
-    
+    // -------------------------------------------------------------------------------------------
+
 }
