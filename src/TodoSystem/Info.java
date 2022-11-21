@@ -2,11 +2,17 @@ package TodoSystem;
 
 import javax.swing.*;
 
+import com.google.gson.annotations.Expose;
+
 public class Info {
 
+    @Expose(serialize = false)
     JCheckBox checkbox;
+    @Expose(serialize = true)
     String text;
+    @Expose(serialize = true)
     boolean select;
+    @Expose(serialize = true)
     String category;
 
     Info(JCheckBox checkbox, String category) {
