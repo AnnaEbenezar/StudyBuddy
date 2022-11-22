@@ -1,77 +1,7 @@
 [
   {
-    "text": "111",
+    "text": "test",
     "select": false,
     "category": "School Work"
-  },
-  {
-    "text": "test1",
-    "select": false,
-    "category": "School Work"
-  },
-  {
-    "text": "test2",
-    "select": true,
-    "category": "School Work"
-  },
-  {
-    "text": "test3",
-    "select": true,
-    "category": "School Work"
-  },
-  {
-    "text": "test4",
-    "select": true,
-    "category": "School Work"
-  },
-  {
-    "text": "222",
-    "select": true,
-    "category": "Health"
-  },
-  {
-    "text": "222",
-    "select": true,
-    "category": "Health"
-  },
-  {
-    "text": "test1",
-    "select": true,
-    "category": "Health"
-  },
-  {
-    "text": "test4",
-    "select": true,
-    "category": "Health"
-  },
-  {
-    "text": "o5",
-    "select": true,
-    "category": "Others"
-  },
-  {
-    "text": "o6",
-    "select": true,
-    "category": "Others"
-  },
-  {
-    "text": "o6",
-    "select": false,
-    "category": "Others"
-  },
-  {
-    "text": "o7",
-    "select": true,
-    "category": "Others"
-  },
-  {
-    "text": "o7",
-    "select": false,
-    "category": "Others"
-  },
-  {
-    "text": "test3",
-    "select": false,
-    "category": "Star"
   }
 ]

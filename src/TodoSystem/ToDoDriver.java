@@ -68,7 +68,6 @@ public class ToDoDriver implements ModuleDriver {
         panelHealthProgressBar();
         panelOthersProgressBar();
         panelSchoolProgressBar();
-        panelUpdatePriorityList();
     }
 
     public static ToDoDriver getInstance(MainDriver main) {
@@ -176,32 +175,32 @@ public class ToDoDriver implements ModuleDriver {
         }
 
         for(int k = 0; k < UI.SchoolCheckBoxList.size(); k++) {
-            int tmpK = k;
+            String s = SchoolWork.get(k).taskName;
             UI.SchoolCheckBoxList.get(k).getCheckBox().addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     UI.SchoolActionPerformed();
-                    UI.setTaskName(SchoolWork.get(tmpK).taskName);
+                    UI.setTaskName(s);
                     UI.setCategoryComboBox("School Work");
                 }
             });
         }
         
         for(int k = 0; k < UI.HealthCheckBoxList.size(); k++) {
-            int tmpK = k;
+            String s = Health.get(k).taskName;
             UI.HealthCheckBoxList.get(k).getCheckBox().addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     UI.HealthActionPerformed();
-                    UI.setTaskName(Health.get(tmpK).taskName);
+                    UI.setTaskName(s);
                     UI.setCategoryComboBox("Health");
                 }
             });
         }
         for(int k = 0; k < UI.OthersCheckBoxList.size(); k++) {
-            int tmpK = k;
+            String s = Others.get(k).taskName;
             UI.OthersCheckBoxList.get(k).getCheckBox().addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     UI.OthersActionPerformed();
-                    UI.setTaskName(Others.get(tmpK).taskName);
+                    UI.setTaskName(s);
                     UI.setCategoryComboBox("Others");
                 }
             });
@@ -259,7 +258,7 @@ public class ToDoDriver implements ModuleDriver {
             SchoolWork.add(t);
             panelSchoolProgressBar();
         }
-        else if(category.equals("Heath")) {
+        else if(category.equals("Health")) {
             Health.add(t);
             panelHealthProgressBar();
         }
@@ -284,7 +283,7 @@ public class ToDoDriver implements ModuleDriver {
 
 
     public void save() {
-        AllCombined.removeAll(AllCombined);
+        AllCombined = new ArrayList<>();
 
         for(int i = 0; i < SchoolWork.size(); i++) {
             AllCombined.add(new Info(SchoolWork.get(i), "School Work"));
@@ -351,10 +350,6 @@ public class ToDoDriver implements ModuleDriver {
         Widget.setProgressBarOthers(ans);
     }
 
-    public void panelUpdatePriorityList() {
-
-    }
-
     public void widgetAdd() {
         String selectedText = Widget.buttonGroup3.getSelection().getActionCommand();
         String taskName = Widget.getTaskTextField();
@@ -370,7 +365,6 @@ public class ToDoDriver implements ModuleDriver {
         }
         else if(selectedText == "Others") {
             addTask(new Task(taskName), "Others");
-
 
         }
         else if(selectedText == "Star") {

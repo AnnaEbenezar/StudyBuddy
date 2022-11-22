@@ -478,7 +478,7 @@ public class ToDoUI extends JFrame{
                             repaint();
 
 
-                            driver.Health.remove(i);
+                            driver.Health.remove(i2);
                             break;
                         }
                    }
@@ -500,13 +500,12 @@ public class ToDoUI extends JFrame{
                             
 
                             OthersSize--;
-
-                            SchoolWorkPanel.revalidate();
+                            OthersPanel.revalidate();
                             validate();
                             repaint();
 
 
-                            driver.Others.remove(i);
+                            driver.Others.remove(i3);
                             break;
                         }
                    }
@@ -516,7 +515,7 @@ public class ToDoUI extends JFrame{
             }
             
 
-
+            driver.save();
         }
     }
         
@@ -527,7 +526,7 @@ public class ToDoUI extends JFrame{
             textAns = TaskNameTextField.getText();
             String s = textAns;
             CategoryAns = (String)CategoryComboBox.getSelectedItem();
-            driver.addTask(new Task(textAns, false), CategoryAns);
+            driver.addTask(new Task(s, false), CategoryAns);
         
         }
     }
@@ -536,7 +535,6 @@ public class ToDoUI extends JFrame{
         String s = t.taskName;
         if(category.equals("School Work")) {
             SchoolSize++;
-            System.out.println(SchoolSize);
 
             SchoolCheckBoxList.add(new Info(new JCheckBox(s), "School Work"));
             SchoolWorkPanel.add(SchoolCheckBoxList.get(SchoolSize-1).getCheckBox());
@@ -557,13 +555,10 @@ public class ToDoUI extends JFrame{
 
         }
         else if(category.equals("Health")) {
-
             HealthSize++;
 
             HealthCheckBoxList.add(new Info(new JCheckBox(s), "Health"));
-
             HealthPanel.add(HealthCheckBoxList.get(HealthSize-1).getCheckBox());
-            driver.Health.add(new Task(textAns, false));
             HealthActionPerformed();
 
             HealthCheckBoxList.get(HealthSize-1).getCheckBox().addActionListener(new java.awt.event.ActionListener() {
@@ -585,9 +580,7 @@ public class ToDoUI extends JFrame{
             OthersSize++;
 
             OthersCheckBoxList.add(new Info(new JCheckBox(s), "Others"));
-
             OthersPanel.add(OthersCheckBoxList.get(OthersSize-1).getCheckBox());
-            driver.Others.add(new Task(textAns, false));
             OthersActionPerformed();
 
             OthersCheckBoxList.get(OthersSize-1).getCheckBox().addActionListener(new java.awt.event.ActionListener() {
@@ -609,8 +602,6 @@ public class ToDoUI extends JFrame{
     public void SchoolActionPerformed() {
 
         System.out.println("click");
-
-        
         SchoolCheck = 0;
 
         for(int count = 0; count < SchoolSize; count++) {
@@ -649,9 +640,9 @@ public class ToDoUI extends JFrame{
             if(HealthCheckBoxList.get(count).getCheckBox().isSelected()) {
                 System.out.println("isselected");
                 System.out.println("cout" + count);
-                HealthCheck++;
 
                 driver.Health.get(count).done = true;
+                HealthCheck++;
             }
             else {
                 driver.Health.get(count).done = false;
@@ -681,9 +672,9 @@ public class ToDoUI extends JFrame{
             if(OthersCheckBoxList.get(count).getCheckBox().isSelected()) {
                 System.out.println("isselected");
                 System.out.println("cout" + count);
-                OthersCheck++;
 
                 driver.Others.get(count).done = true;
+                OthersCheck++;
             }
             else {
                 driver.Others.get(count).done = false;

@@ -277,7 +277,7 @@ public class ScheduleDriver implements ModuleDriver {
                 course = new ArrayList<Courses>();
             }
 
-            if (UI != null) {
+            if (UI != null && UI.isDisplayable()) {
             UI.jComboBox1.removeAllItems();
 
             for (Courses c : course) {
@@ -537,7 +537,7 @@ public class ScheduleDriver implements ModuleDriver {
     }
 
     public void setSelectedDate(int selectDate, int selectMonth, int selectYear, String selectDayOfWeek) {
-        if (UI != null && selectedDate != null && selectedDate.date != 0) {
+        if (UI != null && UI.isDisplayable() && selectedDate != null && selectedDate.date != 0) {
             
             if (selectedDate.date == today.getDate() && selectedDate.month == today.getMonth() && selectedDate.year == today.year) {
                 dayCalendar[todayIndex].setForeground(Color.red);
@@ -553,7 +553,7 @@ public class ScheduleDriver implements ModuleDriver {
         selectedDate.setYear(selectYear);
         selectedDate.setDayOfWeek(selectDayOfWeek);
         // System.out.println(selectedDate);
-        if (UI != null) {
+        if (UI != null && UI.isDisplayable()) {
             this.subjectInfo();
         
             setSelectedDateColor(Color.blue);

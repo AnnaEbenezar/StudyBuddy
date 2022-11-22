@@ -1,0 +1,87 @@
+[
+  {
+    "text": "Linear Algebra Homework",
+    "select": true,
+    "category": "School Work"
+  },
+  {
+    "text": "Technical Writing Paper",
+    "select": false,
+    "category": "School Work"
+  },
+  {
+    "text": "AOOP Presentation",
+    "select": false,
+    "category": "School Work"
+  },
+  {
+    "text": "BA Research",
+    "select": true,
+    "category": "School Work"
+  },
+  {
+    "text": "Study for finals",
+    "select": false,
+    "category": "School Work"
+  },
+  {
+    "text": "Science HW#6",
+    "select": false,
+    "category": "School Work"
+  },
+  {
+    "text": "Take Iron Pills",
+    "select": false,
+    "category": "Health"
+  },
+  {
+    "text": "Go to the gym",
+    "select": true,
+    "category": "Health"
+  },
+  {
+    "text": "Write a journal entry",
+    "select": true,
+    "category": "Health"
+  },
+  {
+    "text": "Check blood sugar",
+    "select": false,
+    "category": "Health"
+  },
+  {
+    "text": "Read a novel",
+    "select": true,
+    "category": "Others"
+  },
+  {
+    "text": "Write a journal entry",
+    "select": false,
+    "category": "Others"
+  },
+  {
+    "text": "Post on Instagram",
+    "select": true,
+    "category": "Others"
+  },
+  {
+    "text": "Rewatch Wakanda Forever",
+    "select": false,
+    "category": "Others"
+  },
+  {
+    "text": "FINISH AOOP PROGRAM",
+    "select": false,
+    "category": "Star"
+  },
+  {
+    "text": "COMORG Research",
+    "select": false,
+    "category": "Star"
+  },
+  {
+    "text": "Finish AOOP PowerPoint",
+    "select": false,
+    "category": "Star"
+  }
+]

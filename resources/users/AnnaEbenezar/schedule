@@ -1,0 +1,445 @@
+[
+  {
+    "courseName": "Linear Algebra",
+    "courseId": "13006006",
+    "classTime": {
+      "hours": 1,
+      "mins": 30
+    },
+    "midtermExam": {
+      "date": 27,
+      "month": 9,
+      "year": 2022,
+      "weekOfYear": 39,
+      "dayOfWeek": "Tuesday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "finalExam": {
+      "date": 29,
+      "month": 11,
+      "year": 2022,
+      "weekOfYear": 48,
+      "dayOfWeek": "Tuesday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "startDate": {
+      "date": 23,
+      "month": 11,
+      "year": 2022,
+      "weekOfYear": 47,
+      "dayOfWeek": "Wednesday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "studyDays": [
+      {
+        "date": 0,
+        "month": 0,
+        "year": 0,
+        "weekOfYear": 0,
+        "dayOfWeek": "Monday",
+        "studyTime": {
+          "hours": 10,
+          "mins": 30
+        }
+      },
+      {
+        "date": 0,
+        "month": 0,
+        "year": 0,
+        "weekOfYear": 0,
+        "dayOfWeek": "Wednesday",
+        "studyTime": {
+          "hours": 13,
+          "mins": 0
+        }
+      }
+    ]
+  },
+  {
+    "courseName": "Business Administration",
+    "courseId": "13006403",
+    "classTime": {
+      "hours": 3,
+      "mins": 0
+    },
+    "midtermExam": {
+      "date": 26,
+      "month": 9,
+      "year": 2022,
+      "weekOfYear": 39,
+      "dayOfWeek": "Monday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "finalExam": {
+      "date": 30,
+      "month": 11,
+      "year": 2022,
+      "weekOfYear": 48,
+      "dayOfWeek": "Wednesday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "startDate": {
+      "date": 23,
+      "month": 11,
+      "year": 2022,
+      "weekOfYear": 47,
+      "dayOfWeek": "Wednesday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "studyDays": [
+      {
+        "date": 0,
+        "month": 0,
+        "year": 0,
+        "weekOfYear": 0,
+        "dayOfWeek": "Wednesday",
+        "studyTime": {
+          "hours": 4,
+          "mins": 0
+        }
+      }
+    ]
+  },
+  {
+    "courseName": "ComOrg",
+    "courseId": "13016207",
+    "classTime": {
+      "hours": 3,
+      "mins": 0
+    },
+    "midtermExam": {
+      "date": 29,
+      "month": 9,
+      "year": 2022,
+      "weekOfYear": 39,
+      "dayOfWeek": "Thursday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "finalExam": {
+      "date": 8,
+      "month": 12,
+      "year": 2022,
+      "weekOfYear": 49,
+      "dayOfWeek": "Thursday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "startDate": {
+      "date": 23,
+      "month": 11,
+      "year": 2022,
+      "weekOfYear": 47,
+      "dayOfWeek": "Wednesday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "studyDays": [
+      {
+        "date": 0,
+        "month": 0,
+        "year": 0,
+        "weekOfYear": 0,
+        "dayOfWeek": "Thursday",
+        "studyTime": {
+          "hours": 9,
+          "mins": 0
+        }
+      }
+    ]
+  },
+  {
+    "courseName": "ComOrg Lab",
+    "courseId": "13016208",
+    "classTime": {
+      "hours": 3,
+      "mins": 0
+    },
+    "midtermExam": {
+      "date": 20,
+      "month": 10,
+      "year": 2022,
+      "weekOfYear": 42,
+      "dayOfWeek": "Thursday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "finalExam": {
+      "date": 24,
+      "month": 11,
+      "year": 2022,
+      "weekOfYear": 47,
+      "dayOfWeek": "Thursday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "startDate": {
+      "date": 23,
+      "month": 11,
+      "year": 2022,
+      "weekOfYear": 47,
+      "dayOfWeek": "Wednesday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "studyDays": [
+      {
+        "date": 0,
+        "month": 0,
+        "year": 0,
+        "weekOfYear": 0,
+        "dayOfWeek": "Thursday",
+        "studyTime": {
+          "hours": 13,
+          "mins": 0
+        }
+      }
+    ]
+  },
+  {
+    "courseName": "DSA",
+    "courseId": "13016212",
+    "classTime": {
+      "hours": 3,
+      "mins": 0
+    },
+    "midtermExam": {
+      "date": 28,
+      "month": 9,
+      "year": 2022,
+      "weekOfYear": 39,
+      "dayOfWeek": "Wednesday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "finalExam": {
+      "date": 6,
+      "month": 12,
+      "year": 2022,
+      "weekOfYear": 49,
+      "dayOfWeek": "Tuesday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "startDate": {
+      "date": 23,
+      "month": 11,
+      "year": 2022,
+      "weekOfYear": 47,
+      "dayOfWeek": "Wednesday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "studyDays": [
+      {
+        "date": 0,
+        "month": 0,
+        "year": 0,
+        "weekOfYear": 0,
+        "dayOfWeek": "Tuesday",
+        "studyTime": {
+          "hours": 9,
+          "mins": 0
+        }
+      }
+    ]
+  },
+  {
+    "courseName": "DSA Lab",
+    "courseId": "13016213",
+    "classTime": {
+      "hours": 3,
+      "mins": 0
+    },
+    "midtermExam": {
+      "date": 28,
+      "month": 9,
+      "year": 2022,
+      "weekOfYear": 39,
+      "dayOfWeek": "Wednesday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "finalExam": {
+      "date": 6,
+      "month": 12,
+      "year": 2022,
+      "weekOfYear": 49,
+      "dayOfWeek": "Tuesday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "startDate": {
+      "date": 23,
+      "month": 11,
+      "year": 2022,
+      "weekOfYear": 47,
+      "dayOfWeek": "Wednesday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "studyDays": [
+      {
+        "date": 0,
+        "month": 0,
+        "year": 0,
+        "weekOfYear": 0,
+        "dayOfWeek": "Monday",
+        "studyTime": {
+          "hours": 13,
+          "mins": 0
+        }
+      }
+    ]
+  },
+  {
+    "courseName": "AOOP",
+    "courseId": "13016249",
+    "classTime": {
+      "hours": 4,
+      "mins": 0
+    },
+    "midtermExam": {
+      "date": 30,
+      "month": 9,
+      "year": 2022,
+      "weekOfYear": 39,
+      "dayOfWeek": "Friday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "finalExam": {
+      "date": 2,
+      "month": 12,
+      "year": 2022,
+      "weekOfYear": 48,
+      "dayOfWeek": "Friday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "startDate": {
+      "date": 23,
+      "month": 11,
+      "year": 2022,
+      "weekOfYear": 47,
+      "dayOfWeek": "Wednesday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "studyDays": [
+      {
+        "date": 0,
+        "month": 0,
+        "year": 0,
+        "weekOfYear": 0,
+        "dayOfWeek": "Wednesday",
+        "studyTime": {
+          "hours": 8,
+          "mins": 0
+        }
+      }
+    ]
+  },
+  {
+    "courseName": "Tech. Writing",
+    "courseId": "13006210",
+    "classTime": {
+      "hours": 3,
+      "mins": 0
+    },
+    "midtermExam": {
+      "date": 7,
+      "month": 10,
+      "year": 2022,
+      "weekOfYear": 40,
+      "dayOfWeek": "Friday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "finalExam": {
+      "date": 28,
+      "month": 11,
+      "year": 2022,
+      "weekOfYear": 48,
+      "dayOfWeek": "Monday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "startDate": {
+      "date": 23,
+      "month": 11,
+      "year": 2022,
+      "weekOfYear": 47,
+      "dayOfWeek": "Wednesday",
+      "studyTime": {
+        "hours": 0,
+        "mins": 0
+      }
+    },
+    "studyDays": [
+      {
+        "date": 0,
+        "month": 0,
+        "year": 0,
+        "weekOfYear": 0,
+        "dayOfWeek": "Friday",
+        "studyTime": {
+          "hours": 9,
+          "mins": 0
+        }
+      }
+    ]
+  }
+]
