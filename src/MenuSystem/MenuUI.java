@@ -8,6 +8,10 @@ import javax.swing.border.TitledBorder;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
 
+import ScheduleSystem.ScheduleDriver;
+import ScheduleSystem.ScheduleWidget;
+
+
 public class MenuUI extends JFrame {
     private final MenuDriver driver;
     private JPanel MenuPanel;
@@ -136,6 +140,7 @@ public class MenuUI extends JFrame {
      * @noinspection ALL
      */
     private void $$$setupUI$$$() {
+        createUIComponents();
         MenuPanel = new JPanel();
         MenuPanel.setLayout(new BorderLayout(0, 0));
         MenuPanel.setBackground(new Color(-657419));
@@ -320,8 +325,6 @@ public class MenuUI extends JFrame {
         label2.setPreferredSize(new Dimension(200, 50));
         label2.setText("Profile");
         panel7.add(label2, BorderLayout.CENTER);
-        ProfileWidgetPanel = new JPanel();
-        ProfileWidgetPanel.setLayout(new BorderLayout(0, 0));
         ProfileWidgetPanel.setBackground(new Color(-12171706));
         panel6.add(ProfileWidgetPanel, BorderLayout.CENTER);
         final JPanel panel8 = new JPanel();
@@ -383,8 +386,6 @@ public class MenuUI extends JFrame {
         label4.setPreferredSize(new Dimension(200, 50));
         label4.setText("Schedules");
         panel11.add(label4, BorderLayout.CENTER);
-        SchedulesWidgetPanel = new JPanel();
-        SchedulesWidgetPanel.setLayout(new BorderLayout(0, 0));
         SchedulesWidgetPanel.setBackground(new Color(-12171706));
         panel10.add(SchedulesWidgetPanel, BorderLayout.CENTER);
     }
@@ -418,4 +419,9 @@ public class MenuUI extends JFrame {
         return MenuPanel;
     }
 
+    private void createUIComponents() {
+        ToDoWidgetPanel = new JPanel();  // for To-do widget
+        SchedulesWidgetPanel = new ScheduleWidget(ScheduleDriver.getInstance(this.driver.main));  // for schedules widget
+        ProfileWidgetPanel = new JPanel();  // for profile widget
+    }
 }

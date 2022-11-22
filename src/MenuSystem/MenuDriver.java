@@ -20,7 +20,7 @@ public class MenuDriver implements ModuleDriver {
     public static final int MENU_TODO = 3;
 
     private MenuUI UI;
-    private final MainDriver main;
+    public final MainDriver main;
     private volatile boolean runningFlag = false;
     private static MenuDriver instance = null;
 

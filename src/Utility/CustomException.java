@@ -10,6 +10,12 @@ public interface CustomException {
         }
     }
 
+    class ModuleIsNotRunningException extends RuntimeException {
+        public ModuleIsNotRunningException() {
+            super("This module is not running");
+        }
+    }
+
     class DuplicateUIException extends RuntimeException {
         public DuplicateUIException() {
             super("UI Windows are duplicated. (This shouldn't happen)");

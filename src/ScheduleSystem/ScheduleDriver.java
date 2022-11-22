@@ -48,13 +48,15 @@ public class ScheduleDriver implements ModuleDriver {
 
     private ScheduleUI UI;
 
-    private ArrayList<Courses> course;
+    public ScheduleWidget widget;
+
+    public ArrayList<Courses> course;
 
     private Path path;
 
     private User user;
 
-    private DateS selectedDate;
+    public DateS selectedDate;
 
     private String month[];
 
@@ -64,6 +66,9 @@ public class ScheduleDriver implements ModuleDriver {
     private int calYear;
 
     private DateS today;
+    private int todayIndex;
+
+    private ArrayList<DateS> dayInCalendar;
 
     private ArrayList<ActionListener> dayButtonAction;
 
@@ -80,7 +85,12 @@ public class ScheduleDriver implements ModuleDriver {
     @Override
     public void quitModule() {
         // quitting
+        UI.dispose();
         runningFlag = false;
+    }
+
+    public void exitProcedure() {
+        main.quit(this);
     }
 
     @Override
@@ -95,9 +105,7 @@ public class ScheduleDriver implements ModuleDriver {
         month = new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September",
                 "October", "November", "December" };
 
-        user = main.getUser();
-        String username = "resources/users/" + user.getUsername() + "/schedule";
-        path = Paths.get(username);
+        getPath();
 
         UI = new ScheduleUI(this);
         UI.setVisible(true);
@@ -120,6 +128,12 @@ public class ScheduleDriver implements ModuleDriver {
         // starting
         this.runningFlag = true;
 
+    }
+
+    public void getPath() {
+        user = main.getUser();
+        String username = "resources/users/" + user.getUsername() + "/schedule";
+        path = Paths.get(username);
     }
 
     // Add from original course arrayList when open schudel read file first if it
@@ -186,7 +200,8 @@ public class ScheduleDriver implements ModuleDriver {
             writeJSON();
             UI.jComboBox1.addItem(newCourse.courseName);
         }
-        this.subjectInfo();;
+        this.subjectInfo();
+        this.widget.updateClass();
 
     }
 
@@ -250,6 +265,10 @@ public class ScheduleDriver implements ModuleDriver {
             Type courseList = new TypeToken<ArrayList<Courses>>() {
             }.getType();
 
+            if (course == null) {
+                course = new ArrayList<Courses>();
+            }
+
             course.removeAll(course);
 
             course = gson.fromJson(reader, courseList);
@@ -258,11 +277,13 @@ public class ScheduleDriver implements ModuleDriver {
                 course = new ArrayList<Courses>();
             }
 
+            if (UI != null) {
             UI.jComboBox1.removeAllItems();
 
             for (Courses c : course) {
                 UI.jComboBox1.addItem(c.courseName);
             }
+            }           
 
         } catch (IOException e) {
             e.getMessage();
@@ -277,7 +298,7 @@ public class ScheduleDriver implements ModuleDriver {
     // }
     // }
 
-    public ArrayList<Courses> subjectInDay() {
+    public ArrayList<Courses> subjectInDay(DateS selectDateS) {
         ArrayList<Courses> subjects = new ArrayList<Courses>();
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -302,7 +323,7 @@ public class ScheduleDriver implements ModuleDriver {
                 for (DateS d : c.studyDays) { // Days that has class (DSA has class on Monday and Tuesday)
 
                     // Date dDate = dateFormat.parse(d.toString());
-                    Date sDate = dateFormat.parse(selectedDate.toString());
+                    Date sDate = dateFormat.parse(selectDateS.toString());
                     // Date fDate = dateFormat.parse(c.finalExam.dateString);
 
                     // if (d.dayOfWeek == selectedDate.dayOfWeek && (sDate.after(dDate) &&
@@ -311,7 +332,7 @@ public class ScheduleDriver implements ModuleDriver {
                     // break;
                     // }
 
-                    if (d.dayOfWeek.equals(selectedDate.dayOfWeek)
+                    if (d.dayOfWeek.equals(selectDateS.dayOfWeek)
                             && (sDate.after(startDate) || sDate.equals(startDate))
                             && (sDate.before(fdate) || sDate.equals(fdate))) {
                         subjects.add(new Courses(c));
@@ -327,12 +348,12 @@ public class ScheduleDriver implements ModuleDriver {
         return subjects;
     }
 
-    public void addPanel() {
-        SubjectDetail addSubject = new SubjectDetail();
+    // public void addPanel() {
+    //     SubjectDetail addSubject = new SubjectDetail();
 
-        UI.jPanel3.add(addSubject);
-        UI.setVisible(true);
-    }
+    //     UI.jPanel3.add(addSubject);
+    //     UI.setVisible(true);
+    // }
 
     public void subjectInfo() {
         UI.jPanel3.removeAll();
@@ -341,7 +362,7 @@ public class ScheduleDriver implements ModuleDriver {
 
         // getSelectedDate();
         // System.out.println(selectedDate + " " + selectedDate.dayOfWeek);
-        ArrayList<Courses> subjects = subjectInDay();
+        ArrayList<Courses> subjects = subjectInDay(selectedDate);
         // System.out.println(subjects.size());
 
         for (Courses sub : subjects) {
@@ -390,7 +411,8 @@ public class ScheduleDriver implements ModuleDriver {
             }
         }
 
-        this.subjectInfo();;
+        this.subjectInfo();
+        this.widget.updateClass();
     }
 
     public void addButton() {
@@ -407,6 +429,8 @@ public class ScheduleDriver implements ModuleDriver {
     }
 
     public void addDate(int cMonth, int cYear) {
+
+        dayInCalendar = new ArrayList<DateS>();
 
         UI.jLabel8.setText(month[cMonth] + " - " + cYear);
         int bMonth = cMonth - 1;
@@ -464,20 +488,41 @@ public class ScheduleDriver implements ModuleDriver {
                 dayCalendar[i].setText("");
             } else {
                 dayCalendar[i].setText(Integer.toString(d));
+                dayInCalendar.add(new DateS(d, month, year));
 
                 if (month == (cMonth + 1)) {
                     dayCalendar[i].setForeground(new Color(68, 68, 68));
                 } else {
                     dayCalendar[i].setForeground(new Color(169, 169, 169));
                 }
+
                 dayButtonAction.add(e -> setSelectedDate(d, month, year, dOfWeek));
+                // dayButtonAction.add(new ActionListener() {
+                //     @Override
+                //     public void actionPerformed(ActionEvent e) {
+                //         if (selectedDate.date != 0) {
+                //             if (month == (cMonth+1)) {
+                //                 setSelectedDateColor(new Color(169, 169, 169));
+                //             } else {
+                //                 setSelectedDateColor(new Color(68, 68, 68));
+                //             }
+                //         }
+                //         setSelectedDate(d, month, year, dOfWeek);
+        
+                //     }
+                // });
 
                 dayCalendar[i].addActionListener(dayButtonAction.get(i));
             }
 
             if (d == today.getDate() && month == today.getMonth() && year == today.year) {
                 dayCalendar[i].setForeground(Color.red);
+                todayIndex = i;
             }
+
+            // if (d == selectedDate.getDate() && month == selectedDate.getMonth() && year == selectedDate.year) {
+            //     dayCalendar[i].setForeground(Color.blue);
+            // }
 
             cal.add(Calendar.DATE, 1);
 
@@ -492,13 +537,35 @@ public class ScheduleDriver implements ModuleDriver {
     }
 
     public void setSelectedDate(int selectDate, int selectMonth, int selectYear, String selectDayOfWeek) {
+        if (selectedDate != null && selectedDate.date != 0) {
+            
+            if (selectedDate.date == today.getDate() && selectedDate.month == today.getMonth() && selectedDate.year == today.year) {
+                dayCalendar[todayIndex].setForeground(Color.red);
+            } else if ((calMonth+1) == selectedDate.month && calYear == selectedDate.year) {
+                setSelectedDateColor(new Color(68, 68, 68));
+            } else {
+                setSelectedDateColor(new Color(169, 169, 169));
+            }
+        }
         selectedDate = new DateS();
         selectedDate.setDate(selectDate);
         selectedDate.setMonth(selectMonth);
         selectedDate.setYear(selectYear);
         selectedDate.setDayOfWeek(selectDayOfWeek);
         // System.out.println(selectedDate);
-        this.subjectInfo();
+        if (UI != null) {
+            this.subjectInfo();
+        
+            setSelectedDateColor(Color.blue);
+        }
+    }
+
+    public void setSelectedDateColor(Color color) {
+        for (int i = 0; i < dayInCalendar.size(); i++) {
+            if (dayInCalendar.get(i).date == selectedDate.date && dayInCalendar.get(i).month == selectedDate.month && dayInCalendar.get(i).year == selectedDate.year) {
+                dayCalendar[i].setForeground(color);
+            }
+        }
     }
 
     public void monthBack() {
@@ -525,5 +592,9 @@ public class ScheduleDriver implements ModuleDriver {
         removeAction();
 
         addDate(calMonth, calYear);
+    }
+
+    public void addTodayInfo() {
+
     }
 }

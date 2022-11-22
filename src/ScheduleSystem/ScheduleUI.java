@@ -27,6 +27,14 @@ public class ScheduleUI extends javax.swing.JFrame {
         initComponents();
         this.setPreferredSize(new Dimension(1425, 741));
 
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                driver.exitProcedure();
+            }
+        });
+
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -38,7 +46,7 @@ public class ScheduleUI extends javax.swing.JFrame {
         jButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                driver.subjectInfo();
+                driver.exitProcedure();
 
             }
         });
@@ -691,7 +699,7 @@ public class ScheduleUI extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(204, 204, 255));
         jButton1.setForeground(new java.awt.Color(0, 153, 255));
-        jButton1.setText("jButton1");
+        jButton1.setText("Close");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
