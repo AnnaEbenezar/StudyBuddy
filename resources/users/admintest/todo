@@ -6,22 +6,22 @@
   },
   {
     "text": "c",
+    "select": true,
+    "category": "School Work"
+  },
+  {
+    "text": "abb",
     "select": false,
     "category": "School Work"
   },
   {
     "text": "abb",
-    "select": true,
+    "select": false,
     "category": "School Work"
   },
   {
     "text": "abb",
-    "select": true,
-    "category": "School Work"
-  },
-  {
-    "text": "abb",
-    "select": true,
+    "select": false,
     "category": "School Work"
   },
   {
@@ -93,11 +93,6 @@
     "text": "abb2",
     "select": false,
     "category": "Others"
-  },
-  {
-    "text": "abb",
-    "select": false,
-    "category": "Star"
   },
   {
     "text": "asdsa",

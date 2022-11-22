@@ -40,14 +40,14 @@
         <properties>
           <background color="-14087068"/>
           <opaque value="true"/>
-          <preferredSize width="220" height="600"/>
+          <preferredSize width="180" height="600"/>
         </properties>
         <border type="none"/>
         <children>
           <component id="d1c0b" class="javax.swing.JButton" binding="profileButton" default-binding="true">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="1.0" weighty="1.0" ipadx="50" ipady="20"/>
+              <gridbag weightx="1.0" weighty="1.0" ipady="20"/>
             </constraints>
             <properties>
               <background color="-14087068"/>
@@ -63,7 +63,7 @@
           <component id="f2769" class="javax.swing.JButton" binding="scheduleButton" default-binding="true">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="1.0" weighty="1.0" ipadx="50" ipady="20"/>
+              <gridbag weightx="1.0" weighty="1.0" ipady="20"/>
             </constraints>
             <properties>
               <background color="-14087068"/>
@@ -78,7 +78,7 @@
           <component id="5db03" class="javax.swing.JButton" binding="toDoListButton" default-binding="true">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="1.0" weighty="1.0" ipadx="50" ipady="20"/>
+              <gridbag weightx="1.0" weighty="1.0" ipady="20"/>
             </constraints>
             <properties>
               <background color="-14087068"/>
@@ -94,7 +94,7 @@
           <component id="ada7d" class="javax.swing.JButton" binding="logoutButton" default-binding="true">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="1.0" weighty="1.0" ipadx="50" ipady="20"/>
+              <gridbag weightx="1.0" weighty="1.0" ipady="20"/>
             </constraints>
             <properties>
               <background color="-14087068"/>
@@ -109,7 +109,7 @@
           <component id="c738b" class="javax.swing.JButton" binding="exitButton" default-binding="true">
             <constraints>
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="1.0" weighty="1.0" ipadx="50" ipady="20"/>
+              <gridbag weightx="1.0" weighty="1.0" ipady="20"/>
             </constraints>
             <properties>
               <background color="-14087068"/>
@@ -184,22 +184,7 @@
                       <background color="-14737633"/>
                     </properties>
                     <border type="none"/>
-                    <children>
-                      <component id="e94a0" class="javax.swing.JLabel">
-                        <constraints border-constraint="Center"/>
-                        <properties>
-                          <autoscrolls value="false"/>
-                          <background color="-14737633"/>
-                          <font name="Lucida Sans" size="28" style="1"/>
-                          <foreground color="-657419"/>
-                          <horizontalAlignment value="0"/>
-                          <maximumSize width="200" height="40"/>
-                          <minimumSize width="200" height="40"/>
-                          <preferredSize width="200" height="50"/>
-                          <text value="Profile"/>
-                        </properties>
-                      </component>
-                    </children>
+                    <children/>
                   </grid>
                   <grid id="c1492" binding="ProfileWidgetPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
                     <constraints border-constraint="Center"/>
@@ -223,32 +208,12 @@
                   <color color="-4473925"/>
                 </border>
                 <children>
-                  <grid id="22c1b" layout-manager="BorderLayout" hgap="0" vgap="0">
-                    <constraints border-constraint="North"/>
-                    <properties>
-                      <background color="-14737633"/>
-                    </properties>
-                    <border type="none"/>
-                    <children>
-                      <component id="a3fd4" class="javax.swing.JLabel">
-                        <constraints border-constraint="Center"/>
-                        <properties>
-                          <alignmentY value="0.0"/>
-                          <font name="Lucida Sans" size="28" style="1"/>
-                          <foreground color="-657419"/>
-                          <horizontalAlignment value="0"/>
-                          <maximumSize width="200" height="40"/>
-                          <minimumSize width="200" height="40"/>
-                          <preferredSize width="200" height="50"/>
-                          <text value="To-Do"/>
-                        </properties>
-                      </component>
-                    </children>
-                  </grid>
-                  <grid id="dbf84" binding="ToDoWidgetPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+                  <grid id="dbf84" binding="ToDoWidgetPanel" custom-create="true" layout-manager="BorderLayout" hgap="0" vgap="0">
                     <constraints border-constraint="Center"/>
                     <properties>
-                      <background color="-12171706"/>
+                      <background color="-657419"/>
+                      <opaque value="false"/>
+                      <preferredSize width="400" height="520"/>
                     </properties>
                     <border type="none"/>
                     <children/>
@@ -272,21 +237,7 @@
                       <background color="-14737633"/>
                     </properties>
                     <border type="none"/>
-                    <children>
-                      <component id="23b1c" class="javax.swing.JLabel">
-                        <constraints border-constraint="Center"/>
-                        <properties>
-                          <alignmentY value="0.0"/>
-                          <font name="Lucida Sans" size="28" style="1"/>
-                          <foreground color="-657419"/>
-                          <horizontalAlignment value="0"/>
-                          <maximumSize width="200" height="40"/>
-                          <minimumSize width="200" height="40"/>
-                          <preferredSize width="200" height="50"/>
-                          <text value="Schedules"/>
-                        </properties>
-                      </component>
-                    </children>
+                    <children/>
                   </grid>
                   <grid id="cea5a" binding="SchedulesWidgetPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
                     <constraints border-constraint="Center"/>
