@@ -22,13 +22,6 @@ public class Info {
         this.category = category;
     }
 
-    Info(Task t, String category) {
-        this.checkbox = new JCheckBox(t.taskName, t.done);
-        this.text = t.taskName;
-        this.select = t.done;
-        this.category = category;
-    }
-
     public void loading() {
         this.text = checkbox.getText();
         this.select = checkbox.isSelected();
