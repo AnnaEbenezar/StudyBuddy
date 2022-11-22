@@ -443,7 +443,7 @@ public class ToDoUI extends JFrame{
             CategoryAns = (String)CategoryComboBox.getSelectedItem();
             if(CategoryAns == "School Work") {
                 int sizetmp = SchoolSize;
-                for(i = 0; i < sizetmp; i++) {
+                 for(i = 0; i < sizetmp; i++) {
 
                     if(textAns.equals(SchoolCheckBoxList.get(i).getText())){
 
@@ -532,6 +532,7 @@ public class ToDoUI extends JFrame{
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {
         if(evt.getSource() == AddButton) {
             textAns = TaskNameTextField.getText();
+            String s = textAns;
             CategoryAns = (String)CategoryComboBox.getSelectedItem();
             driver.addTask(new Task(textAns, false), CategoryAns);
         
@@ -718,6 +719,7 @@ public class ToDoUI extends JFrame{
 
             ImportantCheckBoxList.get(ImportantSize-1).getCheckBox().setText("");
             ImportantCheckBoxList.get(ImportantSize-1).getCheckBox().setSelected(false);
+
 
 
             for(int i = 0; i < ImportantSize; i++) {
