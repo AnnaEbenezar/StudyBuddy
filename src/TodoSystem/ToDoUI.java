@@ -2,7 +2,11 @@ package TodoSystem;
 
 import javax.swing.*;
 
+//add widget.setprogressbar to school,heatlh, others.actionperormed
+
+//panel.add in wiget add
 import java.awt.*;
+import java.awt.event.*;
 import java.util.*;
 public class ToDoUI extends JFrame{
 
@@ -51,6 +55,13 @@ public class ToDoUI extends JFrame{
         HealthCheckBoxList = new ArrayList<Info>();
         OthersCheckBoxList = new ArrayList<Info>();
         ImportantCheckBoxList = new ArrayList<Info>();
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                driver.exitProcedure();
+            }
+        });
         initComponents();
         setVisible(true);
 
@@ -155,7 +166,7 @@ public class ToDoUI extends JFrame{
         HealthProgressBar.setStringPainted(true);
         OthersProgressBar.setStringPainted(true);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        // setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1600, 900));
         setMinimumSize(new java.awt.Dimension(1000, 550));
         setSize(new java.awt.Dimension(700, 550));
@@ -412,7 +423,7 @@ public class ToDoUI extends JFrame{
     }// </editor-fold>        
     
     private void MenuActionPerformed(java.awt.event.ActionEvent evt) {
-        driver.save();
+        driver.exitProcedure();
     }
     
     private void ImpActionPerformed(java.awt.event.ActionEvent evt) {
@@ -541,11 +552,11 @@ public class ToDoUI extends JFrame{
 
     public void addTask(Task t, String category) {
         String s = t.taskName;
-        if(CategoryAns == "School Work" ) {
+        if(category.equals("School Work")) {
             SchoolSize++;
             System.out.println(SchoolSize);
 
-            SchoolCheckBoxList.add(new Info(new JCheckBox(textAns), "School Work"));
+            SchoolCheckBoxList.add(new Info(new JCheckBox(s), "School Work"));
             SchoolWorkPanel.add(SchoolCheckBoxList.get(SchoolSize-1).getCheckBox());
             SchoolActionPerformed();
 
@@ -562,11 +573,11 @@ public class ToDoUI extends JFrame{
             this.repaint();
 
         }
-        else if(CategoryAns == "Health") {
+        else if(category.equals("Health")) {
 
             HealthSize++;
 
-            HealthCheckBoxList.add(new Info(new JCheckBox(textAns), "Health"));
+            HealthCheckBoxList.add(new Info(new JCheckBox(s), "Health"));
 
             HealthPanel.add(HealthCheckBoxList.get(HealthSize-1).getCheckBox());
             driver.Health.add(new Task(textAns, false));
@@ -585,11 +596,11 @@ public class ToDoUI extends JFrame{
 
 
         }
-        else if(CategoryAns == "Others"){
+        else if(category.equals("Others")){
 
             OthersSize++;
 
-            OthersCheckBoxList.add(new Info(new JCheckBox(textAns), "Others"));
+            OthersCheckBoxList.add(new Info(new JCheckBox(s), "Others"));
 
             OthersPanel.add(OthersCheckBoxList.get(OthersSize-1).getCheckBox());
             driver.Others.add(new Task(textAns, false));
@@ -640,6 +651,8 @@ public class ToDoUI extends JFrame{
         int int_proportion = (int)proportion;
         System.out.println(proportion);
         SchoolProgressBar.setValue(int_proportion);
+
+        driver.Widget.setProgressBarSchool(int_proportion);
     }
 
     public void HealthActionPerformed() {
@@ -670,6 +683,9 @@ public class ToDoUI extends JFrame{
         int int_proportion = (int)proportion;
         System.out.println(proportion);
         HealthProgressBar.setValue(int_proportion);
+
+
+        driver.Widget.setProgressBarHealth(int_proportion);
     }
 
     public void OthersActionPerformed() {
@@ -699,6 +715,9 @@ public class ToDoUI extends JFrame{
         int int_proportion = (int)proportion;
         System.out.println(proportion);
         OthersProgressBar.setValue(int_proportion);
+
+
+        driver.Widget.setProgressBarOthers(int_proportion);
     }
 
     private void Imp2ActionPerformed(int id) {
