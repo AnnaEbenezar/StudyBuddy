@@ -72,7 +72,7 @@ public class ProfileUI extends JFrame {
 
         jLabel_major.setFont(new java.awt.Font("Century Schoolbook", 0, 14)); // NOI18N
         jLabel_major.setForeground(new java.awt.Color(229, 217, 182));
-        jLabel_major.setText("major");
+        jLabel_major.setText(driver.personal.getMajor());
 
         javax.swing.GroupLayout jPanel_HeaderLayout = new javax.swing.GroupLayout(jPanel_Header);
         jPanel_Header.setLayout(jPanel_HeaderLayout);
@@ -140,7 +140,7 @@ public class ProfileUI extends JFrame {
         jTextArea_Quote.setFont(new java.awt.Font("Edwardian Script ITC", 0, 24)); // NOI18N
         jTextArea_Quote.setLineWrap(true);
         jTextArea_Quote.setRows(5);
-        jTextArea_Quote.setText("Jupiter is the biggest planet in the solar system is the fourth brightest object in the night sky oui");
+        jTextArea_Quote.setText(driver.personal.getQuote());
         jTextArea_Quote.setWrapStyleWord(true);
         jTextArea_Quote.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextArea_Quote.setMinimumSize(new java.awt.Dimension(246, 149));
@@ -252,11 +252,8 @@ public class ProfileUI extends JFrame {
         driver.personal.setMajor(JOptionPane.showInputDialog(this, "What is your Major? ", JOptionPane.INFORMATION_MESSAGE));
         //} 
         driver.personal.setQuote(JOptionPane.showInputDialog(this, "Enter your favourite quote!", JOptionPane.INFORMATION_MESSAGE));
-        driver.writeJSON();
-
+        driver.writeJSON();       
         
-        
-    }   
-    
+    }       
     
 }
