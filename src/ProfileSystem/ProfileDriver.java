@@ -35,6 +35,8 @@ public class ProfileDriver implements ModuleDriver {
     public String major;
     public String quote;
 
+    public Personal personal;
+
     private ProfileDriver(MainDriver main) {
         this.main = main;
     }
@@ -65,10 +67,16 @@ public class ProfileDriver implements ModuleDriver {
         this.runningFlag = true;
 
         user = main.getUser();
-        String username = "resources/users/" + user.getUsername() + "/profile.csv";
+        String username = "resources/users/" + user.getUsername() + "/profile.json";
         path = Paths.get(username);
 
+        personal = new Personal();
+
+        
+
+
     }
+
 
     public void writeJSON() {
         // path = Paths.get("resources/users/123456/schedule");
@@ -76,7 +84,7 @@ public class ProfileDriver implements ModuleDriver {
         try (Writer writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
 
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            gson.toJson(Personal, writer);
+            gson.toJson(personal, writer);
         } catch (IOException e) {
             e.getMessage();
         }
@@ -87,17 +95,22 @@ public class ProfileDriver implements ModuleDriver {
         // path = Paths.get("resources/users/123456/schedule");
 
         try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
-            Type courseList = new TypeToken<ArrayList<Courses>>() {
-            }.getType();
+            // Type courseList = new TypeToken<ArrayList<Courses>>() {
+            // }.getType();
 
-            course.removeAll(course);
+            // course.removeAll(course);
 
-            course = gson.fromJson(reader, courseList);
+            personal = gson.fromJson(reader, Personal.class);
+
+            if (personal == null) {
+                personal = new Personal();
+            }
 
         } catch (IOException e) {
             e.getMessage();
         }
     }
+
 
     //CSV reader and writer
 
