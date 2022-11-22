@@ -1,11 +1,26 @@
 [
   {
     "text": "111",
+    "select": false,
+    "category": "School Work"
+  },
+  {
+    "text": "test1",
+    "select": false,
+    "category": "School Work"
+  },
+  {
+    "text": "test2",
     "select": true,
     "category": "School Work"
   },
   {
-    "text": "222",
+    "text": "test3",
+    "select": true,
+    "category": "School Work"
+  },
+  {
+    "text": "test4",
     "select": true,
     "category": "School Work"
   },
@@ -20,58 +35,23 @@
     "category": "Health"
   },
   {
-    "text": "o2",
+    "text": "test1",
     "select": true,
-    "category": "Others"
+    "category": "Health"
   },
   {
-    "text": "222",
+    "text": "test4",
     "select": true,
-    "category": "Others"
-  },
-  {
-    "text": "o3",
-    "select": false,
-    "category": "Others"
-  },
-  {
-    "text": "222",
-    "select": true,
-    "category": "Others"
-  },
-  {
-    "text": "o4",
-    "select": true,
-    "category": "Others"
-  },
-  {
-    "text": "222",
-    "select": true,
-    "category": "Others"
+    "category": "Health"
   },
   {
     "text": "o5",
-    "select": false,
-    "category": "Others"
-  },
-  {
-    "text": "222",
-    "select": false,
-    "category": "Others"
-  },
-  {
-    "text": "o5",
-    "select": false,
-    "category": "Others"
-  },
-  {
-    "text": "o5",
-    "select": false,
+    "select": true,
     "category": "Others"
   },
   {
     "text": "o6",
-    "select": false,
+    "select": true,
     "category": "Others"
   },
   {
@@ -81,7 +61,7 @@
   },
   {
     "text": "o7",
-    "select": false,
+    "select": true,
     "category": "Others"
   },
   {

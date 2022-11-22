@@ -547,6 +547,7 @@ public class ToDoUI extends JFrame{
                         System.out.println("Schoolsize" + SchoolSize);
                         SchoolActionPerformed();
                         TaskNameTextField.setText(s);
+                        setCategoryComboBox("School Work");
                 }
             });
 
@@ -569,6 +570,7 @@ public class ToDoUI extends JFrame{
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     HealthActionPerformed();
                     TaskNameTextField.setText(s);
+                    setCategoryComboBox("Health");
                 }
             });
 
@@ -592,6 +594,7 @@ public class ToDoUI extends JFrame{
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     OthersActionPerformed();
                     TaskNameTextField.setText(s);
+                    setCategoryComboBox("Others");
                 }
             });
 
@@ -734,6 +737,10 @@ public class ToDoUI extends JFrame{
 
     public void setTaskName(String name) {
         TaskNameTextField.setText(name);
+    }
+
+    public void setCategoryComboBox(String category) {
+        CategoryComboBox.setSelectedItem(category);
     }
     
     // Variables declaration - do not modify                     

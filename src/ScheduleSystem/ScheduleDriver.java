@@ -537,7 +537,7 @@ public class ScheduleDriver implements ModuleDriver {
     }
 
     public void setSelectedDate(int selectDate, int selectMonth, int selectYear, String selectDayOfWeek) {
-        if (selectedDate != null && selectedDate.date != 0) {
+        if (UI != null && selectedDate != null && selectedDate.date != 0) {
             
             if (selectedDate.date == today.getDate() && selectedDate.month == today.getMonth() && selectedDate.year == today.year) {
                 dayCalendar[todayIndex].setForeground(Color.red);

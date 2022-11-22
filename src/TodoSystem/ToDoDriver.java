@@ -179,8 +179,9 @@ public class ToDoDriver implements ModuleDriver {
             int tmpK = k;
             UI.SchoolCheckBoxList.get(k).getCheckBox().addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        UI.SchoolActionPerformed();
-                        UI.setTaskName(SchoolWork.get(tmpK).taskName);
+                    UI.SchoolActionPerformed();
+                    UI.setTaskName(SchoolWork.get(tmpK).taskName);
+                    UI.setCategoryComboBox("School Work");
                 }
             });
         }
@@ -189,8 +190,9 @@ public class ToDoDriver implements ModuleDriver {
             int tmpK = k;
             UI.HealthCheckBoxList.get(k).getCheckBox().addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        UI.HealthActionPerformed();
-                        UI.setTaskName(Health.get(tmpK).taskName);
+                    UI.HealthActionPerformed();
+                    UI.setTaskName(Health.get(tmpK).taskName);
+                    UI.setCategoryComboBox("Health");
                 }
             });
         }
@@ -198,8 +200,9 @@ public class ToDoDriver implements ModuleDriver {
             int tmpK = k;
             UI.OthersCheckBoxList.get(k).getCheckBox().addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        UI.OthersActionPerformed();
-                        UI.setTaskName(Others.get(tmpK).taskName);
+                    UI.OthersActionPerformed();
+                    UI.setTaskName(Others.get(tmpK).taskName);
+                    UI.setCategoryComboBox("Others");
                 }
             });
         }
