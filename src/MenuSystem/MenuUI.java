@@ -8,6 +8,9 @@ import javax.swing.border.TitledBorder;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
 
+import TodoSystem.ToDoDriver;
+import TodoSystem.ToDoPanel;
+
 public class MenuUI extends JFrame {
     private final MenuDriver driver;
     private JPanel MenuPanel;
