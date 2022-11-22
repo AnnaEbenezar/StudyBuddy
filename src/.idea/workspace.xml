@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e810d08-b770-4613-afa0-9a4be0434546" name="Changes" comment="" />
+    <list default="true" id="5e810d08-b770-4613-afa0-9a4be0434546" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../resources/users/admintest/todo" beforeDir="false" afterPath="$PROJECT_DIR$/../resources/users/admintest/todo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TodoSystem/ToDoDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/TodoSystem/ToDoDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TodoSystem/ToDoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/TodoSystem/ToDoUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TodoSystem/ToDoUI2.java" beforeDir="false" afterPath="$PROJECT_DIR$/TodoSystem/ToDoUI2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TodoSystem/ToDoUI3.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

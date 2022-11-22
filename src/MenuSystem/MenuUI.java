@@ -8,6 +8,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
 
+import TodoSystem.ToDoDriver;
 import ScheduleSystem.ScheduleDriver;
 import ScheduleSystem.ScheduleWidget;
 
@@ -172,7 +173,7 @@ public class MenuUI extends JFrame {
         panel2.setLayout(new GridBagLayout());
         panel2.setBackground(new Color(-14087068));
         panel2.setOpaque(true);
-        panel2.setPreferredSize(new Dimension(220, 600));
+        panel2.setPreferredSize(new Dimension(180, 600));
         MenuPanel.add(panel2, BorderLayout.WEST);
         profileButton = new JButton();
         profileButton.setBackground(new Color(-14087068));
@@ -190,7 +191,6 @@ public class MenuUI extends JFrame {
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
-        gbc.ipadx = 50;
         gbc.ipady = 20;
         panel2.add(profileButton, gbc);
         scheduleButton = new JButton();
@@ -208,7 +208,6 @@ public class MenuUI extends JFrame {
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
-        gbc.ipadx = 50;
         gbc.ipady = 20;
         panel2.add(scheduleButton, gbc);
         toDoListButton = new JButton();
@@ -227,7 +226,6 @@ public class MenuUI extends JFrame {
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
-        gbc.ipadx = 50;
         gbc.ipady = 20;
         panel2.add(toDoListButton, gbc);
         logoutButton = new JButton();
@@ -245,7 +243,6 @@ public class MenuUI extends JFrame {
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
-        gbc.ipadx = 50;
         gbc.ipady = 20;
         panel2.add(logoutButton, gbc);
         exitButton = new JButton();
@@ -263,7 +260,6 @@ public class MenuUI extends JFrame {
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
-        gbc.ipadx = 50;
         gbc.ipady = 20;
         panel2.add(exitButton, gbc);
         final JPanel panel3 = new JPanel();
@@ -338,28 +334,13 @@ public class MenuUI extends JFrame {
         gbc.insets = new Insets(10, 10, 10, 10);
         panel5.add(panel8, gbc);
         panel8.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(-4473925)), null, TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, null));
+        ToDoWidgetPanel.setBackground(new Color(-657419));
+        ToDoWidgetPanel.setOpaque(false);
+        ToDoWidgetPanel.setPreferredSize(new Dimension(400, 520));
+        panel8.add(ToDoWidgetPanel, BorderLayout.CENTER);
         final JPanel panel9 = new JPanel();
         panel9.setLayout(new BorderLayout(0, 0));
-        panel9.setBackground(new Color(-14737633));
-        panel8.add(panel9, BorderLayout.NORTH);
-        final JLabel label3 = new JLabel();
-        label3.setAlignmentY(0.0f);
-        Font label3Font = this.$$$getFont$$$("Lucida Sans", Font.BOLD, 28, label3.getFont());
-        if (label3Font != null) label3.setFont(label3Font);
-        label3.setForeground(new Color(-657419));
-        label3.setHorizontalAlignment(0);
-        label3.setMaximumSize(new Dimension(200, 40));
-        label3.setMinimumSize(new Dimension(200, 40));
-        label3.setPreferredSize(new Dimension(200, 50));
-        label3.setText("To-Do");
-        panel9.add(label3, BorderLayout.CENTER);
-        ToDoWidgetPanel = new JPanel();
-        ToDoWidgetPanel.setLayout(new BorderLayout(0, 0));
-        ToDoWidgetPanel.setBackground(new Color(-12171706));
-        panel8.add(ToDoWidgetPanel, BorderLayout.CENTER);
-        final JPanel panel10 = new JPanel();
-        panel10.setLayout(new BorderLayout(0, 0));
-        panel10.setBackground(new Color(-657419));
+        panel9.setBackground(new Color(-657419));
         gbc = new GridBagConstraints();
         gbc.gridx = 2;
         gbc.gridy = 0;
@@ -367,6 +348,7 @@ public class MenuUI extends JFrame {
         gbc.weighty = 1.0;
         gbc.fill = GridBagConstraints.BOTH;
         gbc.insets = new Insets(10, 10, 10, 10);
+
         panel5.add(panel10, gbc);
         panel10.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), null, TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, null));
         final JPanel panel11 = new JPanel();
@@ -386,7 +368,7 @@ public class MenuUI extends JFrame {
         label4.setText("Schedules");
         panel11.add(label4, BorderLayout.CENTER);
         SchedulesWidgetPanel.setBackground(new Color(-12171706));
-        panel10.add(SchedulesWidgetPanel, BorderLayout.CENTER);
+        panel9.add(SchedulesWidgetPanel, BorderLayout.CENTER);
     }
 
     /**
@@ -419,7 +401,7 @@ public class MenuUI extends JFrame {
     }
 
     private void createUIComponents() {
-        ToDoWidgetPanel = new JPanel();  // for To-do widget
+        ToDoWidgetPanel = ToDoDriver.getInstance(this.driver.main).Widget;
         SchedulesWidgetPanel = new ScheduleWidget(ScheduleDriver.getInstance(this.driver.main));  // for schedules widget
         ProfileWidgetPanel = new JPanel();  // for profile widget
     }
