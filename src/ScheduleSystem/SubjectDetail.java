@@ -38,20 +38,21 @@ public class SubjectDetail extends javax.swing.JPanel {
         setBackground(new java.awt.Color(244, 252, 252));
         setMaximumSize(new java.awt.Dimension(229, 32767));
 
-        className.setFont(new java.awt.Font("Kannada Sangam MN", 1, 18)); // NOI18N
+        className.setBackground(new java.awt.Color(204, 204, 204));
+        className.setFont(new java.awt.Font("Myanmar Sangam MN", 1, 18)); // NOI18N
+        className.setForeground(new java.awt.Color(153, 153, 255));
         className.setText("Data Structure & Algorithm");
 
-        classIDLabel.setFont(new java.awt.Font("Kannada Sangam MN", 0, 16)); // NOI18N
+        classIDLabel.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
         classIDLabel.setText("Class ID");
 
         classId.setFont(new java.awt.Font("Kannada Sangam MN", 0, 14)); // NOI18N
         classId.setText("jLabel4");
 
-        timeLabel.setFont(new java.awt.Font("Kannada Sangam MN", 0, 16)); // NOI18N
-        timeLabel.setForeground(new java.awt.Color(255, 51, 51));
+        timeLabel.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
         timeLabel.setText("Time");
 
-        midtermLabel.setFont(new java.awt.Font("Kannada Sangam MN", 0, 16)); // NOI18N
+        midtermLabel.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
         midtermLabel.setText("Midterm Exam");
 
         time.setFont(new java.awt.Font("Kannada Sangam MN", 0, 14)); // NOI18N
@@ -60,7 +61,7 @@ public class SubjectDetail extends javax.swing.JPanel {
         midterm.setFont(new java.awt.Font("Kannada Sangam MN", 0, 14)); // NOI18N
         midterm.setText("jLabel4");
 
-        finalLabel.setFont(new java.awt.Font("Kannada Sangam MN", 0, 16)); // NOI18N
+        finalLabel.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
         finalLabel.setText("Final Exam");
 
         finalExam.setFont(new java.awt.Font("Kannada Sangam MN", 0, 14)); // NOI18N
@@ -71,15 +72,15 @@ public class SubjectDetail extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(className)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(classIDLabel)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(165, 165, 165))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(finalLabel)
@@ -92,7 +93,7 @@ public class SubjectDetail extends javax.swing.JPanel {
                                     .addComponent(midterm)
                                     .addComponent(time)
                                     .addComponent(classId))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 0, 0))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +104,7 @@ public class SubjectDetail extends javax.swing.JPanel {
                 .addComponent(classIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(classId)
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(time)
@@ -115,7 +116,7 @@ public class SubjectDetail extends javax.swing.JPanel {
                 .addComponent(finalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(finalExam)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
     }// </editor-fold>                        
 

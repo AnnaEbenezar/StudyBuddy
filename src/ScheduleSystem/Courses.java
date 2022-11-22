@@ -116,6 +116,14 @@ class DateS {
         this.studyTime = new TimeS();
     }
 
+    DateS(int date, int month, int year) {
+        this.date = date;
+        this.month = month;
+        this.year = year;
+        this.dayOfWeek = "";
+        this.studyTime = new TimeS();
+    }
+
     DateS(DateS source) {
         this.date = source.date;
         this.month = source.month;

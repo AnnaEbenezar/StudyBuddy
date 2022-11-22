@@ -8,6 +8,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
 
+import ScheduleSystem.ScheduleDriver;
+import ScheduleSystem.ScheduleWidget;
 
 public class MenuUI extends JFrame {
     private final MenuDriver driver;
@@ -418,7 +420,7 @@ public class MenuUI extends JFrame {
 
     private void createUIComponents() {
         ToDoWidgetPanel = new JPanel();  // for To-do widget
-        SchedulesWidgetPanel = new JPanel();  // for schedules widget
+        SchedulesWidgetPanel = new ScheduleWidget(ScheduleDriver.getInstance(this.driver.main));  // for schedules widget
         ProfileWidgetPanel = new JPanel();  // for profile widget
     }
 }
