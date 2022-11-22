@@ -9,7 +9,6 @@ import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
 
 import TodoSystem.ToDoDriver;
-import TodoSystem.ToDoPanel;
 
 public class MenuUI extends JFrame {
     private final MenuDriver driver;
@@ -380,6 +379,6 @@ public class MenuUI extends JFrame {
     }
 
     private void createUIComponents() {
-        ToDoWidgetPanel = new ToDoPanel(ToDoDriver.getInstance(this.driver.main));
+        ToDoWidgetPanel = ToDoDriver.getInstance(this.driver.main).Widget;
     }
 }
