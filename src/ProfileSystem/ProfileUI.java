@@ -113,7 +113,7 @@ public class ProfileUI extends JFrame {
         panel_PerGoals.setMaximumSize(new java.awt.Dimension(32767, 32767));
         panel_PerGoals.setMinimumSize(new java.awt.Dimension(250, 200));
         panel_PerGoals.setPreferredSize(new java.awt.Dimension(250, 200));
-        panel_PerGoals.setLayout(new javax.swing.BoxLayout(panel_PerGoals, javax.swing.BoxLayout.LINE_AXIS));
+        panel_PerGoals.setLayout(new javax.swing.BoxLayout(panel_PerGoals, javax.swing.BoxLayout.Y_AXIS));
         jScrollPane_PerGoals.setViewportView(panel_PerGoals);
 
         jScrollPane_Accomplisments.setMinimumSize(new java.awt.Dimension(250, 200));
@@ -171,10 +171,20 @@ public class ProfileUI extends JFrame {
         jButton_addPG.setBackground(new java.awt.Color(229, 217, 182));
         jButton_addPG.setFont(new java.awt.Font("Century Schoolbook", 1, 13)); // NOI18N
         jButton_addPG.setText("ADD");
+        jButton_addPG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_addPGActionPerformed(evt);
+            }
+        });
 
         jButton_delPG.setBackground(new java.awt.Color(229, 217, 182));
         jButton_delPG.setFont(new java.awt.Font("Century Schoolbook", 1, 13)); // NOI18N
         jButton_delPG.setText("DEL");
+        jButton_delPG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_delPGActionPerformed(evt);
+            }
+        });
 
         jLabel_PG.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
         jLabel_PG.setForeground(new java.awt.Color(229, 217, 182));
@@ -254,6 +264,16 @@ public class ProfileUI extends JFrame {
         driver.personal.setQuote(JOptionPane.showInputDialog(this, "Enter your favourite quote!", JOptionPane.INFORMATION_MESSAGE));
         driver.writeJSON();       
         
-    }       
+    }
+
+    private void jButton_addPGActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+        //addGoals();
+    }
+    
+    private void jButton_delPGActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        // TODO add your handling code here:
+        jTextField_ipPG.setText(null);
+    }     
     
 }
