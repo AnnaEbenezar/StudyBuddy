@@ -6,8 +6,29 @@ public class ToDoPanel extends JPanel{
     ToDoDriver driver;
 
     public ToDoPanel(ToDoDriver driver) {
+        this.driver = driver;
         initComponents();
         setVisible(true);
+    }
+
+    public void setProgressBarSchool(int value) {
+        ProgressSchoolWork.setValue(value);
+    }
+
+    public void setProgressBarHealth(int value) {
+        ProgressHealth.setValue(value);
+    }
+
+    public void setProgressBarOthers(int value) {
+        ProgressOthers.setValue(value);
+    }
+
+    public void setTaskTextField(String task) {
+        TextfAdd.setText(task);
+    }
+
+    public String getTaskTextField() {
+        return TextfAdd.getText();
     }
 
     private void initComponents() {
@@ -21,12 +42,12 @@ public class ToDoPanel extends JPanel{
         jPanel3 = new javax.swing.JPanel();
         ProgressOthers = new javax.swing.JProgressBar();
         LabelOthers = new javax.swing.JLabel();
-        ImpPanel = new javax.swing.JPanel();
-        cbImp1 = new javax.swing.JCheckBox();
-        cbImp2 = new javax.swing.JCheckBox();
-        cbImp3 = new javax.swing.JCheckBox();
-        cbImp4 = new javax.swing.JCheckBox();
-        cbImp5 = new javax.swing.JCheckBox();
+        // ImpPanel = new javax.swing.JPanel();
+        // cbImp1 = new javax.swing.JCheckBox();
+        // cbImp2 = new javax.swing.JCheckBox();
+        // cbImp3 = new javax.swing.JCheckBox();
+        // cbImp4 = new javax.swing.JCheckBox();
+        // cbImp5 = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
         RdSchool = new javax.swing.JRadioButton();
         RdHealth = new javax.swing.JRadioButton();
@@ -124,51 +145,61 @@ public class ToDoPanel extends JPanel{
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        ImpPanel.setBackground(new java.awt.Color(153, 153, 153));
+        // ImpPanel.setBackground(new java.awt.Color(153, 153, 153));
 
-        javax.swing.GroupLayout ImpPanelLayout = new javax.swing.GroupLayout(ImpPanel);
-        ImpPanel.setLayout(ImpPanelLayout);
-        ImpPanelLayout.setHorizontalGroup(
-            ImpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ImpPanelLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(ImpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbImp5)
-                    .addComponent(cbImp4)
-                    .addComponent(cbImp3)
-                    .addComponent(cbImp2)
-                    .addComponent(cbImp1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        ImpPanelLayout.setVerticalGroup(
-            ImpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ImpPanelLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(cbImp1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbImp2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbImp3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbImp4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbImp5)
-                .addContainerGap(13, Short.MAX_VALUE))
-        );
+        // javax.swing.GroupLayout ImpPanelLayout = new javax.swing.GroupLayout(ImpPanel);
+        // ImpPanel.setLayout(ImpPanelLayout);
+        // ImpPanelLayout.setHorizontalGroup(
+        //     ImpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        //     .addGroup(ImpPanelLayout.createSequentialGroup()
+        //         .addGap(23, 23, 23)
+        //         .addGroup(ImpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        //             .addComponent(cbImp5)
+        //             .addComponent(cbImp4)
+        //             .addComponent(cbImp3)
+        //             .addComponent(cbImp2)
+        //             .addComponent(cbImp1))
+        //         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        // );
+        // ImpPanelLayout.setVerticalGroup(
+        //     ImpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        //     .addGroup(ImpPanelLayout.createSequentialGroup()
+        //         .addGap(18, 18, 18)
+        //         .addComponent(cbImp1)
+        //         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        //         .addComponent(cbImp2)
+        //         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        //         .addComponent(cbImp3)
+        //         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        //         .addComponent(cbImp4)
+        //         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        //         .addComponent(cbImp5)
+        //         .addContainerGap(13, Short.MAX_VALUE))
+        // );
 
         buttonGroup3.add(RdSchool);
         RdSchool.setText("School Work");
+        RdSchool.setActionCommand("School Work");
 
         buttonGroup3.add(RdHealth);
         RdHealth.setText("Health");
+        RdHealth.setActionCommand("Health");
 
         buttonGroup3.add(RdImp);
         RdImp.setText("Priority Task");
+        RdImp.setActionCommand("Star");
 
         Add.setText("Add");
+        Add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                driver.widgetAdd();
+            }
+
+        });
 
         buttonGroup3.add(RdOthers);
         RdOthers.setText("Others");
+        RdOthers.setActionCommand("Others");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -224,7 +255,7 @@ public class ToDoPanel extends JPanel{
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(ImpPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                // .addComponent(ImpPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(12, 12, 12)))
                         .addGap(37, 37, 37))))
             .addGroup(layout.createSequentialGroup()
@@ -244,7 +275,7 @@ public class ToDoPanel extends JPanel{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(ImpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                // .addComponent(ImpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
@@ -253,7 +284,7 @@ public class ToDoPanel extends JPanel{
     
     
     private javax.swing.JButton Add;
-    private javax.swing.JPanel ImpPanel;
+    // private javax.swing.JPanel ImpPanel;
     private javax.swing.JLabel LabelHealth;
     private javax.swing.JLabel LabelOthers;
     private javax.swing.JLabel LabelSchool;
@@ -265,15 +296,16 @@ public class ToDoPanel extends JPanel{
     private javax.swing.JRadioButton RdOthers;
     private javax.swing.JRadioButton RdSchool;
     private javax.swing.JTextField TextfAdd;
-    private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.JCheckBox cbImp1;
-    private javax.swing.JCheckBox cbImp2;
-    private javax.swing.JCheckBox cbImp3;
-    private javax.swing.JCheckBox cbImp4;
-    private javax.swing.JCheckBox cbImp5;
+    public javax.swing.ButtonGroup buttonGroup3;
+    // private javax.swing.JCheckBox cbImp1;
+    // private javax.swing.JCheckBox cbImp2;
+    // private javax.swing.JCheckBox cbImp3;
+    // private javax.swing.JCheckBox cbImp4;
+    // private javax.swing.JCheckBox cbImp5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
 
 }
+
