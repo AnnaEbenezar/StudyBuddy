@@ -1,0 +1,97 @@
+[
+  {
+    "text": "111",
+    "select": true,
+    "category": "School Work"
+  },
+  {
+    "text": "222",
+    "select": true,
+    "category": "School Work"
+  },
+  {
+    "text": "222",
+    "select": true,
+    "category": "Health"
+  },
+  {
+    "text": "222",
+    "select": true,
+    "category": "Health"
+  },
+  {
+    "text": "o2",
+    "select": true,
+    "category": "Others"
+  },
+  {
+    "text": "222",
+    "select": true,
+    "category": "Others"
+  },
+  {
+    "text": "o3",
+    "select": false,
+    "category": "Others"
+  },
+  {
+    "text": "222",
+    "select": true,
+    "category": "Others"
+  },
+  {
+    "text": "o4",
+    "select": true,
+    "category": "Others"
+  },
+  {
+    "text": "222",
+    "select": true,
+    "category": "Others"
+  },
+  {
+    "text": "o5",
+    "select": false,
+    "category": "Others"
+  },
+  {
+    "text": "222",
+    "select": false,
+    "category": "Others"
+  },
+  {
+    "text": "o5",
+    "select": false,
+    "category": "Others"
+  },
+  {
+    "text": "o5",
+    "select": false,
+    "category": "Others"
+  },
+  {
+    "text": "o6",
+    "select": false,
+    "category": "Others"
+  },
+  {
+    "text": "o6",
+    "select": false,
+    "category": "Others"
+  },
+  {
+    "text": "o7",
+    "select": false,
+    "category": "Others"
+  },
+  {
+    "text": "o7",
+    "select": false,
+    "category": "Others"
+  },
+  {
+    "text": "test3",
+    "select": false,
+    "category": "Star"
+  }
+]

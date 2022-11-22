@@ -10,6 +10,7 @@ import javax.swing.text.StyleContext;
 
 import ScheduleSystem.ScheduleDriver;
 import ScheduleSystem.ScheduleWidget;
+import TodoSystem.ToDoDriver;
 
 public class MenuUI extends JFrame {
     private final MenuDriver driver;
@@ -312,19 +313,7 @@ public class MenuUI extends JFrame {
         panel7.setLayout(new BorderLayout(0, 0));
         panel7.setBackground(new Color(-14737633));
         panel6.add(panel7, BorderLayout.NORTH);
-        final JLabel label2 = new JLabel();
-        label2.setAutoscrolls(false);
-        label2.setBackground(new Color(-14737633));
-        Font label2Font = this.$$$getFont$$$("Lucida Sans", Font.BOLD, 28, label2.getFont());
-        if (label2Font != null) label2.setFont(label2Font);
-        label2.setForeground(new Color(-657419));
-        label2.setHorizontalAlignment(0);
-        label2.setMaximumSize(new Dimension(200, 40));
-        label2.setMinimumSize(new Dimension(200, 40));
-        label2.setPreferredSize(new Dimension(200, 50));
-        label2.setText("Profile");
-        panel7.add(label2, BorderLayout.CENTER);
-        ProfileWidgetPanel.setBackground(new Color(-12171706));
+        ProfileWidgetPanel.setBackground(new Color(-657419));
         panel6.add(ProfileWidgetPanel, BorderLayout.CENTER);
         final JPanel panel8 = new JPanel();
         panel8.setLayout(new BorderLayout(0, 0));
@@ -342,20 +331,7 @@ public class MenuUI extends JFrame {
         panel9.setLayout(new BorderLayout(0, 0));
         panel9.setBackground(new Color(-14737633));
         panel8.add(panel9, BorderLayout.NORTH);
-        final JLabel label3 = new JLabel();
-        label3.setAlignmentY(0.0f);
-        Font label3Font = this.$$$getFont$$$("Lucida Sans", Font.BOLD, 28, label3.getFont());
-        if (label3Font != null) label3.setFont(label3Font);
-        label3.setForeground(new Color(-657419));
-        label3.setHorizontalAlignment(0);
-        label3.setMaximumSize(new Dimension(200, 40));
-        label3.setMinimumSize(new Dimension(200, 40));
-        label3.setPreferredSize(new Dimension(200, 50));
-        label3.setText("To-Do");
-        panel9.add(label3, BorderLayout.CENTER);
-        ToDoWidgetPanel = new JPanel();
-        ToDoWidgetPanel.setLayout(new BorderLayout(0, 0));
-        ToDoWidgetPanel.setBackground(new Color(-12171706));
+        ToDoWidgetPanel.setBackground(new Color(-657419));
         panel8.add(ToDoWidgetPanel, BorderLayout.CENTER);
         final JPanel panel10 = new JPanel();
         panel10.setLayout(new BorderLayout(0, 0));
@@ -374,18 +350,7 @@ public class MenuUI extends JFrame {
         panel11.setAutoscrolls(false);
         panel11.setBackground(new Color(-14737633));
         panel10.add(panel11, BorderLayout.NORTH);
-        final JLabel label4 = new JLabel();
-        label4.setAlignmentY(0.0f);
-        Font label4Font = this.$$$getFont$$$("Lucida Sans", Font.BOLD, 28, label4.getFont());
-        if (label4Font != null) label4.setFont(label4Font);
-        label4.setForeground(new Color(-657419));
-        label4.setHorizontalAlignment(0);
-        label4.setMaximumSize(new Dimension(200, 40));
-        label4.setMinimumSize(new Dimension(200, 40));
-        label4.setPreferredSize(new Dimension(200, 50));
-        label4.setText("Schedules");
-        panel11.add(label4, BorderLayout.CENTER);
-        SchedulesWidgetPanel.setBackground(new Color(-12171706));
+        SchedulesWidgetPanel.setBackground(new Color(-657419));
         panel10.add(SchedulesWidgetPanel, BorderLayout.CENTER);
     }
 
@@ -419,7 +384,7 @@ public class MenuUI extends JFrame {
     }
 
     private void createUIComponents() {
-        ToDoWidgetPanel = new JPanel();  // for To-do widget
+        ToDoWidgetPanel = ToDoDriver.getInstance(this.driver.main).Widget;
         SchedulesWidgetPanel = new ScheduleWidget(ScheduleDriver.getInstance(this.driver.main));  // for schedules widget
         ProfileWidgetPanel = new JPanel();  // for profile widget
     }
