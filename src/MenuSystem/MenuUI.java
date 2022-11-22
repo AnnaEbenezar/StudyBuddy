@@ -11,7 +11,6 @@ import javax.swing.text.StyleContext;
 import ScheduleSystem.ScheduleDriver;
 import ScheduleSystem.ScheduleWidget;
 
-
 public class MenuUI extends JFrame {
     private final MenuDriver driver;
     private JPanel MenuPanel;
