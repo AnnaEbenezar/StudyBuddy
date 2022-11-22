@@ -1,6 +1,7 @@
 package ProfileSystem;
 
 import MainSystem.MainDriver;
+import MainSystem.User;
 import Utility.ModuleDriver;
 
 import java.io.File;
@@ -9,6 +10,7 @@ public class ProfileDriver implements ModuleDriver {
     private final MainDriver main;
     private static ProfileDriver instance = null;
     private volatile boolean runningFlag = false;
+    private ProfileUI UI;
 
     private ProfileDriver(MainDriver main) {
         this.main = main;
@@ -32,9 +34,11 @@ public class ProfileDriver implements ModuleDriver {
 
     @Override
     public void run() {
-        // starting
+        UI = new ProfileUI(this);
         this.runningFlag = true;
 
 
     }
+
+    
 }
