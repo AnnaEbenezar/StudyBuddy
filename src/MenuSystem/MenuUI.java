@@ -380,6 +380,6 @@ public class MenuUI extends JFrame {
     }
 
     private void createUIComponents() {
-        ToDoWidgetPanel = new ToDoPanel(ToDoDriver.getInstance(this.driver.main));
+        ToDoWidgetPanel = ToDoDriver.getInstance(this.driver.main).Widget;
     }
 }
