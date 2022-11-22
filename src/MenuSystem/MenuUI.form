@@ -186,7 +186,7 @@
                     <border type="none"/>
                     <children/>
                   </grid>
-                  <grid id="c1492" binding="ProfileWidgetPanel" custom-create="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+                  <grid id="c1492" binding="ProfileWidgetPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
                     <constraints border-constraint="Center"/>
                     <properties>
                       <background color="-12171706"/>
@@ -208,14 +208,6 @@
                   <color color="-4473925"/>
                 </border>
                 <children>
-                  <grid id="22c1b" layout-manager="BorderLayout" hgap="0" vgap="0">
-                    <constraints border-constraint="North"/>
-                    <properties>
-                      <background color="-14737633"/>
-                    </properties>
-                    <border type="none"/>
-                    <children/>
-                  </grid>
                   <grid id="dbf84" binding="ToDoWidgetPanel" custom-create="true" layout-manager="BorderLayout" hgap="0" vgap="0">
                     <constraints border-constraint="Center"/>
                     <properties>
@@ -247,7 +239,7 @@
                     <border type="none"/>
                     <children/>
                   </grid>
-                  <grid id="cea5a" binding="SchedulesWidgetPanel" custom-create="true" layout-manager="BorderLayout" hgap="0" vgap="0">
+                  <grid id="cea5a" binding="SchedulesWidgetPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
                     <constraints border-constraint="Center"/>
                     <properties>
                       <background color="-12171706"/>
