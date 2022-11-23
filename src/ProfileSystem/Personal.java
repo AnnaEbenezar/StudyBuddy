@@ -3,49 +3,37 @@ package ProfileSystem;
 import java.util.ArrayList;
 
 public class Personal {
+
     private String major;
     private String quote;
-    private ArrayList<Checkbox> accomplishment;
-    private ArrayList<Checkbox> personalGoal;
 
-    public Personal() {
-        accomplishment = new ArrayList<Checkbox>();
-        personalGoal = new ArrayList<Checkbox>();
+    ArrayList<CheckBox> goals;
+    ArrayList<String> accomplishment;
+
+    Personal() {
+        goals = new ArrayList<CheckBox>();
+        accomplishment = new ArrayList<String>();
     }
 
-    public Personal(Personal source) {
+    Personal(Personal source) {
         this.major = source.major;
         this.quote = source.quote;
-        this.accomplishment = source.getAccomplishment();
-        this.personalGoal = source.getPersonalGoal();
+
+        for (CheckBox c: source.goals) {
+            this.goals.add(new CheckBox(c));
+        }
+
+        for (String a: source.accomplishment) {
+            this.accomplishment.add(new String(a));
+        }
     }
-    
+
     public String getMajor() {
         return major;
     }
 
     public String getQuote() {
         return quote;
-    }
-
-    public ArrayList<Checkbox> getAccomplishment() {
-        ArrayList<Checkbox> temp = new ArrayList<Checkbox>();
-
-        for (Checkbox c: accomplishment) {
-            temp.add(new Checkbox(c));
-        }
-
-        return temp;
-    }
-
-    public ArrayList<Checkbox> getPersonalGoal() {
-        ArrayList<Checkbox> temp = new ArrayList<Checkbox>();
-
-        for (Checkbox c: personalGoal) {
-            temp.add(new Checkbox(c));
-        }
-
-        return temp;
     }
 
     public void setMajor(String major) {
@@ -56,48 +44,71 @@ public class Personal {
         this.quote = quote;
     }
 
-    public void setAccomplishment(ArrayList<Checkbox> accomplishment) {
-        this.accomplishment = new ArrayList<Checkbox>();
-        for (Checkbox c: accomplishment) {
-            this.accomplishment.add(new Checkbox(c));
+    public ArrayList<CheckBox> getGoals() {
+        ArrayList<CheckBox> temp = new ArrayList<CheckBox>();
+
+        for (CheckBox c: goals) {
+            temp.add(new CheckBox(c));
+        }
+
+        return temp;
+    }
+
+    public void setGoals(ArrayList<CheckBox> newGoals) {
+        if (this.goals != null) {
+            this.goals.removeAll(goals);
+        }
+
+        for (CheckBox c: newGoals) {
+            this.goals.add(new CheckBox(c));
         }
     }
 
-    public void setPersonalGoal(ArrayList<Checkbox> personalGoal) {
-        this.personalGoal = new ArrayList<Checkbox>();
-        for (Checkbox c: personalGoal) {
-            this.personalGoal.add(new Checkbox(c));
+    public ArrayList<String> getAccomplishment() {
+        ArrayList<String> temp = new ArrayList<String>();
+
+        for (String a: accomplishment) {
+            temp.add(a);
         }
+
+        return temp;
     }
 
+    public void setAccomplishment(ArrayList<String> accomplishment) {
+        if (this.accomplishment != null) {
+            this.accomplishment.removeAll(this.accomplishment);
+        }
+        for (String a: accomplishment) {
+            this.accomplishment.add(new String(a));
+        }
+    }
 }
 
-class Checkbox {
-    private boolean isChecked;
+class CheckBox {
+
     private String name;
+    private boolean isCheck;
 
-    public Checkbox() {};
+    public CheckBox() {}
 
-    public Checkbox(Checkbox source) {
-        this.isChecked = source.isChecked;
+    public CheckBox(CheckBox source) {
         this.name = source.name;
+        this.isCheck = source.isCheck;
     }
 
     public String getName() {
         return name;
     }
 
+    public boolean isCheck() {
+        return isCheck;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public boolean isChecked() {
-        return isChecked;
+    public void setCheck(boolean isCheck) {
+        this.isCheck = isCheck;
     }
-
-    public void setChecked(boolean isChecked) {
-        this.isChecked = isChecked;
-    }
-    
-
 }

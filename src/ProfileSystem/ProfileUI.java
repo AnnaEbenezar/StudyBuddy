@@ -2,6 +2,9 @@ package ProfileSystem;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+
 import MainSystem.User;
 
 public class ProfileUI extends JFrame {
@@ -21,13 +24,126 @@ public class ProfileUI extends JFrame {
     private javax.swing.JScrollPane jScrollPane_Quote;
     private javax.swing.JTextArea jTextArea_Quote;
     private javax.swing.JTextField jTextField_ipPG;
-    private java.awt.Panel panel_PerGoals;
+    private javax.swing.JPanel panel_PerGoals;
+    DefaultListModel<String> listModel = new DefaultListModel<String>();
+
+    private ArrayList<JCheckBox> jGoals;
 
     ProfileDriver driver;
+    
     ProfileUI(ProfileDriver driver) {
         this.driver = driver;
+
+        jGoals = new ArrayList<JCheckBox>();
+
         initComponents();
+
+        jButton_addPG.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addGoals();
+            }
+        });
+
+        jButton_delPG.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deleteAccom();
+
+            }
+        });
+
         setVisible(true);
+    }
+
+    public void addGoals() {
+
+        if (jTextField_ipPG.getText() != null) {
+            String g = jTextField_ipPG.getText();
+
+            JCheckBox goal = new JCheckBox(g);
+            goal.setSelected(false);
+
+            this.driver.installGoalInfo(g, false);
+
+            goal.addActionListener(e -> boxChecked(goal));
+
+            jGoals.add(goal);
+
+            panel_PerGoals.add(goal);
+
+            this.invalidate();
+            this.validate();
+            this.repaint();
+
+            jTextField_ipPG.setText(null);
+        }
+    }
+
+    public void boxChecked(JCheckBox box) {
+        panel_PerGoals.remove(box);
+
+        for (int i = 0; i < jGoals.size(); i++) {
+
+            if (box.getText().equals(jGoals.get(i).getText())) {
+                jGoals.remove(i);
+                driver.personal.goals.remove(i);
+            }
+        }
+
+        panel_PerGoals.invalidate();
+        panel_PerGoals.validate();
+        panel_PerGoals.repaint();
+        listModel.addElement(box.getText());
+        driver.personal.accomplishment.add(box.getText());
+
+        driver.writeJSON();
+    }
+
+    public void storeBackToJGoals() {
+        if (jGoals != null) {
+            jGoals.removeAll(jGoals);
+        }
+
+        for (int i = 0; i < driver.personal.goals.size(); i++) {
+            JCheckBox cB = new JCheckBox(driver.personal.goals.get(i).getName());
+            cB.setSelected(driver.personal.goals.get(i).isCheck());
+            cB.addActionListener(e -> boxChecked(cB));
+
+            panel_PerGoals.add(cB);
+
+            this.invalidate();
+            this.validate();
+            this.repaint();
+
+            jGoals.add(cB);
+        }
+
+        for (String ac : driver.personal.accomplishment) {
+            listModel.addElement(ac);
+        }
+
+        jLabel_major.setText("Major: " + driver.personal.getMajor());
+        jTextArea_Quote.setText(driver.personal.getQuote());
+    }
+
+    public void deleteAccom() {
+
+        if (jList_Accomp.getSelectedIndex() != -1) {
+            int accDelIndex = jList_Accomp.getSelectedIndex();
+
+            // jTextField_ipPG.setText(jList_Accomp.getSelectedValue(accDelIndex));
+            driver.personal.accomplishment.remove(accDelIndex);
+            listModel.remove(accDelIndex);
+
+            jList_Accomp.invalidate();
+            jList_Accomp.validate();
+            jList_Accomp.repaint();
+
+            driver.writeJSON();
+
+            jTextField_ipPG.setText(null);
+        }
     }
 
     private void initComponents() {
@@ -37,7 +153,7 @@ public class ProfileUI extends JFrame {
         button_Profile = new java.awt.Button();
         jLabel_major = new javax.swing.JLabel();
         jScrollPane_PerGoals = new javax.swing.JScrollPane();
-        panel_PerGoals = new java.awt.Panel();
+        panel_PerGoals = new javax.swing.JPanel();
         jScrollPane_Accomplisments = new javax.swing.JScrollPane();
         jList_Accomp = new javax.swing.JList<>();
         jPanel_Quote = new javax.swing.JPanel();
@@ -50,6 +166,7 @@ public class ProfileUI extends JFrame {
         jLabel_PG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        //setTitle("Profile");
         setBackground(new java.awt.Color(229, 217, 182));
         setMaximumSize(new java.awt.Dimension(1600, 900));
         setMinimumSize(new java.awt.Dimension(800, 450));
@@ -72,7 +189,12 @@ public class ProfileUI extends JFrame {
 
         jLabel_major.setFont(new java.awt.Font("Century Schoolbook", 0, 14)); // NOI18N
         jLabel_major.setForeground(new java.awt.Color(229, 217, 182));
-        jLabel_major.setText(driver.personal.getMajor());
+        
+        String major = "";
+        if (driver.personal.getMajor() != null) {
+            major = driver.personal.getMajor();
+        }
+        jLabel_major.setText(major);
 
         javax.swing.GroupLayout jPanel_HeaderLayout = new javax.swing.GroupLayout(jPanel_Header);
         jPanel_Header.setLayout(jPanel_HeaderLayout);
@@ -113,7 +235,7 @@ public class ProfileUI extends JFrame {
         panel_PerGoals.setMaximumSize(new java.awt.Dimension(32767, 32767));
         panel_PerGoals.setMinimumSize(new java.awt.Dimension(250, 200));
         panel_PerGoals.setPreferredSize(new java.awt.Dimension(250, 200));
-        panel_PerGoals.setLayout(new javax.swing.BoxLayout(panel_PerGoals, javax.swing.BoxLayout.Y_AXIS));
+        panel_PerGoals.setLayout(new javax.swing.BoxLayout(panel_PerGoals, javax.swing.BoxLayout.Y_AXIS));        
         jScrollPane_PerGoals.setViewportView(panel_PerGoals);
 
         jScrollPane_Accomplisments.setMinimumSize(new java.awt.Dimension(250, 200));
@@ -171,20 +293,20 @@ public class ProfileUI extends JFrame {
         jButton_addPG.setBackground(new java.awt.Color(229, 217, 182));
         jButton_addPG.setFont(new java.awt.Font("Century Schoolbook", 1, 13)); // NOI18N
         jButton_addPG.setText("ADD");
-        jButton_addPG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_addPGActionPerformed(evt);
-            }
-        });
+        // jButton_addPG.addActionListener(new java.awt.event.ActionListener() {
+        //     public void actionPerformed(java.awt.event.ActionEvent evt) {
+        //         jButton_addPGActionPerformed(evt);
+        //     }
+        // });
 
         jButton_delPG.setBackground(new java.awt.Color(229, 217, 182));
         jButton_delPG.setFont(new java.awt.Font("Century Schoolbook", 1, 13)); // NOI18N
         jButton_delPG.setText("DEL");
-        jButton_delPG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_delPGActionPerformed(evt);
-            }
-        });
+        // jButton_delPG.addActionListener(new java.awt.event.ActionListener() {
+        //     public void actionPerformed(java.awt.event.ActionEvent evt) {
+        //         jButton_delPGActionPerformed(evt);
+        //     }
+        // });
 
         jLabel_PG.setFont(new java.awt.Font("Century Schoolbook", 1, 18)); // NOI18N
         jLabel_PG.setForeground(new java.awt.Color(229, 217, 182));
@@ -257,23 +379,15 @@ public class ProfileUI extends JFrame {
 
     private void button_ProfileActionPerformed(java.awt.event.ActionEvent evt) {                                        
         // TODO add your handling code here:
-        //driver.name = JOptionPane.showInputDialog(this, "Enter Name: ", JOptionPane.INFORMATION_MESSAGE);
-        //if (name.equals(JOptionPane.OK_OPTION)) {
-        driver.personal.setMajor(JOptionPane.showInputDialog(this, "What is your Major? ", JOptionPane.INFORMATION_MESSAGE));
-        //} 
-        driver.personal.setQuote(JOptionPane.showInputDialog(this, "Enter your favourite quote!", JOptionPane.INFORMATION_MESSAGE));
-        driver.writeJSON();       
         
+        driver.personal.setMajor(JOptionPane.showInputDialog(this, "What is your Major? ", JOptionPane.INFORMATION_MESSAGE));
+         
+        driver.personal.setQuote(JOptionPane.showInputDialog(this, "Enter your favourite quote!", JOptionPane.INFORMATION_MESSAGE));
+        
+        jLabel_major.setText("Major: " + driver.personal.getMajor());
+        jTextArea_Quote.setText(driver.personal.getQuote());
+        
+        driver.writeJSON();   
     }
-
-    private void jButton_addPGActionPerformed(java.awt.event.ActionEvent evt) {                                              
-        // TODO add your handling code here:
-        //addGoals();
-    }
-    
-    private void jButton_delPGActionPerformed(java.awt.event.ActionEvent evt) {                                              
-        // TODO add your handling code here:
-        jTextField_ipPG.setText(null);
-    }     
     
 }

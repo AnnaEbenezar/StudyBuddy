@@ -1,58 +1,51 @@
 package ProfileSystem;
 
+import MainSystem.MainDriver;
+import MainSystem.User;
+import Utility.ModuleDriver;
+
+import java.io.File;
+import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
-import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-
-import MainSystem.MainDriver;
-import MainSystem.User;
-import Utility.CustomException;
-import Utility.ModuleDriver;
-
-
-import java.io.*;
-import java.util.Scanner;
 
 public class ProfileDriver implements ModuleDriver {
     private final MainDriver main;
     private static ProfileDriver instance = null;
     private volatile boolean runningFlag = false;
+
     private ProfileUI UI;
 
-    public Path path;
-    private static User user;
-    public String name;
-    public String major;
-    public String quote;
-
     public Personal personal;
+
+    public Path path;
+
+    public User user;
+
+    public MainDriver getMain() {
+        return main;
+    }
 
     private ProfileDriver(MainDriver main) {
         this.main = main;
     }
 
-    public MainDriver getMain(){
-        return this.main;
-    }
-
     public static ProfileDriver getInstance(MainDriver main) {
-        if (instance == null) instance = new ProfileDriver(main);
+        if (instance == null)
+            instance = new ProfileDriver(main);
         return instance;
     }
 
     @Override
     public void quitModule() {
-        //quitting
+        // quitting
         runningFlag = false;
     }
 
@@ -63,20 +56,33 @@ public class ProfileDriver implements ModuleDriver {
 
     @Override
     public void run() {
-        UI = new ProfileUI(this);
-        this.runningFlag = true;
-
-        user = main.getUser();
-        String username = "resources/users/" + user.getUsername() + "/profile.json";
-        path = Paths.get(username);
-
         personal = new Personal();
 
-        
+        getPath();
 
+        // starting
+        UI = new ProfileUI(this);
+        UI.setVisible(true);
+
+        readJSON();
+        this.runningFlag = true;
 
     }
 
+    public void getPath() {
+        user = main.getUser();
+        String username = "resources/users/" + user.getUsername() + "/profile";
+        path = Paths.get(username);
+    }
+
+    public void installGoalInfo(String name, boolean isCheck) {
+        CheckBox cB = new CheckBox();
+        cB.setName(name);
+        cB.setCheck(isCheck);
+
+        personal.goals.add(cB);
+        writeJSON();
+    }
 
     public void writeJSON() {
         // path = Paths.get("resources/users/123456/schedule");
@@ -95,21 +101,23 @@ public class ProfileDriver implements ModuleDriver {
         // path = Paths.get("resources/users/123456/schedule");
 
         try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
-            // Type courseList = new TypeToken<ArrayList<Courses>>() {
-            // }.getType();
 
-            // course.removeAll(course);
-
-            personal = gson.fromJson(reader, Personal.class);
+            personal = gson.fromJson(reader, personal.getClass());
 
             if (personal == null) {
                 personal = new Personal();
+            }
+
+            if (UI != null) {
+                UI.storeBackToJGoals();
             }
 
         } catch (IOException e) {
             e.getMessage();
         }
     }
+
+}
 
 
     //CSV reader and writer
@@ -172,7 +180,7 @@ public class ProfileDriver implements ModuleDriver {
             throw new CustomException.CreateAccountFileError();
         }
     } */
-}
+
 
      
 
