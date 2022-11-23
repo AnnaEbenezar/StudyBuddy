@@ -4,12 +4,12 @@ package lab12task1;
  *
  * @author gracekasita
  */
-public class NewJPanel3 extends javax.swing.JPanel {
+public class ProfilePanel extends javax.swing.JPanel {
 
     /**
      * Creates new form NewJPanel3
      */
-    public NewJPanel3() {
+    public ProfilePanel() {
         initComponents();
     }
 
@@ -22,50 +22,39 @@ public class NewJPanel3 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        GoalPanel = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        AccompScrollPane = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        TopPanel = new javax.swing.JPanel();
+        ProfileLabel = new javax.swing.JLabel();
+        AccompLabel = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout GoalPanelLayout = new javax.swing.GroupLayout(GoalPanel);
-        GoalPanel.setLayout(GoalPanelLayout);
-        GoalPanelLayout.setHorizontalGroup(
-            GoalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 272, Short.MAX_VALUE)
-        );
-        GoalPanelLayout.setVerticalGroup(
-            GoalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 317, Short.MAX_VALUE)
-        );
+        AccompScrollPane.setViewportView(jList1);
 
-        jScrollPane1.setViewportView(GoalPanel);
+        TopPanel.setBackground(new java.awt.Color(153, 153, 153));
+        TopPanel.setForeground(new java.awt.Color(102, 102, 102));
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel1.setForeground(new java.awt.Color(102, 102, 102));
+        ProfileLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 18)); // NOI18N
+        ProfileLabel.setText("Profile");
 
-        jLabel1.setFont(new java.awt.Font(".AppleSystemUIFont", 1, 18)); // NOI18N
-        jLabel1.setText("Profile");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout TopPanelLayout = new javax.swing.GroupLayout(TopPanel);
+        TopPanel.setLayout(TopPanelLayout);
+        TopPanelLayout.setHorizontalGroup(
+            TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TopPanelLayout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(jLabel1)
+                .addComponent(ProfileLabel)
                 .addContainerGap(232, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        TopPanelLayout.setVerticalGroup(
+            TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TopPanelLayout.createSequentialGroup()
                 .addContainerGap(40, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(ProfileLabel)
                 .addGap(24, 24, 24))
         );
 
-        jLabel2.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 14)); // NOI18N
-        jLabel2.setText("Goal");
+        AccompLabel.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 14)); // NOI18N
+        AccompLabel.setText("Accomplishment");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -73,34 +62,34 @@ public class NewJPanel3 extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jScrollPane1)
+                .addComponent(AccompScrollPane)
                 .addGap(37, 37, 37))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jLabel2)
+                .addComponent(AccompLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(jLabel2)
+                .addComponent(AccompLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AccompScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(36, Short.MAX_VALUE))
         );
     }// </editor-fold>                        
 
 
     // Variables declaration - do not modify                     
-    private javax.swing.JPanel GoalPanel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel AccompLabel;
+    private javax.swing.JScrollPane AccompScrollPane;
+    private javax.swing.JLabel ProfileLabel;
+    private javax.swing.JPanel TopPanel;
+    private javax.swing.JList<String> jList1;
     // End of variables declaration                   
 }
