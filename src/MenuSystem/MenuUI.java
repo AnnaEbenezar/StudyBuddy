@@ -8,6 +8,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.plaf.FontUIResource;
 import javax.swing.text.StyleContext;
 
+import ProfileSystem.ProfileDriver;
+import ProfileSystem.ProfilePanel;
 import ScheduleSystem.ScheduleDriver;
 import ScheduleSystem.ScheduleWidget;
 import TodoSystem.ToDoDriver;
@@ -386,6 +388,6 @@ public class MenuUI extends JFrame {
     private void createUIComponents() {
         ToDoWidgetPanel = ToDoDriver.getInstance(this.driver.main).Widget;
         SchedulesWidgetPanel = new ScheduleWidget(ScheduleDriver.getInstance(this.driver.main));  // for schedules widget
-        ProfileWidgetPanel = new JPanel();  // for profile widget
+        ProfileWidgetPanel = new ProfilePanel(ProfileDriver.getInstance(this.driver.main));
     }
 }

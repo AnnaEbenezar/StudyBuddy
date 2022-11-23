@@ -1,222 +1,389 @@
 package ProfileSystem;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+
+import MainSystem.User;
 
 public class ProfileUI extends JFrame {
 
+    private javax.swing.JButton button_Profile;
+    private javax.swing.JButton jButton_addPG;
+    private javax.swing.JButton jButton_delPG;
+    private javax.swing.JLabel jLabel_PG;
+    private javax.swing.JLabel jLabel_Welcome;
+    private javax.swing.JLabel jLabel_major;
+    private javax.swing.JList<String> jList_Accomp;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel_Btns;
+    private javax.swing.JPanel jPanel_Header;
+    private javax.swing.JPanel jPanel_Quote;
+    private javax.swing.JScrollPane jScrollPane_Accomplisments;
+    private javax.swing.JScrollPane jScrollPane_PerGoals;
+    private javax.swing.JScrollPane jScrollPane_Quote;
+    private javax.swing.JTextArea jTextArea_Quote;
+    private javax.swing.JTextField jTextField_ipPG;
+    private javax.swing.JPanel panel_PerGoals;
+    DefaultListModel<String> listModel = new DefaultListModel<String>();
+
+    private ArrayList<JCheckBox> jGoals;
+
     ProfileDriver driver;
+
     ProfileUI(ProfileDriver driver) {
+        this.driver = driver;
+
+        jGoals = new ArrayList<JCheckBox>();
+
         initComponents();
+
+        jButton_addPG.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addGoals();
+
+            }
+        });
+
+        jButton_delPG.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deleteAccom();
+
+            }
+        });
+
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                driver.exitProcedure();
+            }
+        });
+
         setVisible(true);
+    }
+
+    public void addGoals() {
+
+        if (jTextField_ipPG.getText() != null) {
+            String g = jTextField_ipPG.getText();
+
+            JCheckBox goal = new JCheckBox(g);
+            goal.setSelected(false);
+
+            this.driver.installGoalInfo(g, false);
+
+            goal.addActionListener(e -> boxChecked(goal));
+
+            jGoals.add(goal);
+
+            panel_PerGoals.add(goal);
+
+            this.invalidate();
+            this.validate();
+            this.repaint();
+
+            jTextField_ipPG.setText(null);
+
+            this.driver.Panel.upload();
+        }
+    }
+
+    public void boxChecked(JCheckBox box) {
+        panel_PerGoals.remove(box);
+
+        for (int i = 0; i < jGoals.size(); i++) {
+
+            if (box.getText().equals(jGoals.get(i).getText())) {
+                jGoals.remove(i);
+                driver.personal.goals.remove(i);
+            }
+        }
+
+        panel_PerGoals.invalidate();
+        panel_PerGoals.validate();
+        panel_PerGoals.repaint();
+        listModel.addElement(box.getText());
+        driver.personal.accomplishment.add(box.getText());
+
+        driver.writeJSON();
+    }
+
+    public void storeBackToJGoals() {
+        if (jGoals != null) {
+            jGoals.removeAll(jGoals);
+        }
+
+        for (int i = 0; i < driver.personal.goals.size(); i++) {
+            JCheckBox cB = new JCheckBox(driver.personal.goals.get(i).getName());
+            cB.setSelected(driver.personal.goals.get(i).isCheck());
+            cB.addActionListener(e -> boxChecked(cB));
+
+            panel_PerGoals.add(cB);
+
+            this.invalidate();
+            this.validate();
+            this.repaint();
+
+            jGoals.add(cB);
+        }
+
+        for (String ac : driver.personal.accomplishment) {
+            listModel.addElement(ac);
+        }
+
+        jLabel_major.setText("Major: " + driver.personal.getMajor());
+        jTextArea_Quote.setText(driver.personal.getQuote());
+    }
+
+    public void deleteAccom() {
+
+        if (jList_Accomp.getSelectedIndex() != -1) {
+            int accDelIndex = jList_Accomp.getSelectedIndex();
+
+            // jTextField_ipPG.setText(jList_Accomp.getSelectedValue(accDelIndex));
+            driver.personal.accomplishment.remove(accDelIndex);
+            listModel.remove(accDelIndex);
+
+            jList_Accomp.invalidate();
+            jList_Accomp.validate();
+            jList_Accomp.repaint();
+
+            driver.writeJSON();
+
+            jTextField_ipPG.setText(null);
+        }
     }
 
     private void initComponents() {
 
-        panel1 = new java.awt.Panel();
-        jLabel_Profile = new javax.swing.JLabel();
-        button3 = new java.awt.Button();
-        panel2 = new java.awt.Panel();
-        label3 = new java.awt.Label();
-        textField3 = new java.awt.TextField();
-        label_FNAME = new java.awt.Label();
-        textField_FName = new java.awt.TextField();
-        label_LName = new java.awt.Label();
-        textField_LName = new java.awt.TextField();
-        label_DOB = new java.awt.Label();
-        textField_DOB = new java.awt.TextField();
-        label_PhoneNo = new java.awt.Label();
-        textField_PhoneNo = new java.awt.TextField();
-        label_Major = new java.awt.Label();
-        textField_Major = new java.awt.TextField();
-        button4 = new java.awt.Button();
-        button2 = new java.awt.Button();
-        panel3 = new java.awt.Panel();
-        button1 = new java.awt.Button();
-        button5 = new java.awt.Button();
+        jPanel_Header = new javax.swing.JPanel();
+        jLabel_Welcome = new javax.swing.JLabel();
+        button_Profile = new javax.swing.JButton();
+        jLabel_major = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel_Btns = new javax.swing.JPanel();
+        jLabel_PG = new javax.swing.JLabel();
+        jTextField_ipPG = new javax.swing.JTextField();
+        jButton_addPG = new javax.swing.JButton();
+        jButton_delPG = new javax.swing.JButton();
+        jScrollPane_PerGoals = new javax.swing.JScrollPane();
+        panel_PerGoals = new javax.swing.JPanel();
+        jScrollPane_Accomplisments = new javax.swing.JScrollPane();
+        jList_Accomp = new javax.swing.JList<String>(listModel);
+        jPanel_Quote = new javax.swing.JPanel();
+        jScrollPane_Quote = new javax.swing.JScrollPane();
+        jTextArea_Quote = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Profile");
-        setMinimumSize(new java.awt.Dimension(600, 400));
-        setPreferredSize(new java.awt.Dimension(600, 400));
-        setSize(new java.awt.Dimension(600, 400));
 
-        panel1.setPreferredSize(new java.awt.Dimension(250, 400));
+        jPanel_Header.setBackground(new java.awt.Color(40, 84, 48));
 
-        jLabel_Profile.setFont(new java.awt.Font("Century Schoolbook", 1, 36)); // NOI18N
-        jLabel_Profile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_Profile.setText(" PROFILE ");
-        jLabel_Profile.setToolTipText("");
-        jLabel_Profile.setAlignmentY(0.0F);
-        jLabel_Profile.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jLabel_Welcome.setFont(new java.awt.Font("Helvetica Neue", 0, 48)); // NOI18N
+        jLabel_Welcome.setForeground(new java.awt.Color(229, 217, 182));
+        jLabel_Welcome.setText("Welcome, " + driver.getMain().getUser().getFirstName());
 
-        button3.setLabel("button3");
+        button_Profile.setBackground(new java.awt.Color(229, 217, 182));
+        button_Profile.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        button_Profile.setText("SET PROFILE");
+        button_Profile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                button_ProfileActionPerformed(e);
+            }
+        });
 
-        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
-        panel1.setLayout(panel1Layout);
-        panel1Layout.setHorizontalGroup(
-            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel_Profile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
-        );
-        panel1Layout.setVerticalGroup(
-            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel_Profile, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
-                .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
-        );
+        jLabel_major.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        jLabel_major.setForeground(new java.awt.Color(229, 217, 182));
+        String major = "";
+        if (driver.personal.getMajor() != null) {
+            major = driver.personal.getMajor();
+        }
+        jLabel_major.setText("Major: " + major);
 
-        getContentPane().add(panel1, java.awt.BorderLayout.EAST);
+        javax.swing.GroupLayout jPanel_HeaderLayout = new javax.swing.GroupLayout(jPanel_Header);
+        jPanel_Header.setLayout(jPanel_HeaderLayout);
+        jPanel_HeaderLayout.setHorizontalGroup(
+                jPanel_HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING,
+                                jPanel_HeaderLayout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(jLabel_Welcome)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(button_Profile)
+                                        .addContainerGap())
+                        .addGroup(jPanel_HeaderLayout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(jLabel_major)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+        jPanel_HeaderLayout.setVerticalGroup(
+                jPanel_HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel_HeaderLayout.createSequentialGroup()
+                                .addGroup(jPanel_HeaderLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel_HeaderLayout.createSequentialGroup()
+                                                .addGap(17, 17, 17)
+                                                .addComponent(button_Profile))
+                                        .addGroup(jPanel_HeaderLayout.createSequentialGroup()
+                                                .addContainerGap(25, Short.MAX_VALUE)
+                                                .addComponent(jLabel_Welcome)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel_major)
+                                .addContainerGap(12, Short.MAX_VALUE)));
 
-        panel2.setBackground(new java.awt.Color(242, 242, 242));
-        panel2.setPreferredSize(new java.awt.Dimension(300, 400));
+        jPanel_Btns.setBackground(new java.awt.Color(95, 141, 78));
 
-        label3.setText("label3");
+        jLabel_PG.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel_PG.setForeground(new java.awt.Color(153, 51, 0));
+        jLabel_PG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_PG.setText("Personal Goals");
 
-        textField3.setText("textField3");
+        jTextField_ipPG.setBackground(new java.awt.Color(229, 217, 182));
+        jTextField_ipPG.setText(null);
 
-        label_FNAME.setFont(new java.awt.Font("Century Schoolbook", 0, 16)); // NOI18N
-        label_FNAME.setPreferredSize(new java.awt.Dimension(58, 20));
-        label_FNAME.setText("FIRST NAME:");
+        jButton_addPG.setText("Add");
 
-        textField_FName.setFont(new java.awt.Font("Century Schoolbook", 0, 14)); // NOI18N
-        textField_FName.setMinimumSize(new java.awt.Dimension(180, 22));
+        jButton_delPG.setText("DEL");
 
-        label_LName.setFont(new java.awt.Font("Century Schoolbook", 0, 16)); // NOI18N
-        label_LName.setPreferredSize(new java.awt.Dimension(58, 20));
-        label_LName.setText("LAST NAME:");
+        javax.swing.GroupLayout jPanel_BtnsLayout = new javax.swing.GroupLayout(jPanel_Btns);
+        jPanel_Btns.setLayout(jPanel_BtnsLayout);
+        jPanel_BtnsLayout.setHorizontalGroup(
+                jPanel_BtnsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel_BtnsLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel_BtnsLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel_PG, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jTextField_ipPG)
+                                        .addGroup(jPanel_BtnsLayout.createSequentialGroup()
+                                                .addComponent(jButton_addPG)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jButton_delPG)))
+                                .addContainerGap()));
+        jPanel_BtnsLayout.setVerticalGroup(
+                jPanel_BtnsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel_BtnsLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel_PG)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_ipPG, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel_BtnsLayout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jButton_addPG)
+                                        .addComponent(jButton_delPG))
+                                .addContainerGap(53, Short.MAX_VALUE)));
 
-        textField_LName.setFont(new java.awt.Font("Century Schoolbook", 0, 14)); // NOI18N
-        textField_LName.setMinimumSize(new java.awt.Dimension(180, 22));
+        jScrollPane_PerGoals.setBackground(new java.awt.Color(242, 242, 242));
 
-        label_DOB.setFont(new java.awt.Font("Century Schoolbook", 0, 16)); // NOI18N
-        label_DOB.setPreferredSize(new java.awt.Dimension(58, 20));
-        label_DOB.setText("DATE OF BIRTH:");
+        panel_PerGoals.setBackground(new java.awt.Color(164, 190, 123));
+        panel_PerGoals.setLayout(new javax.swing.BoxLayout(panel_PerGoals, javax.swing.BoxLayout.LINE_AXIS));
 
-        textField_DOB.setFont(new java.awt.Font("Century Schoolbook", 0, 14)); // NOI18N
-        textField_DOB.setMinimumSize(new java.awt.Dimension(180, 22));
+        panel_PerGoals.setLayout(new BoxLayout(panel_PerGoals, BoxLayout.Y_AXIS));
 
-        label_PhoneNo.setFont(new java.awt.Font("Century Schoolbook", 0, 16)); // NOI18N
-        label_PhoneNo.setPreferredSize(new java.awt.Dimension(58, 20));
-        label_PhoneNo.setText("PHONE NO.");
+        jScrollPane_PerGoals.setViewportView(panel_PerGoals);
 
-        textField_PhoneNo.setFont(new java.awt.Font("Century Schoolbook", 0, 14)); // NOI18N
-        textField_PhoneNo.setMinimumSize(new java.awt.Dimension(180, 22));
+        jList_Accomp.setBackground(new java.awt.Color(164, 190, 123));
+        jScrollPane_Accomplisments.setViewportView(jList_Accomp);
 
-        label_Major.setFont(new java.awt.Font("Century Schoolbook", 0, 16)); // NOI18N
-        label_Major.setPreferredSize(new java.awt.Dimension(58, 20));
-        label_Major.setText("MAJOR:");
+        jPanel_Quote.setBackground(new java.awt.Color(95, 141, 78));
 
-        textField_Major.setFont(new java.awt.Font("Century Schoolbook", 0, 14)); // NOI18N
-        textField_Major.setMinimumSize(new java.awt.Dimension(180, 22));
+        jTextArea_Quote.setColumns(20);
+        jTextArea_Quote.setRows(5);
+        jScrollPane_Quote.setViewportView(jTextArea_Quote);
 
-        button4.setLabel("button4");
+        javax.swing.GroupLayout jPanel_QuoteLayout = new javax.swing.GroupLayout(jPanel_Quote);
+        jPanel_Quote.setLayout(jPanel_QuoteLayout);
+        jPanel_QuoteLayout.setHorizontalGroup(
+                jPanel_QuoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel_QuoteLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane_Quote, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+        jPanel_QuoteLayout.setVerticalGroup(
+                jPanel_QuoteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel_QuoteLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane_Quote, javax.swing.GroupLayout.PREFERRED_SIZE, 137,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap()));
 
-        button2.setLabel("button2");
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel2Layout
+                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jPanel_Quote, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jPanel_Btns, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane_PerGoals, javax.swing.GroupLayout.DEFAULT_SIZE, 258,
+                                        Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane_Accomplisments, javax.swing.GroupLayout.DEFAULT_SIZE, 259,
+                                        Short.MAX_VALUE)
+                                .addContainerGap()));
+        jPanel2Layout.setVerticalGroup(
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane_Accomplisments)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jPanel_Quote, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jPanel_Btns, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(jScrollPane_PerGoals))));
 
-        javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
-        panel2.setLayout(panel2Layout);
-        panel2Layout.setHorizontalGroup(
-            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textField_FName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textField_LName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textField_DOB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textField_PhoneNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(textField_Major, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(label_Major, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(label_PhoneNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(label_DOB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(label_LName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(label_FNAME, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panel2Layout.createSequentialGroup()
-                        .addComponent(button4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(button2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        panel2Layout.setVerticalGroup(
-            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(label_FNAME, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textField_FName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(label_LName, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textField_LName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(label_DOB, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textField_DOB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(label_PhoneNo, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textField_PhoneNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(label_Major, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textField_Major, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(button4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(button2, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        getContentPane().add(panel2, java.awt.BorderLayout.WEST);
-
-        panel3.setMinimumSize(new java.awt.Dimension(125, 100));
-        panel3.setPreferredSize(new java.awt.Dimension(150, 328));
-
-        button1.setLabel("button1");
-
-        button5.setLabel("button1");
-
-        javax.swing.GroupLayout panel3Layout = new javax.swing.GroupLayout(panel3);
-        panel3.setLayout(panel3Layout);
-        panel3Layout.setHorizontalGroup(
-            panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 125, Short.MAX_VALUE)
-        );
-        panel3Layout.setVerticalGroup(
-            panel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(panel3, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel_Header, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel_Header, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap()));
 
         pack();
     }
 
-    private java.awt.Button button1;
-    private java.awt.Button button2;
-    private java.awt.Button button3;
-    private java.awt.Button button4;
-    private java.awt.Button button5;
-    private javax.swing.JLabel jLabel_Profile;
-    private java.awt.Label label3;
-    private java.awt.Label label_DOB;
-    private java.awt.Label label_FNAME;
-    private java.awt.Label label_LName;
-    private java.awt.Label label_Major;
-    private java.awt.Label label_PhoneNo;
-    private java.awt.Panel panel1;
-    private java.awt.Panel panel2;
-    private java.awt.Panel panel3;
-    private java.awt.TextField textField3;
-    private java.awt.TextField textField_DOB;
-    private java.awt.TextField textField_FName;
-    private java.awt.TextField textField_LName;
-    private java.awt.TextField textField_Major;
-    private java.awt.TextField textField_PhoneNo;
-}
+    private void button_ProfileActionPerformed(java.awt.event.ActionEvent evt) {
+        driver.personal
+                .setMajor(JOptionPane.showInputDialog(this, "What is your Major? ", JOptionPane.INFORMATION_MESSAGE));
+        // }
+        driver.personal.setQuote(
+                JOptionPane.showInputDialog(this, "Enter your favourite quote!", JOptionPane.INFORMATION_MESSAGE));
 
+        jLabel_major.setText("Major: " + driver.personal.getMajor());
+        jTextArea_Quote.setText(driver.personal.getQuote());
+        driver.writeJSON();
+
+    }
+
+}
