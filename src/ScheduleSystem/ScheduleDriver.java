@@ -505,7 +505,4 @@ public class ScheduleDriver implements ModuleDriver {
         addDate(calMonth, calYear);
     }
 
-    public void addTodayInfo() {
-
-    }
 }
