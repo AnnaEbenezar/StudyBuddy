@@ -28,20 +28,15 @@ public class ProfilePanel extends javax.swing.JPanel {
         this.driver.personal = new Personal();
         this.accomplishment = new ArrayList<String>();
         initComponents();
+        driver.readJson();
         upload();
     }
 
     public void upload() {
-        driver.readJSON();
-
-        if (accomplishment != null) {
-            accomplishment.removeAll(accomplishment);
-        }
 
         listModel.clear();
 
         for (String a: driver.personal.accomplishment) {
-            accomplishment.add(a);
             listModel.addElement(a);
         }
 
