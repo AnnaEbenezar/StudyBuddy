@@ -87,8 +87,6 @@ public class ProfileUI extends JFrame {
             this.repaint();
 
             jTextField_ipPG.setText(null);
-
-            this.driver.Panel.upload();
         }
     }
 
@@ -110,6 +108,7 @@ public class ProfileUI extends JFrame {
         driver.personal.accomplishment.add(box.getText());
 
         driver.writeJSON();
+        this.driver.Panel.upload();
     }
 
     public void storeBackToJGoals() {
@@ -155,6 +154,7 @@ public class ProfileUI extends JFrame {
             driver.writeJSON();
 
             jTextField_ipPG.setText(null);
+            this.driver.Panel.upload();
         }
     }
 
