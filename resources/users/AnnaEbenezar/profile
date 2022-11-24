@@ -1,8 +1,14 @@
 {
   "major": "Software Engineer",
   "quote": "DRINK WATER",
-  "goals": [],
+  "goals": [
+    {
+      "name": "Drink 3 bottles of water per day for a week",
+      "isCheck": false
+    }
+  ],
   "accomplishment": [
-    "Finish work"
+    "Finish work",
+    "Drink 2 bottles of water per day for a week"
   ]
 }

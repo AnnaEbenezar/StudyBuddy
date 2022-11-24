@@ -28,7 +28,7 @@ public class ProfilePanel extends javax.swing.JPanel {
         this.driver.personal = new Personal();
         this.accomplishment = new ArrayList<String>();
         initComponents();
-        driver.readJson();
+        driver.readJSON();
         upload();
     }
 
